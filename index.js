@@ -7,25 +7,27 @@ var resumeToHtml = require('resume-to-html');
 var program = require('commander');
 var fs = require('fs');
 var request = require('superagent');
-
+var init = require('./init');
 program
     .version('0.0.1')
     .option('-f, --format [format]', 'Add the specified format of file [format]', 'html')
     .parse(process.argv);
 
 
-console.log('  - %s cheese', program.format);
+// console.log('  - %s cheese', program.format);
 
 var resumeInput = program.args[0];
 
 var resumeOutput = program.args[1];
 
-if (resumeInput === 'publish') {
+if (resumeInput === 'init') {
+    init();
+} else if (resumeInput === 'publish') {
 
     var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
 
     request
-        .post('http://resume-json.herokuapp.com/resume')
+        .post('http://beta.jsonresume.org/resume')
         .send({
             resume: resumeData
         })
