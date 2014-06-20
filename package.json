@@ -1,0 +1,26 @@
+{
+  "name": "resume-cli",
+  "version": "0.0.0",
+  "description": "resume-cli ==========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rolandnsharp/resume-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolandnsharp/resume-cli/issues"
+  },
+  "homepage": "https://github.com/rolandnsharp/resume-cli",
+  "dependencies": {
+    "commander": "^2.2.0",
+    "open": "0.0.5",
+    "resume-to-html": "0.0.3",
+    "resume-to-text": "0.0.7",
+    "superagent": "^0.18.0"
+  }
+}

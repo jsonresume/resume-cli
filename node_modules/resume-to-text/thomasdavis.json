@@ -1,0 +1,62 @@
+{
+    "name": "Thomas Davis",
+    "email": "thomasalwyndavis@gmail.com",
+    "phoneNumber": null,
+    "bio": "Hey guys, I’m a full stack web developer who loves working with open source technology.",
+    "location": {
+        "city": "Brisbane",
+        "countryCode": "AU"
+    },
+    "work": [{
+        "startDate":   "2014-06-08",
+        "endDate": "2014-06-09",
+        "position": "CTO",
+        "name": "Earbits",
+        "website": "http://www.earbits.com",
+        "description": "Started off as a front end developer but took on the role of CTO in early 2013. Managed Rail applications and did a large server and database(MongoDB) migration from Heroku to Amazon.",
+        "highlights": ["Manage a large 300gb Mongo DB"]
+    }, {
+        "startDate":   "2014-01-01",
+        "endDate": "2014-06-01",
+        "position": "Developer",
+        "name": "Electronic Freedom Frontier",
+        "website": "http://www.eff.org",
+        "description": "Hired to take EFF's campaigning to the next level by building an action centre in Ruby on Rails. The action centre is built around some large open source tools that lower the barrier to entry when contacting congress.",
+        "highlights": ["Developed new tools in the contacting congress industry"]
+    }, {
+        "startDate":   "2014-01-01",
+        "endDate": "2014-06-01",
+        "position": "Developer",
+        "name": "Taskforce.is",
+        "website": "http://www.taskforce.is",
+        "description": "Worked on many politically charged campaigns against mass surveillance. Our latest project was \"TheDayWeFightBack\" and I worked on all areas of it. The campaign resulted in 37,000,000 banner views, 100,000 phone calls, ~500,000 emails and ~250,000 signatures. I work mostly in the frontend and also running the Heroku servers which are cached by Cloudfront.",
+        "highlights": []
+    }],
+    "education": [{
+        "name": "The University of Queensland",
+        "studyType": "Bachelors",
+        "area": "Software Engineering",
+        "startDate": "2008-02",
+        "endDate": "",
+        "courses": ["CSSE3002", "..."]
+    }],
+    "awards": [{
+        "name": "Good at study",
+        "date": "2009-10-01",
+        "awarder": "The University of Queensland"
+    }],
+    "publications": [{
+        "name": "Some study",
+        "publisher": "The Journal of Modern Medicine"
+    }],
+    "profiles": {
+        "github": "thomasdavis",
+        "twitter": "ryan_kirkman"
+    },
+    "skills": ["javascript", "databases"],
+    "hobbies": ["gym"],
+    "references": [{
+        "name": "Greg Davis",
+        "reference": "On Thomas Davis ... Hire this guy. Do not be fooled. Incredibly capable and fast. Plays well with others. Unbelievable at front-end work end programming but that is just the start. Visionary. Hire him before I do."
+    }]
+}

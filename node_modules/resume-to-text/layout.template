@@ -1,0 +1,23 @@
+
+    {{name}}
+
+  {{bio}}
+   Work
+    
+    {{#work}}
+  
+        {{position}}, {{name}}
+        {{startDate}} - {{endDate}}
+        {{description}}
+    
+          {{#highlights}}
+            {{.}}
+          {{/highlights}}
+      
+    {{/work}}
+  
+ References
+
+    {{#references}}
+     {{reference}} - {{name}}
+    {{/references}}
