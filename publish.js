@@ -8,22 +8,18 @@ var rl = readline.createInterface({
     output: process.stdout
 });
 
-function publish(resumeData) {
+function publish(resumeData, force) {
     resumeSchema.validate(resumeData, function(report, errs) {
-        if (errs) {
+        if (errs && !force) {
             console.log('error publishing resume'.red);
             console.log(errs);
             console.log('To try publish regardless of the error, type:'.blue, 'node publish --force');
             console.log('For error troubleshooting type:'.blue, 'node test')
             process.exit();
-            // rl.question("or anything else to quit.".yellow, function(answer) {
-            //     if (answer === 'force') {
-            //         publishSend(resumeData);
-            //     } else {
-            //         return;
-            //     }
-            // });
         } else {
+            if (force) {
+                console.log('You resume.json did not pass formatting tests. Attempting to publish anyway.')
+            }
             publishSend(resumeData);
         }
     });

@@ -12,9 +12,9 @@ var publish = require('./publish');
 program
     .version('0.0.1')
     .option('-f, --format [format]', 'Add the specified format of file [format]', 'html') //default to 'html'
+.option('--force [force]', 'Force publish [force]', false) //default to 'html'
 .parse(process.argv);
 
-// console.log('program.format', program.format);
 
 var argumentZero = program.args[0];
 var resumeOutput = program.args[1];
@@ -31,7 +31,7 @@ switch (argumentZero) {
         });
         break;
     case 'publish':
-        publish(resumeData);
+        publish(resumeData, program.force);
         break;
     default:
         //default code block
