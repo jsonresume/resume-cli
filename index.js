@@ -16,18 +16,26 @@ program
 // console.log('program.format', program.format);
 
 var argumentZero = program.args[0];
-
 var resumeOutput = program.args[1];
 var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
 
-if (argumentZero === 'init') {
-    init();
-} else if (argumentZero === 'test') {
-    validate();
-} else if (argumentZero === 'publish') {
-    publish(resumeData);
+switch (argumentZero) {
+    case 'init':
+        init();
+        break;
+    case 'test':
+        validate();
+        break;
+    case 'publish':
+        publish(resumeData);
+        break;
+    default:
+        //default code block
+        return;
+}
 
-} else if (program.format === 'html') {
+
+if (program.format === 'html') {
 
     if (!resumeOutput) {
         resumeOutput = argumentZero.replace("json", "html");
