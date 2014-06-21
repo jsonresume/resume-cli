@@ -15,9 +15,8 @@ program
 .option('--force [force]', 'Force publish [force]', false) //default to 'html'
 .parse(process.argv);
 
-
 var argumentZero = program.args[0];
-var resumeOutput = program.args[1];
+var resumeOutput = 'resume';
 var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
 
 switch (argumentZero) {
@@ -25,10 +24,7 @@ switch (argumentZero) {
         init();
         break;
     case 'test':
-        validate(function(isOrNot, why) {
-            console.log(isOrNot);
-            console.log(why);
-        });
+        validate.validate(resumeData);
         break;
     case 'publish':
         publish(resumeData, program.force);
@@ -37,7 +33,6 @@ switch (argumentZero) {
         //default code block
         break;
 }
-
 
 if (program.format === 'html') {
 
