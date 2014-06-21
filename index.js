@@ -4,7 +4,6 @@ var resumeToText = require('resume-to-text');
 var resumeToHtml = require('resume-to-html');
 var program = require('commander');
 var fs = require('fs');
-
 var init = require('./init');
 var validate = require('./validate');
 var publish = require('./publish');

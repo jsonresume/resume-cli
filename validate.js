@@ -3,6 +3,7 @@ var resumeSchema = require('resume-schema');
 var colors = require('colors');
 
 function errorFormatter(err) {
+    console.log('Number of errors:'.blue, err.errors.length);
     err.errors.forEach(function(error) {
         // console.log(error);
         console.log('code:', error.code);
@@ -15,15 +16,15 @@ function errorFormatter(err) {
 function validate(resumeData, callback) {
     resumeSchema.validate(resumeData, function(report, errs) {
         if (errs) {
-            console.log('TESTS FAILED'.red);
+            console.log('TEST FAILED'.red);
             errorFormatter(errs);
             process.exit();
         } else {
             console.log('TEST SUCCESSFUL'.green);
-            console.log(report);
-            // console.log('resume.json is in a vailid format');
+            console.log('Number of errors:'.blue, report.errors.length);
+            console.log('To publish your resume at'.blue, 'http://jsonresume.org', 'simply type the command'.blue, 'node index publish (resume publish)');
+            process.exit();
         }
-
     });
 }
 module.exports = {
