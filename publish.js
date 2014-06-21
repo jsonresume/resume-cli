@@ -15,8 +15,8 @@ function publish(resumeData, force) {
             console.log('Error: Resume failed to publish.'.red);
             console.log('Reasons:');
             console.log(validate.errorFormatter(errs));
-            console.log('For error troubleshooting type:'.blue, 'node index test');
-            console.log('Or to try publish regardless of the error warning, type:'.blue, 'node publish --force');
+            console.log('For error troubleshooting type:'.cyan, 'node index test');
+            console.log('Or to try publish regardless of the error warning, type:'.cyan, 'node publish --force');
             process.exit();
         } else {
             if (force) {

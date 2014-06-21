@@ -77,13 +77,13 @@ var seriesArray = [
             callback();
             rl.close();
             console.log('Success! Please find and complete your generated resume.json file at:'.green, __dirname + '/resume.json');
-            console.log('To publish your resume at'.blue, 'http://jsonresume.org', 'simply type the command'.blue, 'node index publish (resume publish)');
+            console.log('To publish your resume at'.cyan, 'http://jsonresume.org', 'Simply type the command:'.cyan, 'node index publish (resume publish)');
         });
     }
 ];
 
 function init() {
-    console.log("Please fill out some basic details to generate a new resume.json".blue);
+    console.log("Please fill out some basic details to generate a new resume.json".cyan);
     async.series(seriesArray);
 }
 module.exports = init;
