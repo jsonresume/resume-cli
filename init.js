@@ -89,6 +89,4 @@ function init() {
 module.exports = init;
 
 //todo
-// test function successful
-
-// github
+// github integration
