@@ -1,5 +1,6 @@
 var readline = require('readline');
 var fs = require('fs');
+var async = require('async');
 
 var rl = readline.createInterface({
     input: process.stdin,
@@ -56,34 +57,34 @@ var resume = {
 
 function init() {
     console.log("init resume.json");
-    rl.question("name: ", function(name) {
-        resume.name = name;
+    async.series([
 
-        rl.question("email: ", function(email) {
-            resume.email = email;
-
-            rl.question("phone number: ", function(ph) {
-                resume.phoneNumber = ph;
-
-                rl.question("city: ", function(city) {
-                    resume.location.city = city;
-
-                    rl.question("state: ", function(state) {
-                        resume.location.state = state;
-
-                        rl.question("github: ", function(github) {
-                            resume.profiles.github = github;
-
-
-                            fs.writeFileSync(__dirname + '/resume.json', JSON.stringify(resume));
-                            console.log(resume);
-
-                            rl.close();
-                        });
-                    });
-                });
+        function(callback) {
+            rl.question("name: ", function(name) {
+                resume.name = name;
+                callback();
             });
-        });
-    });
+        },
+        function(callback) {
+            rl.question("email: ", function(email) {
+                resume.email = email;
+                callback()
+            });
+        },
+        function(callback) {
+            rl.question("github: ", function(github) {
+                resume.profiles.github = github;
+                fs.writeFileSync(__dirname + '/resume.json', JSON.stringify(resume));
+                console.log(resume);
+                callback();
+                rl.close();
+            });
+        }
+    ]);
 }
 module.exports = init;
+
+//todo
+// test function successful
+// validate publish, everything
+// github

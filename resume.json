@@ -1,0 +1,47 @@
+{
+    "name": 1,
+    "email": "erodjk@jdsk",
+    "phoneNumber": "324",
+    "bio": "",
+    "location": {
+        "city": "djfdsl",
+        "countryCode": "",
+        "state": "qld"
+    },
+    "work": [{
+        "startDate": "",
+        "endDate": "",
+        "position": "",
+        "name": "",
+        "website": "http://www..com",
+        "description": "",
+        "highlights": [""]
+    }],
+    "education": [{
+        "name": "",
+        "studyType": "",
+        "area": "",
+        "startDate": "",
+        "endDate": "",
+        "courses": ["", ""]
+    }],
+    "awards": [{
+        "name": "",
+        "date": "",
+        "awarder": ""
+    }],
+    "publications": [{
+        "name": "",
+        "publisher": ""
+    }],
+    "profiles": {
+        "github": "roland",
+        "twitter": ""
+    },
+    "skills": ["", ""],
+    "hobbies": [""],
+    "references": [{
+        "name": "",
+        "reference": ""
+    }]
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var open = require('open');
-
+var resumeSchema = require('resume-schema');
 var resumeToText = require('resume-to-text');
 var resumeToHtml = require('resume-to-html');
 var program = require('commander');
@@ -14,14 +14,21 @@ program
     .parse(process.argv);
 
 
-// console.log('  - %s cheese', program.format);
+console.log('  - %s cheese', program.format);
 
 var resumeInput = program.args[0];
 
 var resumeOutput = program.args[1];
 
 if (resumeInput === 'init') {
+
     init();
+
+} else if (resumeInput === 'test') {
+    var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
+    resumeSchema.validate(resumeData, function(report, errs) {
+        console.log(report, errs);
+    });
 } else if (resumeInput === 'publish') {
 
     var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
