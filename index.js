@@ -10,9 +10,19 @@ var publish = require('./publish');
 
 program
     .version('0.0.1')
+
+program
+    .command('init')
+    .description('Initialize resume.json')
+    .action(init());
+
+program
     .option('-f, --format [format]', 'Add the specified format of file [format]', 'html') //default to 'html'
 .option('--force [force]', 'Force publish [force]', false) //default to 'html'
 .parse(process.argv);
+
+
+
 
 var argumentZero = program.args[0];
 var resumeOutput = 'resume';
@@ -20,7 +30,7 @@ var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
 
 switch (argumentZero) {
     case 'init':
-        init();
+        // init();
         break;
     case 'test':
         validate.validate(resumeData);
