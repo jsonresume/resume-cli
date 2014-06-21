@@ -56,7 +56,7 @@ var resume = {
 };
 
 function init() {
-    console.log("init resume.json");
+    console.log("initializing resume.json...");
     async.series([
 
         function(callback) {
