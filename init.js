@@ -73,20 +73,22 @@ var seriesArray = [
         rl.question("github: ", function(github) {
             resume.profiles.github = github;
             fs.writeFileSync(__dirname + '/resume.json', JSON.stringify(resume));
-            console.log(resume);
+            // console.log(resume);
             callback();
             rl.close();
+            console.log('Success! Please find and complete your generated resume.json file at:'.green, __dirname + '/resume.json');
+            console.log('To publish your resume at'.blue, 'http://jsonresume.org', 'simply type the command'.blue, 'node index publish (resume publish)');
         });
     }
 ];
 
 function init() {
-    console.log("initializing resume.json...");
+    console.log("Please fill out some basic details to generate a new resume.json".blue);
     async.series(seriesArray);
 }
 module.exports = init;
 
 //todo
 // test function successful
-// validate publish, everything
+
 // github

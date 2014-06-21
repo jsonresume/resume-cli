@@ -1,8 +1,3 @@
-var readline = require('readline');
-var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 var request = require('superagent');
 var open = require('open');
 var resumeSchema = require('resume-schema');
@@ -15,26 +10,24 @@ var rl = readline.createInterface({
 
 function publish(resumeData) {
     resumeSchema.validate(resumeData, function(report, errs) {
-
         if (errs) {
             console.log('error publishing resume'.red);
             console.log(errs);
-
-            console.log("Please type 'force' to ignore your formatting errors and publish anyway".yellow);
-            rl.question("or anything else to quit.".yellow, function(answer) {
-                if (answer === 'force') {
-                    publishSend(resumeData);
-                } else {
-                    return;
-                }
-            });
+            console.log('To try publish regardless of the error, type:'.blue, 'node publish --force');
+            console.log('For error troubleshooting type:'.blue, 'node test')
+            process.exit();
+            // rl.question("or anything else to quit.".yellow, function(answer) {
+            //     if (answer === 'force') {
+            //         publishSend(resumeData);
+            //     } else {
+            //         return;
+            //     }
+            // });
         } else {
-
             publishSend(resumeData);
         }
     });
 }
-module.exports = publish;
 
 function publishSend(resumeData) {
     request
@@ -50,12 +43,12 @@ function publishSend(resumeData) {
                 console.log(error);
                 console.log('There has been an error publishing your resume'.red);
             } else {
-                console.log("Congratulations! Your resume is now published at:".green, res.body.url);
-                rl.question("Would you like to view your newly published resume in the web browser? (yes/no)".yellow, function(answer) {
+                console.log("Success! Your resume is now published at:".green, res.body.url);
+                rl.question("Would you like to view your newly published resume in the web browser? (yes/no)", function(answer) {
                     if (answer === 'yes') {
                         open(res.body.url);
-
-                    } else {
+                        rl.close();
+                    } else if (answer === 'no') {
                         rl.close();
                     }
                 });
@@ -63,3 +56,4 @@ function publishSend(resumeData) {
         });
     return;
 }
+module.exports = publish;

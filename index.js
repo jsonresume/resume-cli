@@ -11,8 +11,8 @@ var publish = require('./publish');
 
 program
     .version('0.0.1')
-    .option('-f, --format [format]', 'Add the specified format of file [format]', 'html')
-    .parse(process.argv);
+    .option('-f, --format [format]', 'Add the specified format of file [format]', 'html') //default to 'html'
+.parse(process.argv);
 
 // console.log('program.format', program.format);
 

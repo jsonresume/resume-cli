@@ -1,12 +1,12 @@
 {
     "name": 1,
-    "email": 455,
-    "phoneNumber": "324",
+    "email": "fds",
+    "phoneNumber": "1",
     "bio": "",
     "location": {
-        "city": 454545,
+        "city": "1",
         "countryCode": "",
-        "state": "qld"
+        "state": "1"
     },
     "work": [{
         "startDate": "",
@@ -35,7 +35,7 @@
         "publisher": ""
     }],
     "profiles": {
-        "github": "roland",
+        "github": "fd",
         "twitter": ""
     },
     "skills": ["", ""],
