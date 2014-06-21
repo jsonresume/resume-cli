@@ -55,32 +55,34 @@ var resume = {
     }]
 };
 
+var seriesArray = [
+
+    function(callback) {
+        rl.question("name: ", function(name) {
+            resume.name = name;
+            callback();
+        });
+    },
+    function(callback) {
+        rl.question("email: ", function(email) {
+            resume.email = email;
+            callback()
+        });
+    },
+    function(callback) {
+        rl.question("github: ", function(github) {
+            resume.profiles.github = github;
+            fs.writeFileSync(__dirname + '/resume.json', JSON.stringify(resume));
+            console.log(resume);
+            callback();
+            rl.close();
+        });
+    }
+];
+
 function init() {
     console.log("initializing resume.json...");
-    async.series([
-
-        function(callback) {
-            rl.question("name: ", function(name) {
-                resume.name = name;
-                callback();
-            });
-        },
-        function(callback) {
-            rl.question("email: ", function(email) {
-                resume.email = email;
-                callback()
-            });
-        },
-        function(callback) {
-            rl.question("github: ", function(github) {
-                resume.profiles.github = github;
-                fs.writeFileSync(__dirname + '/resume.json', JSON.stringify(resume));
-                console.log(resume);
-                callback();
-                rl.close();
-            });
-        }
-    ]);
+    async.series(seriesArray);
 }
 module.exports = init;
 
