@@ -72,30 +72,10 @@ program.parse(process.argv);
 // if resume is run with no commands
 if (!program.args.length) {
 
-    var menu = require('terminal-menu')({
-        width: 29,
-        x: 4,
-        y: 2,
-        bg: 'black',
-        fg: 'cyan'
-    });
-    menu.reset();
-    menu.write('PUBLISH MENU\n');
-    menu.write('-------------------------\n');
-    menu.add('Publish as guest');
-    menu.add('Publish user');
-    menu.add('EXIT');
-
-    menu.on('select', function(label) {
-        menu.close();
-        console.log('SELECTED: ' + label);
-    });
-    menu.createStream().pipe(process.stdout);
-
-    // console.log('resume-cli'.cyan, '\n');
-    // console.log('Please type:', 'resume --help'.cyan, 'for information on using resume-cli');
-    // console.log('or:', 'resume init'.cyan, 'to initialize a new resume.json and start right away.');
-    // process.exit();
+    console.log('resume-cli'.cyan, '\n');
+    console.log('Please type:', 'resume --help'.cyan, 'for information on using resume-cli');
+    console.log('or:', 'resume init'.cyan, 'to initialize a new resume.json and start right away.');
+    process.exit();
 }
 
 
