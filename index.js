@@ -28,7 +28,8 @@ if (fs.existsSync('./resume.json')) {
 
 program
     .version('0.0.4')
-    .option('-f, --force [force]', 'Force publish [force]', false);
+    .option('-f, --force [force]', 'Force publish [force]', false)
+
 
 program
     .command('init')
@@ -70,10 +71,31 @@ program.parse(process.argv);
 
 // if resume is run with no commands
 if (!program.args.length) {
-    console.log('resume-cli'.cyan, '\n');
-    console.log('Please type:', 'resume --help'.cyan, 'for information on using resume-cli');
-    console.log('or:', 'resume init'.cyan, 'to initialize a new resume.json and start right away.');
-    process.exit();
+
+    var menu = require('terminal-menu')({
+        width: 29,
+        x: 4,
+        y: 2,
+        bg: 'black',
+        fg: 'cyan'
+    });
+    menu.reset();
+    menu.write('PUBLISH MENU\n');
+    menu.write('-------------------------\n');
+    menu.add('Publish as guest');
+    menu.add('Publish user');
+    menu.add('EXIT');
+
+    menu.on('select', function(label) {
+        menu.close();
+        console.log('SELECTED: ' + label);
+    });
+    menu.createStream().pipe(process.stdout);
+
+    // console.log('resume-cli'.cyan, '\n');
+    // console.log('Please type:', 'resume --help'.cyan, 'for information on using resume-cli');
+    // console.log('or:', 'resume init'.cyan, 'to initialize a new resume.json and start right away.');
+    // process.exit();
 }
 
 
