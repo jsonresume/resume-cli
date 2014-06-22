@@ -4,16 +4,18 @@ var resumeToText = require('resume-to-text');
 var resumeToHtml = require('resume-to-html');
 var program = require('commander');
 var fs = require('fs');
-var init = require('./init');
-var validate = require('./validate');
-var publish = require('./publish');
+var init = require('./lib/init');
+var test = require('./lib/test');
+var publish = require('./lib/publish');
+var colors = require('colors');
+
 
 var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
 
 program
     .version('0.0.1')
-    .option('-f, --format [format]', 'Add the specified format of file [format]', 'html') //default to 'html'
-.option('--force [force]', 'Force publish [force]', false) //default to 'html'
+    .option('-f, --format [format]', 'Add the specified format of file [format]', 'html')
+    .option('--force [force]', 'Force publish [force]', false);
 
 program
     .command('init')
@@ -24,23 +26,39 @@ program
 
 program
     .command('test')
-    .description('Initialize resume.json')
+    .description('Test resume.json')
     .action(function() {
-        validate.validate(resumeData);
+        test.validate(resumeData);
     });
 
 program
     .command('publish')
-    .description('Initialize resume.json')
+    .description('Publish resume.json')
     .action(function() {
         publish(resumeData, program.force);
     });
 
+program
+    .command('export <fileName>')
+    .description('Publish resume.json')
+    .action(function(fileName) {
+
+        console.log(fileName);
+    });
 
 
 program.parse(process.argv);
-
 var argumentZero = program.args[0];
+
+
+if (!program.args.length) {
+    console.log(' \n ');
+    console.log('Please type:', 'resume --help'.cyan, 'for information on using resume-cli');
+    console.log('or:', 'resume init'.cyan, 'to initialize a new resume.json and start right away.');
+    process.exit();
+}
+
+
 var resumeOutput = 'resume';
 
 

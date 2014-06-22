@@ -1,6 +1,6 @@
 {
   "name": "resume-cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "resume-cli ==========",
   "main": "index.js",
   "scripts": {
@@ -16,11 +16,16 @@
     "url": "https://github.com/rolandnsharp/resume-cli/issues"
   },
   "homepage": "https://github.com/rolandnsharp/resume-cli",
+  "bin": {
+    "resume": "index.js"
+  },
+  "preferGlobal": true,
   "dependencies": {
     "async": "^0.9.0",
     "colors": "^0.6.2",
     "commander": "^2.2.0",
     "open": "0.0.5",
+    "read": "^1.0.5",
     "resume-schema": "0.0.1",
     "resume-to-html": "0.0.3",
     "resume-to-text": "0.0.7",
