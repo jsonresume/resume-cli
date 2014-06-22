@@ -1,0 +1,118 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'publish',
+1 verbose cli   '--force' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 warn using --force I sure hope you know what you are doing.
+5 verbose publish [ '.' ]
+6 verbose cache add [ '.', null ]
+7 verbose cache add name=undefined spec="." args=[".",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '.',
+8 verbose parsed url   path: '.',
+8 verbose parsed url   href: '.' }
+9 silly lockFile 3a52ce78- .
+10 verbose lock . /home/rolandsharp/.npm/3a52ce78-.lock
+11 verbose tar pack [ '/home/rolandsharp/.npm/resume-cli/0.0.6/package.tgz', '.' ]
+12 verbose tarball /home/rolandsharp/.npm/resume-cli/0.0.6/package.tgz
+13 verbose folder .
+14 info prepublish resume-cli@0.0.6
+15 silly lockFile 1f1177db-tar tar://.
+16 verbose lock tar://. /home/rolandsharp/.npm/1f1177db-tar.lock
+17 silly lockFile 327cff5b-npm-resume-cli-0-0-6-package-tgz tar:///home/rolandsharp/.npm/resume-cli/0.0.6/package.tgz
+18 verbose lock tar:///home/rolandsharp/.npm/resume-cli/0.0.6/package.tgz /home/rolandsharp/.npm/327cff5b-npm-resume-cli-0-0-6-package-tgz.lock
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 1f1177db-tar tar://.
+21 silly lockFile 327cff5b-npm-resume-cli-0-0-6-package-tgz tar:///home/rolandsharp/.npm/resume-cli/0.0.6/package.tgz
+22 silly lockFile 327cff5b-npm-resume-cli-0-0-6-package-tgz tar:///home/rolandsharp/.npm/resume-cli/0.0.6/package.tgz
+23 silly lockFile 6a25d45a-arp-npm-resume-cli-0-0-6-package /home/rolandsharp/.npm/resume-cli/0.0.6/package
+24 verbose lock /home/rolandsharp/.npm/resume-cli/0.0.6/package /home/rolandsharp/.npm/6a25d45a-arp-npm-resume-cli-0-0-6-package.lock
+25 silly lockFile 6a25d45a-arp-npm-resume-cli-0-0-6-package /home/rolandsharp/.npm/resume-cli/0.0.6/package
+26 silly lockFile 6a25d45a-arp-npm-resume-cli-0-0-6-package /home/rolandsharp/.npm/resume-cli/0.0.6/package
+27 silly lockFile 3a52ce78- .
+28 silly lockFile 3a52ce78- .
+29 silly publish { name: 'resume-cli',
+29 silly publish   version: '0.0.6',
+29 silly publish   description: 'resume-cli ==========',
+29 silly publish   main: 'index.js',
+29 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+29 silly publish   repository:
+29 silly publish    { type: 'git',
+29 silly publish      url: 'https://github.com/rolandnsharp/resume-cli.git' },
+29 silly publish   author: '',
+29 silly publish   license: 'ISC',
+29 silly publish   bugs: { url: 'https://github.com/rolandnsharp/resume-cli/issues' },
+29 silly publish   homepage: 'https://github.com/rolandnsharp/resume-cli',
+29 silly publish   bin: { resume: 'index.js' },
+29 silly publish   preferGlobal: true,
+29 silly publish   dependencies:
+29 silly publish    { async: '^0.9.0',
+29 silly publish      'cli-spinner': '^0.1.5',
+29 silly publish      colors: '^0.6.2',
+29 silly publish      commander: '^2.2.0',
+29 silly publish      'html5-to-pdf': '^0.2.2',
+29 silly publish      open: '0.0.5',
+29 silly publish      read: '^1.0.5',
+29 silly publish      'resume-schema': '0.0.1',
+29 silly publish      'resume-to-html': '0.0.3',
+29 silly publish      'resume-to-text': '0.0.7',
+29 silly publish      superagent: '^0.18.0',
+29 silly publish      'terminal-menu': '^0.3.2' },
+29 silly publish   readme: 'resume-cli\n==========\n\n  Usage: resume [options] [command]\n\n  Commands:\n\n    init                   Initialize resume.json\n    test                   Test resume.json\n    publish                Publish resume.json\n\n  Options:\n\n    -h, --help             output usage information\n    -V, --version          output the version number\n    -f, --format [format]  Add the specified format of file [format]\n    --force [force]        Force publish [force]\n\n\n\nhttps://raw.githubusercontent.com/dscape/NunoJobResume/master/resume.json\n',
+29 silly publish   readmeFilename: 'README.md',
+29 silly publish   gitHead: 'c124f7e5a29da784b8b136bc1458f1828b37cbba',
+29 silly publish   _id: 'resume-cli@0.0.6',
+29 silly publish   _shasum: 'a7cf5fc8f34d944014f55e4c6c5212523b7e8db9',
+29 silly publish   _from: '.' }
+30 verbose url raw resume-cli
+31 verbose url resolving [ 'https://registry.npmjs.org/', './resume-cli' ]
+32 verbose url resolved https://registry.npmjs.org/resume-cli
+33 info trying registry request attempt 1 at 01:16:24
+34 http PUT https://registry.npmjs.org/resume-cli
+35 http 403 https://registry.npmjs.org/resume-cli
+36 verbose headers { date: 'Sun, 22 Jun 2014 15:15:58 GMT',
+36 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+36 verbose headers   'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=30',
+36 verbose headers   'content-length': '3423',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   'x-served-by': 'cache-syd1621-SYD',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1403450158.132313,VS0,VE722',
+36 verbose headers   'keep-alive': 'timeout=10, max=50',
+36 verbose headers   connection: 'Keep-Alive' }
+37 error publish Failed PUT 403
+38 error Error: forbidden cannot modify pre-existing version: 0.0.6
+38 error old={"name":"resume-cli","version":"0.0.6","description":"resume-cli ==========","main":"index.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"https://github.com/rolandnsharp/resume-cli.git"},"author":"","license":"ISC","bugs":{"url":"https://github.com/rolandnsharp/resume-cli/issues"},"homepage":"https://github.com/rolandnsharp/resume-cli","bin":{"resume":"index.js"},"preferGlobal":true,"dependencies":{"async":"^0.9.0","cli-spinner":"^0.1.5","colors":"^0.6.2","commander":"^2.2.0","html5-to-pdf":"^0.2.2","open":"0.0.5","read":"^1.0.5","resume-schema":"0.0.1","resume-to-html":"0.0.3","resume-to-text":"0.0.7","superagent":"^0.18.0","terminal-menu":"^0.3.2"},"gitHead":"653f67a9b0b57c3e2d07ca016022a63cf62e575b","_id":"resume-cli@0.0.6","_shasum":"1ce18953798210e40235439c7f28e6294f5da772","_from":".","_npmVersion":"1.4.14","_npmUser":{"name":"rolandnsharp","email":"rolandnsharp@gmail.com"},"maintainers":[{"name":"rolandnsharp","email":"rolandnsharp@gmail.com"}],"dist":{"shasum":"1ce18953798210e40235439c7f28e6294f5da772","tarball":"http://registry.npmjs.org/resume-cli/-/resume-cli-0.0.6.tgz"}}
+38 error new={"name":"resume-cli","version":"0.0.6","description":"resume-cli ==========","main":"index.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"https://github.com/rolandnsharp/resume-cli.git"},"author":"","license":"ISC","bugs":{"url":"https://github.com/rolandnsharp/resume-cli/issues"},"homepage":"https://github.com/rolandnsharp/resume-cli","bin":{"resume":"index.js"},"preferGlobal":true,"dependencies":{"async":"^0.9.0","cli-spinner":"^0.1.5","colors":"^0.6.2","commander":"^2.2.0","html5-to-pdf":"^0.2.2","open":"0.0.5","read":"^1.0.5","resume-schema":"0.0.1","resume-to-html":"0.0.3","resume-to-text":"0.0.7","superagent":"^0.18.0","terminal-menu":"^0.3.2"},"readme":"resume-cli\u000a==========\u000a\u000a  Usage: resume [options] [command]\u000a\u000a  Commands:\u000a\u000a    init                   Initialize resume.json\u000a    test                   Test resume.json\u000a    publish                Publish resume.json\u000a\u000a  Options:\u000a\u000a    -h, --help             output usage information\u000a    -V, --version          output the version number\u000a    -f, --format [format]  Add the specified format of file [format]\u000a    --force [force]        Force publish [force]\u000a\u000a\u000a\u000ahttps://raw.githubusercontent.com/dscape/NunoJobResume/master/resume.json\u000a","readmeFilename":"README.md","gitHead":"c124f7e5a29da784b8b136bc1458f1828b37cbba","_id":"resume-cli@0.0.6","_shasum":"a7cf5fc8f34d944014f55e4c6c5212523b7e8db9","_from":".","_npmVersion":"1.4.14","_npmUser":{"name":"rolandnsharp","email":"rolandnsharp@gmail.com"},"maintainers":[{"name":"rolandnsharp","email":"rolandnsharp@gmail.com"}],"dist":{"shasum":"a7cf5fc8f34d944014f55e4c6c5212523b7e8db9","tarball":"http://registry.npmjs.org/resume-cli/-/resume-cli-0.0.6.tgz"}}: resume-cli
+38 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:274:14)
+38 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:212:65)
+38 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+38 error     at Request.emit (events.js:98:17)
+38 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+38 error     at Request.emit (events.js:117:20)
+38 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+38 error     at IncomingMessage.emit (events.js:117:20)
+38 error     at _stream_readable.js:929:16
+38 error     at process._tickCallback (node.js:419:13)
+39 error If you need help, you may report this *entire* log,
+39 error including the npm and node versions, at:
+39 error     <http://github.com/npm/npm/issues>
+40 error System Linux 3.11.0-23-generic
+41 error command "/usr/local/bin/node" "/usr/local/bin/npm" "publish" "--force"
+42 error cwd /home/rolandsharp/github/resume-cli
+43 error node -v v0.10.29
+44 error npm -v 1.4.14
+45 verbose exit [ 1, true ]
