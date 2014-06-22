@@ -6,19 +6,10 @@ var init = require('./lib/init');
 var test = require('./lib/test');
 var publish = require('./lib/publish');
 var register = require('./lib/register');
-// var exportJson = require('./lib/exportJson');
 var colors = require('colors');
-
 var resumeToText = require('resume-to-text');
 var resumeToHtml = require('resume-to-html');
 var html5pdf = require("html5-to-pdf");
-
-// var readline = require('readline');
-// var rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-// });
-
 
 if (fs.existsSync('./resume.json')) {
     var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
@@ -29,7 +20,6 @@ if (fs.existsSync('./resume.json')) {
 program
     .version('0.0.4')
     .option('-f, --force [force]', 'Force publish [force]', false)
-
 
 program
     .command('init')
@@ -78,16 +68,10 @@ if (!program.args.length) {
     process.exit();
 }
 
-
-
-
 function exports(resumeData, fileName) {
 
     splitFileName = fileName.split('.');
     var fileExtension = splitFileName[1];
-
-
-
 
     if (!fileName) {
         console.log("Please provide a file name for your resume");
@@ -98,10 +82,7 @@ function exports(resumeData, fileName) {
         //     console.log('Please enter a valid file extexions (.html .txt .pdf)');
     }
 
-
     switch (fileExtension) {
-
-
 
         case 'html':
             resumeToHtml(resumeData, function(htmlResume) {
