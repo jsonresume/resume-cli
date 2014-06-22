@@ -1,0 +1,47 @@
+{
+    "name": 1,
+    "email": "sjkfdl",
+    "phoneNumber": "1",
+    "bio": "",
+    "location": {
+        "city": "1",
+        "countryCode": "",
+        "state": "1"
+    },
+    "work": [{
+        "startDate": "",
+        "endDate": "",
+        "position": "",
+        "name": "",
+        "website": "http://www..com",
+        "description": "",
+        "highlights": [""]
+    }],
+    "education": [{
+        "name": "",
+        "studyType": "",
+        "area": "",
+        "startDate": "",
+        "endDate": "",
+        "courses": ["", ""]
+    }],
+    "awards": [{
+        "name": "",
+        "date": "",
+        "awarder": ""
+    }],
+    "publications": [{
+        "name": "",
+        "publisher": ""
+    }],
+    "profiles": {
+        "github": "sjdfk",
+        "twitter": ""
+    },
+    "skills": ["", ""],
+    "hobbies": [""],
+    "references": [{
+        "name": "",
+        "reference": ""
+    }]
+}

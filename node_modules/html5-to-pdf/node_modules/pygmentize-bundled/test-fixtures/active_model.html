@@ -1,0 +1,222 @@
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;active_support/core_ext/array/extract_options&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;active_support/core_ext/class/attribute&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;active_support/core_ext/hash/keys&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;active_support/core_ext/hash/except&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;active_model/errors&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;active_model/validations/callbacks&#39;</span>
+
+<span class="k">module</span> <span class="nn">ActiveModel</span>
+
+  <span class="c1"># == Active Model Validations</span>
+  <span class="c1">#</span>
+  <span class="c1"># Provides a full validation framework to your objects.</span>
+  <span class="c1">#</span>
+  <span class="c1"># A minimal implementation could be:</span>
+  <span class="c1">#</span>
+  <span class="c1">#   class Person</span>
+  <span class="c1">#     include ActiveModel::Validations</span>
+  <span class="c1">#</span>
+  <span class="c1">#     attr_accessor :first_name, :last_name</span>
+  <span class="c1">#</span>
+  <span class="c1">#     validates_each :first_name, :last_name do |record, attr, value|</span>
+  <span class="c1">#       record.errors.add attr, &#39;starts with z.&#39; if value.to_s[0] == ?z</span>
+  <span class="c1">#     end</span>
+  <span class="c1">#   end</span>
+  <span class="c1">#</span>
+  <span class="c1"># Which provides you with the full standard validation stack that you</span>
+  <span class="c1"># know from Active Record:</span>
+  <span class="c1">#</span>
+  <span class="c1">#   person = Person.new</span>
+  <span class="c1">#   person.valid?                   # =&gt; true</span>
+  <span class="c1">#   person.invalid?                 # =&gt; false</span>
+  <span class="c1">#</span>
+  <span class="c1">#   person.first_name = &#39;zoolander&#39;</span>
+  <span class="c1">#   person.valid?                   # =&gt; false</span>
+  <span class="c1">#   person.invalid?                 # =&gt; true</span>
+  <span class="c1">#   person.errors                   # =&gt; #&lt;Hash {:first_name=&gt;[&quot;starts with z.&quot;]}&gt;</span>
+  <span class="c1">#</span>
+  <span class="c1"># Note that &lt;tt&gt;ActiveModel::Validations&lt;/tt&gt; automatically adds an +errors+ method</span>
+  <span class="c1"># to your instances initialized with a new &lt;tt&gt;ActiveModel::Errors&lt;/tt&gt; object, so</span>
+  <span class="c1"># there is no need for you to do this manually.</span>
+  <span class="c1">#</span>
+  <span class="k">module</span> <span class="nn">Validations</span>
+    <span class="kp">extend</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Concern</span>
+
+    <span class="n">included</span> <span class="k">do</span>
+      <span class="kp">extend</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Callbacks</span>
+      <span class="kp">extend</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Translation</span>
+
+      <span class="kp">extend</span>  <span class="no">HelperMethods</span>
+      <span class="kp">include</span> <span class="no">HelperMethods</span>
+
+      <span class="kp">attr_accessor</span> <span class="ss">:validation_context</span>
+      <span class="n">define_callbacks</span> <span class="ss">:validate</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="ss">:name</span>
+
+      <span class="kp">extend</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Configuration</span>
+      <span class="n">config_attribute</span> <span class="ss">:_validators</span>
+      <span class="nb">self</span><span class="o">.</span><span class="n">_validators</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="o">[]</span> <span class="p">}</span>
+    <span class="k">end</span>
+
+    <span class="k">module</span> <span class="nn">ClassMethods</span>
+      <span class="c1"># Validates each attribute against a block.</span>
+      <span class="c1">#</span>
+      <span class="c1">#   class Person</span>
+      <span class="c1">#     include ActiveModel::Validations</span>
+      <span class="c1">#</span>
+      <span class="c1">#     attr_accessor :first_name, :last_name</span>
+      <span class="c1">#</span>
+      <span class="c1">#     validates_each :first_name, :last_name do |record, attr, value|</span>
+      <span class="c1">#       record.errors.add attr, &#39;starts with z.&#39; if value.to_s[0] == ?z</span>
+      <span class="c1">#     end</span>
+      <span class="c1">#   end</span>
+      <span class="c1">#</span>
+      <span class="c1"># Options:</span>
+      <span class="c1"># * &lt;tt&gt;:on&lt;/tt&gt; - Specifies the context where this validation is active</span>
+      <span class="c1">#   (e.g. &lt;tt&gt;:on =&gt; :create&lt;/tt&gt; or &lt;tt&gt;:on =&gt; :custom_validation_context&lt;/tt&gt;)</span>
+      <span class="c1"># * &lt;tt&gt;:allow_nil&lt;/tt&gt; - Skip validation if attribute is +nil+.</span>
+      <span class="c1"># * &lt;tt&gt;:allow_blank&lt;/tt&gt; - Skip validation if attribute is blank.</span>
+      <span class="c1"># * &lt;tt&gt;:if&lt;/tt&gt; - Specifies a method, proc or string to call to determine</span>
+      <span class="c1">#   if the validation should occur (e.g. &lt;tt&gt;:if =&gt; :allow_validation&lt;/tt&gt;,</span>
+      <span class="c1">#   or &lt;tt&gt;:if =&gt; Proc.new { |user| user.signup_step &gt; 2 }&lt;/tt&gt;). The method,</span>
+      <span class="c1">#   proc or string should return or evaluate to a true or false value.</span>
+      <span class="c1"># * &lt;tt&gt;:unless&lt;/tt&gt; - Specifies a method, proc or string to call to determine if the validation should</span>
+      <span class="c1">#   not occur (e.g. &lt;tt&gt;:unless =&gt; :skip_validation&lt;/tt&gt;, or</span>
+      <span class="c1">#   &lt;tt&gt;:unless =&gt; Proc.new { |user| user.signup_step &lt;= 2 }&lt;/tt&gt;). The</span>
+      <span class="c1">#   method, proc or string should return or evaluate to a true or false value.</span>
+      <span class="k">def</span> <span class="nf">validates_each</span><span class="p">(</span><span class="o">*</span><span class="n">attr_names</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">attr_names</span><span class="o">.</span><span class="n">extract_options!</span><span class="o">.</span><span class="n">symbolize_keys</span>
+        <span class="n">validates_with</span> <span class="no">BlockValidator</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="ss">:attributes</span> <span class="o">=&gt;</span> <span class="n">attr_names</span><span class="o">.</span><span class="n">flatten</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">block</span>
+      <span class="k">end</span>
+
+      <span class="c1"># Adds a validation method or block to the class. This is useful when</span>
+      <span class="c1"># overriding the +validate+ instance method becomes too unwieldy and</span>
+      <span class="c1"># you&#39;re looking for more descriptive declaration of your validations.</span>
+      <span class="c1">#</span>
+      <span class="c1"># This can be done with a symbol pointing to a method:</span>
+      <span class="c1">#</span>
+      <span class="c1">#   class Comment</span>
+      <span class="c1">#     include ActiveModel::Validations</span>
+      <span class="c1">#</span>
+      <span class="c1">#     validate :must_be_friends</span>
+      <span class="c1">#</span>
+      <span class="c1">#     def must_be_friends</span>
+      <span class="c1">#       errors.add(:base, &quot;Must be friends to leave a comment&quot;) unless commenter.friend_of?(commentee)</span>
+      <span class="c1">#     end</span>
+      <span class="c1">#   end</span>
+      <span class="c1">#</span>
+      <span class="c1"># With a block which is passed with the current record to be validated:</span>
+      <span class="c1">#</span>
+      <span class="c1">#   class Comment</span>
+      <span class="c1">#     include ActiveModel::Validations</span>
+      <span class="c1">#</span>
+      <span class="c1">#     validate do |comment|</span>
+      <span class="c1">#       comment.must_be_friends</span>
+      <span class="c1">#     end</span>
+      <span class="c1">#</span>
+      <span class="c1">#     def must_be_friends</span>
+      <span class="c1">#       errors.add(:base, &quot;Must be friends to leave a comment&quot;) unless commenter.friend_of?(commentee)</span>
+      <span class="c1">#     end</span>
+      <span class="c1">#   end</span>
+      <span class="c1">#</span>
+      <span class="c1"># Or with a block where self points to the current record to be validated:</span>
+      <span class="c1">#</span>
+      <span class="c1">#   class Comment</span>
+      <span class="c1">#     include ActiveModel::Validations</span>
+      <span class="c1">#</span>
+      <span class="c1">#     validate do</span>
+      <span class="c1">#       errors.add(:base, &quot;Must be friends to leave a comment&quot;) unless commenter.friend_of?(commentee)</span>
+      <span class="c1">#     end</span>
+      <span class="c1">#   end</span>
+      <span class="c1">#</span>
+      <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">extract_options!</span>
+        <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">key?</span><span class="p">(</span><span class="ss">:on</span><span class="p">)</span>
+          <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">dup</span>
+          <span class="n">options</span><span class="o">[</span><span class="ss">:if</span><span class="o">]</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">options</span><span class="o">[</span><span class="ss">:if</span><span class="o">]</span><span class="p">)</span>
+          <span class="n">options</span><span class="o">[</span><span class="ss">:if</span><span class="o">].</span><span class="n">unshift</span><span class="p">(</span><span class="s2">&quot;validation_context == :</span><span class="si">#{</span><span class="n">options</span><span class="o">[</span><span class="ss">:on</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="n">args</span> <span class="o">&lt;&lt;</span> <span class="n">options</span>
+        <span class="n">set_callback</span><span class="p">(</span><span class="ss">:validate</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="c1"># List all validators that are being used to validate the model using</span>
+      <span class="c1"># +validates_with+ method.</span>
+      <span class="k">def</span> <span class="nf">validators</span>
+        <span class="n">_validators</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="o">.</span><span class="n">uniq</span>
+      <span class="k">end</span>
+
+      <span class="c1"># List all validators that being used to validate a specific attribute.</span>
+      <span class="k">def</span> <span class="nf">validators_on</span><span class="p">(</span><span class="o">*</span><span class="n">attributes</span><span class="p">)</span>
+        <span class="n">attributes</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">attribute</span><span class="o">|</span>
+          <span class="n">_validators</span><span class="o">[</span><span class="n">attribute</span><span class="o">.</span><span class="n">to_sym</span><span class="o">]</span>
+        <span class="k">end</span><span class="o">.</span><span class="n">flatten</span>
+      <span class="k">end</span>
+
+      <span class="c1"># Check if method is an attribute method or not.</span>
+      <span class="k">def</span> <span class="nf">attribute_method?</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span>
+        <span class="nb">method_defined?</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="c1"># Copy validators on inheritance.</span>
+      <span class="k">def</span> <span class="nf">inherited</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+        <span class="nb">dup</span> <span class="o">=</span> <span class="n">_validators</span><span class="o">.</span><span class="n">dup</span>
+        <span class="n">base</span><span class="o">.</span><span class="n">_validators</span> <span class="o">=</span> <span class="nb">dup</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="nb">dup</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">dup</span> <span class="p">}</span>
+        <span class="k">super</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Returns the +Errors+ object that holds all information about attribute error messages.</span>
+    <span class="k">def</span> <span class="nf">errors</span>
+      <span class="vi">@errors</span> <span class="o">||=</span> <span class="no">Errors</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Runs all the specified validations and returns true if no errors were added</span>
+    <span class="c1"># otherwise false. Context can optionally be supplied to define which callbacks</span>
+    <span class="c1"># to test against (the context is defined on the validations using :on).</span>
+    <span class="k">def</span> <span class="nf">valid?</span><span class="p">(</span><span class="n">context</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
+      <span class="n">current_context</span><span class="p">,</span> <span class="nb">self</span><span class="o">.</span><span class="n">validation_context</span> <span class="o">=</span> <span class="n">validation_context</span><span class="p">,</span> <span class="n">context</span>
+      <span class="n">errors</span><span class="o">.</span><span class="n">clear</span>
+      <span class="n">run_validations!</span>
+    <span class="k">ensure</span>
+      <span class="nb">self</span><span class="o">.</span><span class="n">validation_context</span> <span class="o">=</span> <span class="n">current_context</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Performs the opposite of &lt;tt&gt;valid?&lt;/tt&gt;. Returns true if errors were added,</span>
+    <span class="c1"># false otherwise.</span>
+    <span class="k">def</span> <span class="nf">invalid?</span><span class="p">(</span><span class="n">context</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
+      <span class="o">!</span><span class="n">valid?</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Hook method defining how an attribute value should be retrieved. By default</span>
+    <span class="c1"># this is assumed to be an instance named after the attribute. Override this</span>
+    <span class="c1"># method in subclasses should you need to retrieve the value for a given</span>
+    <span class="c1"># attribute differently:</span>
+    <span class="c1">#</span>
+    <span class="c1">#   class MyClass</span>
+    <span class="c1">#     include ActiveModel::Validations</span>
+    <span class="c1">#</span>
+    <span class="c1">#     def initialize(data = {})</span>
+    <span class="c1">#       @data = data</span>
+    <span class="c1">#     end</span>
+    <span class="c1">#</span>
+    <span class="c1">#     def read_attribute_for_validation(key)</span>
+    <span class="c1">#       @data[key]</span>
+    <span class="c1">#     end</span>
+    <span class="c1">#   end</span>
+    <span class="c1">#</span>
+    <span class="k">alias</span> <span class="ss">:read_attribute_for_validation</span> <span class="ss">:send</span>
+
+  <span class="kp">protected</span>
+
+    <span class="k">def</span> <span class="nf">run_validations!</span>
+      <span class="n">run_callbacks</span> <span class="ss">:validate</span>
+      <span class="n">errors</span><span class="o">.</span><span class="n">empty?</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Dir</span><span class="o">[</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/validations/*.rb&quot;</span><span class="o">].</span><span class="n">sort</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span>
+  <span class="n">filename</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+  <span class="nb">require</span> <span class="s2">&quot;active_model/validations/</span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">end</span>
+</pre></div>
