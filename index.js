@@ -112,13 +112,12 @@ program
 
 program.parse(process.argv);
 
-// console.log(typeof program.args[0] === 'string' ||)
-// program.command("*").help();
-//if run with no commands
+//if run with invalid args
 if (typeof program.args[0] === 'string') {
     console.log('resume-cli'.cyan, 'http://jsonresume.org', '\n');
     console.log(program.help());
     process.exit();
+    //if run with no commands
 } else if (!program.args.length) {
     console.log('resume-cli'.cyan, 'http://jsonresume.org', '\n');
     console.log(program.help());
@@ -131,3 +130,5 @@ if (typeof program.args[0] === 'string') {
 // reginster success handeling
 // markdown to html
 // connect travis mocha script
+
+//check if export the same filename if replace

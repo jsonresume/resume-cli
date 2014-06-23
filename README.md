@@ -17,5 +17,3 @@ resume-cli
     --force [force]        Force publish [force]
 
 
-
-https://raw.githubusercontent.com/dscape/NunoJobResume/master/resume.json
