@@ -30,6 +30,7 @@
         "read": "^1.0.5",
         "resume-schema": "0.0.1",
         "resume-to-html": "0.0.3",
+        "resume-to-pdf": "0.0.4",
         "resume-to-text": "0.0.7",
         "superagent": "^0.18.0",
         "terminal-menu": "^0.3.2"

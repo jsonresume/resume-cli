@@ -62,7 +62,7 @@ program
 
 program
     .command('init')
-    .description('Initialize resume.json')
+    .description('Initialize a resume.json file')
     .action(function() {
         lib.init(resumeJson);
     });
@@ -81,7 +81,7 @@ program
 
 program
     .command('publish')
-    .description('Publish resume.json')
+    .description('Publish resume.json at:')
     .action(function() {
         if (!fs.existsSync('./resume.json')) {
             console.log('There is no resume.json file located in this directory'.yellow);
@@ -93,7 +93,7 @@ program
 
 program
     .command('export [fileName]')
-    .description('Export int .html, .txt or .pdf')
+    .description('Export locally to .html, .txt or .pdf')
     .action(function(fileName) {
         if (!fs.existsSync('./resume.json')) {
             console.log('There is no resume.json file located in this directory'.yellow);
@@ -112,11 +112,16 @@ program
 
 program.parse(process.argv);
 
+// console.log(typeof program.args[0] === 'string' ||)
+// program.command("*").help();
 //if run with no commands
-if (!program.args.length) {
+if (typeof program.args[0] === 'string') {
     console.log('resume-cli'.cyan, 'http://jsonresume.org', '\n');
-    console.log('Please type:'.cyan, 'resume --help', 'for information on using resume-cli'.cyan);
-    console.log('or:'.cyan, 'resume init', 'to initialize a new resume.json and start right away.'.cyan);
+    console.log(program.help());
+    process.exit();
+} else if (!program.args.length) {
+    console.log('resume-cli'.cyan, 'http://jsonresume.org', '\n');
+    console.log(program.help());
     process.exit();
 }
 
