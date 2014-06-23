@@ -85,4 +85,4 @@ if (!program.args.length) {
 //email already in use validation
 // reginster success handeling
 // markdown to html
-// connect travis coffee script
+// connect travis mocha script
