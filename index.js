@@ -1,5 +1,52 @@
 #!/usr/bin/env node
 
+var resumeJson = {
+    "name": "dd",
+    "email": "1",
+    "phoneNumber": "1",
+    "bio": "",
+    "location": {
+        "city": "1",
+        "countryCode": "",
+        "state": "1"
+    },
+    "work": [{
+        "startDate": "",
+        "endDate": "",
+        "position": "",
+        "name": "",
+        "website": "http://www..com",
+        "description": "",
+        "highlights": [""]
+    }],
+    "education": [{
+        "name": "",
+        "studyType": "",
+        "area": "",
+        "startDate": "",
+        "endDate": "",
+        "courses": ["", ""]
+    }],
+    "awards": [{
+        "name": "",
+        "date": "",
+        "awarder": ""
+    }],
+    "publications": [{
+        "name": "",
+        "publisher": ""
+    }],
+    "profiles": {
+        "github": "1",
+        "twitter": ""
+    },
+    "skills": ["", ""],
+    "hobbies": [""],
+    "references": [{
+        "name": "",
+        "reference": ""
+    }]
+};
 var program = require('commander');
 var fs = require('fs');
 var init = require('./lib/init');
@@ -9,11 +56,8 @@ var register = require('./lib/register');
 var exportResume = require('./lib/exportResume');
 var colors = require('colors');
 
-
 if (fs.existsSync('./resume.json')) {
-    var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
-} else {
-    resumeData = false;
+    resumeJson = JSON.parse(fs.readFileSync('./resume.json', 'utf8'));
 }
 
 program
@@ -24,18 +68,18 @@ program
     .command('init')
     .description('Initialize resume.json')
     .action(function() {
-        init();
+        init(resumeJson);
     });
 
 program
     .command('test')
     .description('Test resume.json')
     .action(function() {
-        if (resumeData === false) {
+        if (!fs.existsSync('./resume.json')) {
             console.log('There is no resume.json file located in this directory'.yellow);
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
-            test.validate(resumeData);
+            test.validate(resumeJson);
         }
     });
 
@@ -43,11 +87,11 @@ program
     .command('publish')
     .description('Publish resume.json')
     .action(function() {
-        if (resumeData === false) {
+        if (!fs.existsSync('./resume.json')) {
             console.log('There is no resume.json file located in this directory'.yellow);
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
-            publish(resumeData, program.force);
+            publish(resumeJson, program.force);
         }
     });
 
@@ -55,11 +99,11 @@ program
     .command('export [fileName]')
     .description('Export int .html, .txt or .pdf')
     .action(function(fileName) {
-        if (resumeData === false) {
+        if (!fs.existsSync('./resume.json')) {
             console.log('There is no resume.json file located in this directory'.yellow);
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
-            exportResume(resumeData, fileName);
+            exportResume(resumeJson, fileName);
         }
     });
 
