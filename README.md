@@ -26,4 +26,4 @@ resume-cli
     -f, --format [format]  Add the specified format of file [format]
     --force [force]        Force publish [force]
 
-
+# This tool rocks
