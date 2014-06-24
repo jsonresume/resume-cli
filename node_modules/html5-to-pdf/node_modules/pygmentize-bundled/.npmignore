@@ -1,8 +1,0 @@
-*.tmp
-.DS_Store
-node_modules/
-*.pyc
-.hg
-.hgtags
-.hgignore
-vendor/pygments/tests/

@@ -1,132 +1,134 @@
 #!/usr/bin/env node
 
+var resumeJson = {
+    "name": "dd",
+    "email": "1",
+    "phoneNumber": "1",
+    "bio": "",
+    "location": {
+        "city": "1",
+        "countryCode": "",
+        "state": "1"
+    },
+    "work": [{
+        "startDate": "",
+        "endDate": "",
+        "position": "",
+        "name": "",
+        "website": "http://www..com",
+        "description": "",
+        "highlights": [""]
+    }],
+    "education": [{
+        "name": "",
+        "studyType": "",
+        "area": "",
+        "startDate": "",
+        "endDate": "",
+        "courses": ["", ""]
+    }],
+    "awards": [{
+        "name": "",
+        "date": "",
+        "awarder": ""
+    }],
+    "publications": [{
+        "name": "",
+        "publisher": ""
+    }],
+    "profiles": {
+        "github": "1",
+        "twitter": ""
+    },
+    "skills": ["", ""],
+    "hobbies": [""],
+    "references": [{
+        "name": "",
+        "reference": ""
+    }]
+};
 var program = require('commander');
 var fs = require('fs');
-var init = require('./lib/init');
-var test = require('./lib/test');
-var publish = require('./lib/publish');
-var register = require('./lib/register');
-// var exportJson = require('./lib/exportJson');
+var lib = require('./lib')
 var colors = require('colors');
 
-var resumeToText = require('resume-to-text');
-var resumeToHtml = require('resume-to-html');
-var html5pdf = require("html5-to-pdf");
-
-// var readline = require('readline');
-// var rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-// });
-
-
 if (fs.existsSync('./resume.json')) {
-    var resumeData = JSON.parse(fs.readFileSync('resume.json', 'utf8'));
-} else {
-    resumeData = {};
+    resumeJson = JSON.parse(fs.readFileSync('./resume.json', 'utf8'));
 }
 
 program
-    .version('0.0.4')
-    .option('-f, --force [force]', 'Force publish [force]', false);
+    .version('0.0.9')
+    .option('-f, --force [force]', 'Force publish [force]', false)
 
 program
     .command('init')
-    .description('Initialize resume.json')
+    .description('Initialize a resume.json file')
     .action(function() {
-        init();
+        lib.init(resumeJson);
     });
 
 program
     .command('test')
     .description('Test resume.json')
     .action(function() {
-        test.validate(resumeData);
+        if (!fs.existsSync('./resume.json')) {
+            console.log('There is no resume.json file located in this directory'.yellow);
+            console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
+        } else {
+            lib.test.validate(resumeJson);
+        }
     });
 
 program
     .command('publish')
-    .description('Publish resume.json')
+    .description('Publish resume.json at:')
     .action(function() {
-        publish(resumeData, program.force);
+        if (!fs.existsSync('./resume.json')) {
+            console.log('There is no resume.json file located in this directory'.yellow);
+            console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
+        } else {
+            lib.publish(resumeJson, program.force);
+        }
     });
 
 program
-    .command('export <fileName>')
-    .description('Export int .html, .txt or .pdf')
+    .command('export [fileName]')
+    .description('Export locally to .html, .txt or .pdf')
     .action(function(fileName) {
-        console.log('fjdkls')
-        exports(resumeData, fileName);
+        if (!fs.existsSync('./resume.json')) {
+            console.log('There is no resume.json file located in this directory'.yellow);
+            console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
+        } else {
+            lib.exportResume(resumeJson, fileName);
+        }
     });
 
 program
     .command('register')
     .description('register at registry.jsonresume.org')
     .action(function() {
-        register();
+        lib.register(resumeJson);
     });
 
 program.parse(process.argv);
 
-// if resume is run with no commands
-if (!program.args.length) {
-    console.log('resume-cli'.cyan, '\n');
-    console.log('Please type:', 'resume --help'.cyan, 'for information on using resume-cli');
-    console.log('or:', 'resume init'.cyan, 'to initialize a new resume.json and start right away.');
+//if run with invalid args
+if (typeof program.args[0] === 'string') {
+    console.log('resume-cli'.cyan, 'http://jsonresume.org', '\n');
+    console.log(program.help());
+    process.exit();
+    //if run with no commands
+} else if (!program.args.length) {
+    console.log('resume-cli'.cyan, 'http://jsonresume.org', '\n');
+    console.log(program.help());
     process.exit();
 }
 
+//todo
+//resume to pdf and markdown
+//email already in use validation
+// reginster success handeling
+// markdown to html
+// connect travis mocha script
 
-
-
-function exports(resumeData, fileName) {
-
-    splitFileName = fileName.split('.');
-    var fileExtension = splitFileName[1];
-
-
-
-
-    if (!fileName) {
-        console.log("Please provide a file name for your resume");
-        console.log("");
-        process.exit();
-
-        // } else if (splitFileName.length === ) {
-        //     console.log('Please enter a valid file extexions (.html .txt .pdf)');
-    }
-
-
-    switch (fileExtension) {
-
-
-
-        case 'html':
-            resumeToHtml(resumeData, function(htmlResume) {
-
-                fs.writeFileSync(fileName, htmlResume, 'utf8');
-
-                console.log('Done! Please find your generated .html resume at:'.green, process.cwd() + '/resume.html');
-                process.exit();
-            });
-            break;
-        case 'txt':
-            resumeToText(resumeData, function(txtResume) {
-                fs.writeFileSync(fileName, txtResume, 'utf8');
-                console.log('Done! Please find your generated .html resume at:'.green, process.cwd() + '/resume.json');
-                process.exit();
-            });
-            break;
-        case 'pdf':
-            resumeToHtml(resumeData, function(htmlResume) {
-                fs.writeFileSync(fileName, htmlResume, 'utf8');
-
-                html5pdf().from(splitFileName[0] + '.html').to(splitFileName[0] + '.pdf', function() {
-                    console.log('Done! Please find your generated .html resume at:'.green, process.cwd() + '/resume.json');
-                    process.exit();
-
-                })
-            });
-            break;
-    }
-}
+//check if export the same filename if replace
