@@ -7,9 +7,9 @@ resume-cli
 
 
 #testing
-```
+
     npm test
-```
+
 
   Usage: resume [options] [command]
 
