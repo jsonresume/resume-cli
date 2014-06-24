@@ -1,6 +1,6 @@
 {
   "name": "resume-cli",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "resume-cli ==========",
   "main": "index.js",
   "scripts": {
@@ -27,10 +27,10 @@
     "html5-to-pdf": "^0.2.2",
     "open": "0.0.5",
     "read": "^1.0.5",
-    "resume-schema": "0.0.1",
-    "resume-to-html": "0.0.5",
-    "resume-to-pdf": "0.0.4",
-    "resume-to-text": "0.0.9",
+    "resume-schema": "latest",
+    "resume-to-html": "latest",
+    "resume-to-pdf": "latest",
+    "resume-to-text": "latest",
     "superagent": "^0.18.0",
     "terminal-menu": "^0.3.2"
   },
