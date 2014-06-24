@@ -4,7 +4,7 @@ resume-cli
     npm install -g resume-cli
 
 
-
+ [![Build Status](https://api.travis-ci.org/resumejson/resume-cli.svg)](http://travis-ci.org/resumejson/resume-cli)
 
 #testing
 
