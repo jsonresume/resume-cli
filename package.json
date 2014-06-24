@@ -29,8 +29,8 @@
         "open": "0.0.5",
         "read": "^1.0.5",
         "resume-schema": "0.0.1",
-        "resume-to-html": "0.0.3",
-        "resume-to-text": "0.0.7",
+        "resume-to-html": "0.0.5",
+        "resume-to-text": "0.0.9",
         "superagent": "^0.18.0"
     }
 }
