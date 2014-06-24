@@ -1,6 +1,16 @@
 resume-cli
 ==========
 
+    npm install -g resume-cli
+
+
+
+
+#testing
+```
+    npm test
+```
+
   Usage: resume [options] [command]
 
   Commands:

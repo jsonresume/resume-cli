@@ -64,7 +64,9 @@ program
     .command('init')
     .description('Initialize a resume.json file')
     .action(function() {
-        lib.init(resumeJson);
+        lib.init(resumeJson, function(res){
+            // to nothing
+        });
     });
 
 program
@@ -99,7 +101,11 @@ program
             console.log('There is no resume.json file located in this directory'.yellow);
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
-            lib.exportResume(resumeJson, fileName);
+            lib.exportResume(resumeJson, fileName, function(res, fileName){
+                console.log(res);
+                console.log('Done! Find your generated .html**fix resume at:'.green, process.cwd() + '/' + fileName);
+                console.log('To publish your resume at:'.cyan, 'http://jsonresume.org', 'Type the command:'.cyan, 'resume publish');
+            });
         }
     });
 

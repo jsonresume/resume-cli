@@ -1,4 +1,6 @@
 {
+  "name": "roland",
+  "email": "sharp",
   "phoneNumber": "1",
   "bio": "",
   "location": {
@@ -61,7 +63,5 @@
       "name": "",
       "reference": ""
     }
-  ],
-  "email": "sjldf",
-  "name": "roland"
+  ]
 }

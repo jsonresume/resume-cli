@@ -1,38 +1,41 @@
 {
-    "name": "resume-cli",
-    "version": "0.0.11",
-    "description": "resume-cli ==========",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/rolandnsharp/resume-cli.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/rolandnsharp/resume-cli/issues"
-    },
-    "homepage": "https://github.com/rolandnsharp/resume-cli",
-    "bin": {
-        "resume": "index.js"
-    },
-    "preferGlobal": true,
-    "dependencies": {
-        "async": "^0.9.0",
-        "cli-spinner": "^0.1.5",
-        "colors": "^0.6.2",
-        "commander": "^2.2.0",
-        "html5-to-pdf": "^0.2.2",
-        "open": "0.0.5",
-        "read": "^1.0.5",
-        "resume-schema": "0.0.1",
-        "resume-to-html": "0.0.5",
-        "resume-to-text": "0.0.9",
-        "resume-to-pdf": "0.0.4",
-        "superagent": "^0.18.0",
-        "terminal-menu": "^0.3.2"
-    }
+  "name": "resume-cli",
+  "version": "0.0.11",
+  "description": "resume-cli ==========",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/index.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rolandnsharp/resume-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolandnsharp/resume-cli/issues"
+  },
+  "homepage": "https://github.com/rolandnsharp/resume-cli",
+  "bin": {
+    "resume": "index.js"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "cli-spinner": "^0.1.5",
+    "colors": "^0.6.2",
+    "commander": "^2.2.0",
+    "html5-to-pdf": "^0.2.2",
+    "open": "0.0.5",
+    "read": "^1.0.5",
+    "resume-schema": "0.0.1",
+    "resume-to-html": "0.0.5",
+    "resume-to-text": "0.0.9",
+    "resume-to-pdf": "0.0.4",
+    "superagent": "^0.18.0",
+    "terminal-menu": "^0.3.2"
+  },
+  "devDependencies": {
+    "tap-spec": "^0.2.0",
+    "tape": "^2.13.3"
+  }
 }
