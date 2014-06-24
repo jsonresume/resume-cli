@@ -1,56 +1,10 @@
 #!/usr/bin/env node
 
-var resumeJson = {
-    "name": "dd",
-    "email": "1",
-    "phoneNumber": "1",
-    "bio": "",
-    "location": {
-        "city": "1",
-        "countryCode": "",
-        "state": "1"
-    },
-    "work": [{
-        "startDate": "",
-        "endDate": "",
-        "position": "",
-        "name": "",
-        "website": "http://www..com",
-        "description": "",
-        "highlights": [""]
-    }],
-    "education": [{
-        "name": "",
-        "studyType": "",
-        "area": "",
-        "startDate": "",
-        "endDate": "",
-        "courses": ["", ""]
-    }],
-    "awards": [{
-        "name": "",
-        "date": "",
-        "awarder": ""
-    }],
-    "publications": [{
-        "name": "",
-        "publisher": ""
-    }],
-    "profiles": {
-        "github": "1",
-        "twitter": ""
-    },
-    "skills": ["", ""],
-    "hobbies": [""],
-    "references": [{
-        "name": "",
-        "reference": ""
-    }]
-};
 var program = require('commander');
 var fs = require('fs');
 var lib = require('./lib')
 var colors = require('colors');
+var resumeJson = require('resume-schema').resumeJson;
 
 if (fs.existsSync('./resume.json')) {
     resumeJson = JSON.parse(fs.readFileSync('./resume.json', 'utf8'));
@@ -118,22 +72,22 @@ program
 
 program.parse(process.argv);
 
-//if run with invalid args
+//if run with invalid args. will break on resume export resume.html
 if (typeof program.args[0] === 'string') {
     console.log('resume-cli'.cyan, 'http://jsonresume.org', '\n');
-    console.log(program.help());
+    program.help();
     process.exit();
     //if run with no commands
 } else if (!program.args.length) {
     console.log('resume-cli'.cyan, 'http://jsonresume.org', '\n');
-    console.log(program.help());
+    program.help();
     process.exit();
 }
 
 //todo.
 //menu for just resume
 //resume to pdf and markdown
-//email already in use validation
 // markdown to html
+// what username format?
 
 //check if export the same filename if replace
