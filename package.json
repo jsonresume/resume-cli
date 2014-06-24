@@ -1,6 +1,6 @@
 {
     "name": "resume-cli",
-    "version": "0.0.7",
+    "version": "0.0.11",
     "description": "resume-cli ==========",
     "main": "index.js",
     "scripts": {
