@@ -130,12 +130,10 @@ if (typeof program.args[0] === 'string') {
     process.exit();
 }
 
-//todo
+//todo.
+//menu for just resume
 //resume to pdf and markdown
 //email already in use validation
-// reginster success handeling
-//register spinner
 // markdown to html
-// connect travis mocha script
 
 //check if export the same filename if replace
