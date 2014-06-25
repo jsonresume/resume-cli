@@ -56,9 +56,7 @@ program
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
             lib.exportResume(resumeJson, fileName, function(res, fileName) {
-                console.log(res);
-                console.log('Done! Find your generated .html**fix resume at:'.green, process.cwd() + '/' + fileName);
-                console.log('To publish your resume at:'.cyan, 'http://jsonresume.org', 'Type the command:'.cyan, 'resume publish');
+                //do nothing
             });
         }
     });
