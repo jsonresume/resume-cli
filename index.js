@@ -12,7 +12,7 @@ if (fs.existsSync('./resume.json')) {
 
 program
     .version('0.0.9')
-    .option('-f, --force [force]', 'Force publish [force]', false)
+    .option('-f, --force', 'Force publish', false)
 
 program
     .command('init')
