@@ -13,7 +13,6 @@ if (fs.existsSync('./resume.json')) {
 program
     .version('0.0.9')
     .option('-f, --force', 'Force publish', false)
-    .option('-f, --force', 'Force publish', false)
 
 program
     .command('init')
@@ -33,18 +32,6 @@ program
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
             lib.test.validate(resumeJson);
-        }
-    });
-
-program
-    .command('publish')
-    .description('Publish resume.json at:')
-    .action(function() {
-        if (!fs.existsSync('./resume.json')) {
-            console.log('There is no resume.json file located in this directory'.yellow);
-            console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
-        } else {
-            lib.publish(resumeJson, program.force);
         }
     });
 
@@ -69,6 +56,18 @@ program
         lib.register(resumeJson);
     });
 
+program
+    .command('publish')
+    .description('Publish resume.json at:')
+    .action(function() {
+        if (!fs.existsSync('./resume.json')) {
+            console.log('There is no resume.json file located in this directory'.yellow);
+            console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
+        } else {
+            lib.publish(resumeJson, program.force);
+        }
+    });
+
 program.parse(process.argv);
 
 //if run with invalid args. will break on resume export resume.html
@@ -84,7 +83,6 @@ if (typeof program.args[0] === 'string') {
 }
 
 //todo.
-// pdf buffer doesn't work for cli export
 //menu for just resume
 //resume to pdf and markdown
 // markdown to html
