@@ -13,6 +13,7 @@ if (fs.existsSync('./resume.json')) {
 program
     .version('0.0.9')
     .option('-f, --force', 'Force publish', false)
+    .option('-f, --force', 'Force publish', false)
 
 program
     .command('init')
@@ -83,6 +84,7 @@ if (typeof program.args[0] === 'string') {
 }
 
 //todo.
+// pdf buffer doesn't work for cli export
 //menu for just resume
 //resume to pdf and markdown
 // markdown to html
