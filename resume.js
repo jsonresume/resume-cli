@@ -71,12 +71,14 @@ program
 program.parse(process.argv);
 
 //if run with invalid args. will break on resume export resume.html
-if (typeof program.args[0] === 'string') {
-    console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
-    program.help();
-    process.exit();
-    //if run with no commands
-} else if (!program.args.length) {
+// if (typeof program.args[0] === 'string') {
+//     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
+//     program.help();
+//     process.exit();
+//if run with no commands
+// } else 
+
+if (!program.args.length) {
     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
     program.help();
     process.exit();
@@ -84,9 +86,6 @@ if (typeof program.args[0] === 'string') {
 
 //todo.
 
-//resume init returning  { valid: true, errors: [], warnings: [] } null // where does this come from?
-//also on publish ^^
-// must be in exportResume.js ...
-
 //menu for just resume
 // publish with no network connection error handling
+// resume export filename.html is broken
