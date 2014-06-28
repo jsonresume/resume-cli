@@ -17,7 +17,7 @@
     },
     "homepage": "https://github.com/rolandnsharp/resume-cli",
     "bin": {
-        "resume": "index.js"
+        "resume": "resume.js"
     },
     "preferGlobal": true,
     "dependencies": {
