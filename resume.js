@@ -70,22 +70,20 @@ program
 
 program.parse(process.argv);
 
-//if run with invalid args. will break on resume export resume.html
-// if (typeof program.args[0] === 'string') {
-//     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
-//     program.help();
-//     process.exit();
-//if run with no commands
-// } else 
+var validCommands = program.commands.map(function(cmd) {
+    return cmd._name;
+});
 
 if (!program.args.length) {
+    console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
+    program.help();
+    process.exit();
+} else if (validCommands.indexOf(process.argv[2]) === -1) {
+    console.log('Invalid argument:'.red, process.argv[2]);
     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
     program.help();
     process.exit();
 }
 
 //todo.
-
-//menu for just resume
 // publish with no network connection error handling
-// resume export filename.html is broken
