@@ -19,7 +19,7 @@ program
     .description('Initialize a resume.json file')
     .action(function() {
         lib.init(resumeJson, function(res) {
-            // to nothing
+            // do nothing
         });
     });
 
@@ -84,10 +84,9 @@ if (typeof program.args[0] === 'string') {
 
 //todo.
 
-//resume init returning  { valid: true, errors: [], warnings: [] } null
+//resume init returning  { valid: true, errors: [], warnings: [] } null // where does this come from?
+//also on publish ^^
+// must be in exportResume.js ...
+
 //menu for just resume
-//resume to pdf and markdown
-// markdown to html
-// what username format?
 // publish with no network connection error handling
-//check if export the same filename if replace
