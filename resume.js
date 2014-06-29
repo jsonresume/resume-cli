@@ -4,6 +4,7 @@ var program = require('commander');
 var fs = require('fs');
 var lib = require('./lib')
 var colors = require('colors');
+var chalk = require('chalk');
 
 function readFileFunction(callback) {
     var resumeJson = require('resume-schema').resumeJson;
@@ -31,9 +32,7 @@ program
     .command('init')
     .description('Initialize a resume.json file')
     .action(function() {
-
         lib.init();
-
     });
 
 program
@@ -45,7 +44,9 @@ program
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
             readFileFunction(function(resumeJson, readFileErrors) {
-                lib.test.validate(resumeJson, readFileErrors);
+                lib.test.validate(resumeJson, readFileErrors, function(error) {
+                    // console.log(error);
+                });
             });
         }
     });
@@ -58,9 +59,19 @@ program
             console.log('There is no resume.json file located in this directory'.yellow);
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
-            lib.exportResume(resumeJson, fileName, function(res, fileName) {
-                //do nothing
+
+            readFileFunction(function(resumeJson, readFileErrors) {
+                lib.test.validate(resumeJson, readFileErrors, function(error) {
+                    if (!error) { // console.log(error);
+                        lib.exportResume(resumeJson, fileName, function(res, fileName) {
+                            //do nothing
+                        });
+                    } else {
+                        console.log(chalk.red('  Cannot export, errors in resume.json. \n'))
+                    }
+                });
             });
+
         }
     });
 
