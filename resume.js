@@ -119,3 +119,4 @@ if (!program.args.length) {
 //todo.
 // publish with no network connection error handling
 // remove phantom.js to pdf thing
+// export not working with new schema
