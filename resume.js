@@ -21,6 +21,8 @@ function readFileFunction(callback) {
                 callback(null, readFileErrors);
             }
         });
+    } else {
+        callback(null, null);
     }
 }
 
@@ -62,12 +64,13 @@ program
 
             readFileFunction(function(resumeJson, readFileErrors) {
                 lib.test.validate(resumeJson, readFileErrors, function(error) {
-                    if (!error) { // console.log(error);
+                    if (error) {
+                        console.log(chalk.red('  Cannot export, errors in resume.json.'))
+                        console.log('  Details: \n');
+                    } else {
                         lib.exportResume(resumeJson, fileName, function(res, fileName) {
                             //do nothing
                         });
-                    } else {
-                        console.log(chalk.red('  Cannot export, errors in resume.json. \n'))
                     }
                 });
             });
@@ -79,7 +82,9 @@ program
     .command('register')
     .description('register at registry.jsonresume.org')
     .action(function() {
-        lib.register(resumeJson);
+        readFileFunction(function(resumeJson, readFileErrors) {
+            lib.register(resumeJson);
+        });
     });
 
 program
