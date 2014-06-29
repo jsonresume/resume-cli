@@ -14,7 +14,6 @@ test('export a test.html, test for existence, then delete.', function(t) {
         fs.unlink('./test.html', function(err) {
             err && t.fail('unlink is throwing an error');
             t.notOk(fs.existsSync('./test.html'), 'test.html is gone.');
-            t.fail();
             t.end();
         });
     });

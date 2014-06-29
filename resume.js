@@ -95,7 +95,10 @@ program
             console.log('There is no resume.json file located in this directory'.yellow);
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
-            lib.publish(resumeJson, program.force);
+            readFileFunction(function(resumeJson, readFileErrors) {
+                lib.publish(resumeJson, program.force);
+            });
+
         }
     });
 
@@ -120,3 +123,4 @@ if (!program.args.length) {
 // publish with no network connection error handling
 // remove phantom.js to pdf thing
 // export not working with new schema
+// resume schema requires network connection? what?
