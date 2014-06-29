@@ -1,10 +1,10 @@
 {
     "bio": {
-        "firstName": 2,
+        "firstName": "2",
         "lastName": "",
         "email": {
             "work": "",
-            "personal": 2
+            "personal": "2"
         },
         "phone": {
             "work": "",
@@ -37,10 +37,10 @@
             ""
         ]
     }, {
-    "startDate": [""],
+        "startDate": "",
         "endDate": "",
         "position": "",
-        "company": 2,
+        "company": "2",
         "website": "",
         "summary": "",
         "highlights": [
