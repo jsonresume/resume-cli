@@ -1,21 +1,39 @@
 {
-  "name": "hahah",
-  "email": "hahahah",
-  "phoneNumber": "",
-  "bio": "",
-  "location": {
-    "city": "1",
-    "countryCode": "",
-    "state": "1"
+  "bio": {
+    "firstName": "roland",
+    "lastName": "",
+    "email": {
+      "work": "",
+      "personal": "sharp"
+    },
+    "phone": {
+      "work": "",
+      "personal": ""
+    },
+    "summary": "",
+    "location": {
+      "city": "",
+      "countryCode": "",
+      "state": ""
+    },
+    "websites": {
+      "blog": ""
+    },
+    "profiles": {
+      "github": "",
+      "twitter": ""
+    },
+    "firstname": "roland",
+    "emailpersonal": "sharp"
   },
   "work": [
     {
       "startDate": "",
       "endDate": "",
       "position": "",
-      "name": "",
+      "company": "",
       "website": "",
-      "description": "",
+      "summary": "",
       "highlights": [
         ""
       ]
@@ -23,20 +41,19 @@
   ],
   "education": [
     {
-      "name": "",
-      "studyType": "",
-      "area": "",
+      "institution": "",
       "startDate": "",
       "endDate": "",
+      "area": "",
+      "studyType": "",
       "courses": [
-        "",
         ""
       ]
     }
   ],
   "awards": [
     {
-      "name": "",
+      "title": "",
       "date": "",
       "awarder": ""
     }
@@ -44,19 +61,27 @@
   "publications": [
     {
       "name": "",
-      "publisher": ""
+      "publisher": "",
+      "releaseDate": "",
+      "website": ""
     }
   ],
-  "profiles": {
-    "github": "1",
-    "twitter": ""
-  },
   "skills": [
-    "",
-    ""
+    {
+      "name": "",
+      "level": "",
+      "keywords": [
+        ""
+      ]
+    }
   ],
   "hobbies": [
-    ""
+    {
+      "name": "",
+      "keywords": [
+        ""
+      ]
+    }
   ],
   "references": [
     {
