@@ -4,10 +4,23 @@ var program = require('commander');
 var fs = require('fs');
 var lib = require('./lib')
 var colors = require('colors');
-var resumeJson = require('resume-schema').resumeJson;
 
-if (fs.existsSync('./resume.json')) {
-    resumeJson = JSON.parse(fs.readFileSync('./resume.json', 'utf8'));
+function readFileFunction(callback) {
+    var resumeJson = require('resume-schema').resumeJson;
+    var readFileErrors = null; // change this
+    if (fs.existsSync('./resume.json')) {
+        fs.readFile('./resume.json', {
+            encoding: 'utf8'
+        }, function(err, data) {
+            if (err) console.log(err);
+            try {
+                resumeJson = JSON.parse(data);
+                callback(resumeJson, null);
+            } catch (readFileErrors) {
+                callback(null, readFileErrors);
+            }
+        });
+    }
 }
 
 program
@@ -18,9 +31,9 @@ program
     .command('init')
     .description('Initialize a resume.json file')
     .action(function() {
-        lib.init(resumeJson, function(res) {
-            // do nothing
-        });
+
+        lib.init();
+
     });
 
 program
@@ -31,7 +44,9 @@ program
             console.log('There is no resume.json file located in this directory'.yellow);
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
-            lib.test.validate(resumeJson);
+            readFileFunction(function(resumeJson, readFileErrors) {
+                lib.test.validate(resumeJson, readFileErrors);
+            });
         }
     });
 
@@ -87,3 +102,4 @@ if (!program.args.length) {
 
 //todo.
 // publish with no network connection error handling
+// remove phantom.js to pdf thing

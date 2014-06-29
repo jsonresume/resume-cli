@@ -1,88 +1,90 @@
 {
-    "bio": {
-        "firstName": "2",
-        "lastName": "",
-        "email": {
-            "work": "",
-            "personal": "2"
-        },
-        "phone": {
-            "work": "",
-            "personal": ""
-        },
-        "summary": "",
-        "location": {
-            "city": "",
-            "countryCode": "",
-            "state": ""
-        },
-        "websites": {
-            "blog": ""
-        },
-        "profiles": {
-            "github": "",
-            "twitter": ""
-        },
-        "firstname": "roland",
-        "emailpersonal": "sharp"
+  "bio": {
+    "firstName": "roland",
+    "lastName": "",
+    "email": {
+      "work": "",
+      "personal": "sharp"
     },
-    "work": [{
-        "startDate": "",
-        "endDate": "",
-        "position": "",
-        "company": "",
-        "website": "",
-        "summary": "",
-        "highlights": [
-            ""
-        ]
-    }, {
-        "startDate": "",
-        "endDate": "",
-        "position": "",
-        "company": "2",
-        "website": "",
-        "summary": "",
-        "highlights": [
-            ""
-        ]
-    }],
-    "education": [{
-        "institution": "",
-        "startDate": "",
-        "endDate": "",
-        "area": "",
-        "studyType": "",
-        "courses": [
-            ""
-        ]
-    }],
-    "awards": [{
-        "title": "",
-        "date": "",
-        "awarder": ""
-    }],
-    "publications": [{
-        "name": "",
-        "publisher": "",
-        "releaseDate": "",
-        "website": ""
-    }],
-    "skills": [{
-        "name": "",
-        "level": "",
-        "keywords": [
-            ""
-        ]
-    }],
-    "hobbies": [{
-        "name": "",
-        "keywords": [
-            ""
-        ]
-    }],
-    "references": [{
-        "name": "",
-        "reference": ""
-    }]
+    "phone": {
+      "work": "",
+      "personal": ""
+    },
+    "summary": "",
+    "location": {
+      "city": "",
+      "countryCode": "",
+      "state": ""
+    },
+    "websites": {
+      "blog": ""
+    },
+    "profiles": {
+      "github": "",
+      "twitter": ""
+    }
+  },
+  "work": [
+    {
+      "startDate": "",
+      "endDate": "",
+      "position": "",
+      "company": "",
+      "website": "",
+      "summary": "",
+      "highlights": [
+        ""
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "",
+      "startDate": "",
+      "endDate": "",
+      "area": "",
+      "studyType": "",
+      "courses": [
+        ""
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "",
+      "date": "",
+      "awarder": ""
+    }
+  ],
+  "publications": [
+    {
+      "name": "",
+      "publisher": "",
+      "releaseDate": "",
+      "website": ""
+    }
+  ],
+  "skills": [
+    {
+      "name": "",
+      "level": "",
+      "keywords": [
+        ""
+      ]
+    }
+  ],
+  "hobbies": [
+    {
+      "name": "",
+      "keywords": [
+        ""
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "",
+      "reference": ""
+    }
+  ]
 }
