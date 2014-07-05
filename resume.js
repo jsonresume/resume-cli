@@ -93,16 +93,27 @@ program
     .command('publish')
     .description('Publish resume.json at:')
     .action(function() {
+
         if (!fs.existsSync('./resume.json')) {
             console.log('There is no resume.json file located in this directory'.yellow);
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
-            readFileFunction(function(resumeJson, readFileErrors) {
-                lib.publish(resumeJson, program.force);
-            });
 
+
+            readFileFunction(function(resumeJson, readFileErrors) {
+
+                lib.test.validate(resumeJson, readFileErrors, function(error) {
+                    if (error) {
+                        console.log(chalk.red('  Cannot export, errors in resume.json.'))
+                        console.log('  Details: \n');
+                    } else {
+                        lib.publish(resumeJson, program.force);
+                    }
+                });
+            });
         }
     });
+
 
 program.parse(process.argv);
 
@@ -120,3 +131,9 @@ if (!program.args.length) {
     program.help();
     process.exit();
 }
+
+//publish errors unhandled with broken but passing resume.json test with old resume
+
+// resume doesn't handle test errors on 'resume publish' properly.  
+
+// or resume test is not running before publish as it should
