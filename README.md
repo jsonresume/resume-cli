@@ -11,22 +11,22 @@ resume-cli
 	resume --help
 
 
-  Usage: resume [options] [command]
+	  Usage: resume [options] [command]
 
-  Commands:
+	  Commands:
 
-    init                   Initialize a resume.json file
-    test                   Test resume.json
-    export [fileName]      Export locally to .html, .txt or .pdf
-    register               register at registry.jsonresume.org
-    publish                Publish resume.json at:
+	    init                   Initialize a resume.json file
+	    test                   Test resume.json
+	    export [fileName]      Export locally to .html, .txt or .pdf
+	    register               register at registry.jsonresume.org
+	    publish                Publish resume.json at:
 
-  Options:
+	  Options:
 
-    -h, --help          output usage information
-    -V, --version       output the version number
-    -f, --force         Force publish
-    -t, --theme <type>  resume export myresume.html --theme <modern>
+	    -h, --help          output usage information
+	    -V, --version       output the version number
+	    -f, --force         Force publish
+	    -t, --theme <type>  resume export myresume.html --theme <modern>
 
 
     resume init
