@@ -65,10 +65,12 @@ program
 
             readFileFunction(function(resumeJson, readFileErrors) {
 
-                lib.test.validate(resumeJson, readFileErrors, function(error) {
+                lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+
+
                     if (error) {
-                        console.log(chalk.red('  Cannot export, errors in resume.json.'))
-                        console.log('  Details: \n');
+                        console.log(response.errorMessage);
+
                     } else {
                         lib.exportResume(resumeJson, fileName, program.theme, function(res, fileName) {
                             //do nothing
@@ -132,8 +134,8 @@ if (!program.args.length) {
     process.exit();
 }
 
-//publish errors unhandled with broken but passing resume.json test with old resume
-
+//publish errors that are unhandled with broken but passing resume.json test with old resume
+// write propper tests
 // resume doesn't handle test errors on 'resume publish' properly.  
 
 // or resume test is not running before publish as it should
