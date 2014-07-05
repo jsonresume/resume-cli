@@ -120,5 +120,3 @@ if (!program.args.length) {
     program.help();
     process.exit();
 }
-
-//resumetotext is broken!
