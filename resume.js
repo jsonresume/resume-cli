@@ -119,12 +119,3 @@ if (!program.args.length) {
     program.help();
     process.exit();
 }
-
-//todo.
-
-// remove phantom.js to pdf thing
-// export not working with new schema
-// resume schema requires network connection? what?
-// publish --server
-//http://localhost:5000/
-//var registryServer = process.env.REGISTRY_SERVER || 'http://registry.jsonresume.ogr';
