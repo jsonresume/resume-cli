@@ -17,7 +17,7 @@ resume-cli
 
 	    init                   Initialize a resume.json file
 	    test                   Test resume.json
-	    export [fileName]      Export locally to .html, .txt or .pdf
+	    export [fileName]      Export locally to .html, or .pdf
 	    register               register at registry.jsonresume.org
 	    publish                Publish resume.json at:
 
@@ -41,7 +41,7 @@ Runs your resume.json through our schema tests to ensure it complies with the js
 
     resume export [myresume.extension]
 
-Exports your resume locally in a stylized html, markdown, text, or pdf format.
+Exports your resume locally in a stylized html, markdown, or pdf format.
 
 To select one of the available themes use the `--theme <theme>` flag.
 
@@ -53,7 +53,6 @@ Example: `resume export myresume.html --theme modern`
 
 Registration is optional.
 To publish your resume to your account with a custom domain extension at [registry.jsonresume.org](http://registry.jsonresume.org/), you will first need to acquire login credentials. 
-
 
     resume publish
 

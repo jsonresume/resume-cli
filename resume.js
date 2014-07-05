@@ -56,7 +56,7 @@ program
 
 program
     .command('export [fileName]')
-    .description('Export locally to .html, .txt or .pdf')
+    .description('Export locally to .html, .md or .pdf')
     .action(function(fileName) {
         if (!fs.existsSync('./resume.json')) {
             console.log('There is no resume.json file located in this directory'.yellow);
@@ -64,6 +64,7 @@ program
         } else {
 
             readFileFunction(function(resumeJson, readFileErrors) {
+
                 lib.test.validate(resumeJson, readFileErrors, function(error) {
                     if (error) {
                         console.log(chalk.red('  Cannot export, errors in resume.json.'))
@@ -119,3 +120,5 @@ if (!program.args.length) {
     program.help();
     process.exit();
 }
+
+//resumetotext is broken!
