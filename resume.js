@@ -29,6 +29,7 @@ function readFileFunction(callback) {
 program
     .version('0.0.9')
     .option('-f, --force', 'Force publish', false)
+    .option('-t, --theme <type>', 'resume export myresume.html --theme <modern>', 'modern')
 
 program
     .command('init')
@@ -68,7 +69,7 @@ program
                         console.log(chalk.red('  Cannot export, errors in resume.json.'))
                         console.log('  Details: \n');
                     } else {
-                        lib.exportResume(resumeJson, fileName, function(res, fileName) {
+                        lib.exportResume(resumeJson, fileName, program.theme, function(res, fileName) {
                             //do nothing
                         });
                     }
@@ -120,7 +121,10 @@ if (!program.args.length) {
 }
 
 //todo.
-// publish with no network connection error handling
+
 // remove phantom.js to pdf thing
 // export not working with new schema
 // resume schema requires network connection? what?
+// publish --server
+//http://localhost:5000/
+//var registryServer = process.env.REGISTRY_SERVER || 'http://registry.jsonresume.ogr';
