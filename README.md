@@ -37,11 +37,11 @@ From here you can complete the resume.json in your text editor following the sch
 
     resume test
 
-Runs your resume.json through our schema tests to ensure it complies with the jsonresume standard.
+Runs your resume.json through our schema tests to ensure it complies with the jsonresume standard and tries to identify where any errors are occurring.
 
     resume export [myresume.extension]
 
-Exports your resume locally to a stylized html, markdown, text, or pdf format.
+Exports your resume locally in a stylized html, markdown, text, or pdf format.
 
 To select one of the available themes use the `--theme <theme>` flag.
 
@@ -51,12 +51,12 @@ Example: `resume export myresume.html --theme modern`
   
     resume register
 
-Registration is optional, 
-To publish your resume with a custom domain extension at jsonresume.org you will first need to acquire login credentials. 
+Registration is optional.
+To publish your resume to your account with a custom domain extension at [registry.jsonresume.org](http://registry.jsonresume.org/), you will first need to acquire login credentials. 
 
 
     resume publish
 
-This will guide you through the publish process. ....
+This will command will guide you through the publish process. You will have options to publish as a ge
 
 
