@@ -1,0 +1,61 @@
+{
+    "bio": {
+        "firstName": "Roland",
+        "lastName": "Sharp",
+        "email": {
+            "work": "",
+            "personal": "rolandnsharp@gmail.com"
+        },
+        "phone": {
+            "work": "",
+            "personal": ""
+        },
+        "summary": "Thanks for checking out my resume. I'm a Node.js and Ruby on Rails developer....",
+        "location": {
+            "city": "Brisbane",
+            "countryCode": "AU",
+            "state": "Queensland"
+        },
+        "websites": {
+            "blog": ""
+        },
+        "profiles": {
+            "github": "rolandnsharp",
+            "twitter": "rolandnsharp"
+        }
+    },
+    "work": [{
+        "startDate": "2014-01-01",
+        "endDate": "2014-05-01",
+        "position": "Developer",
+        "company": "Payment Network International",
+        "website": "http://pni.com.au/",
+        "description": "",
+        "highlights": [""]
+    }, {
+        "startDate": "2014-01-01",
+        "endDate": "2014-05-01",
+        "position": "Junior Developer",
+        "company": "My Work Australia",
+        "website": "http://www.mywork.com.au",
+        "description": "Primarily working with PHP, JavaScript and MySQL, I installed payment gateways including eWay and PayPal for client websites, developed and customised OpenCart shops, connected Electronic Marketing Systems including Campaign Monitor, worked closely with designers to get their creations moving, and wrote reusable code such as custom paginators.",
+        "highlights": [""]
+    }, {
+        "startDate": "in the past",
+        "endDate": "in the past",
+        "position": "Systems Admin",
+        "company": "G.James Australia",
+        "website": "http://gjames.com",
+        "description": "Most of my work at G.James was in keeping the printers up and running smoothly. Working with both Linux and windows servers, I would do a lot of remote ‘shadowing’ support work and training users on how to work with PDF’s and printing. Sometimes I was sent into a factory to work with floppy drives and Commodore 64's.",
+        "highlights": [""]
+    }],
+    "skills": [{
+        "name": "Web Development",
+        "level": "",
+        "keywords": ["javascript", "ruby on rails", "node.js", "angular,js", "PHP", "CSS", "mongoDB", "MySQL"]
+    }],
+    "references": [{
+        "name": "",
+        "reference": ""
+    }]
+}
