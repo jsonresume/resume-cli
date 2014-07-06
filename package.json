@@ -1,42 +1,43 @@
 {
-    "name": "resume-cli",
-    "version": "0.0.23",
-    "description": "resume-cli ==========",
-    "main": "index.js",
-    "scripts": {
-        "test": "node ./test/index.js | tap-spec"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/rolandnsharp/resume-cli.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/rolandnsharp/resume-cli/issues"
-    },
-    "homepage": "https://github.com/rolandnsharp/resume-cli",
-    "bin": {
-        "resume": "resume.js"
-    },
-    "preferGlobal": true,
-    "dependencies": {
-        "chalk": "^0.4.0",
-        "cli-spinner": "^0.1.5",
-        "colors": "^0.6.2",
-        "commander": "^2.2.0",
-        "open": "0.0.5",
-        "read": "^1.0.5",
-        "resume-schema": "latest",
-        "resume-to-html": "latest",
-        "resume-to-pdf": "latest",
-        "resume-to-text": "latest",
-        "resume-to-markdown": "latest",
-        "superagent": "^0.18.0",
-        "terminal-menu": "^0.3.2"
-    },
-    "devDependencies": {
-        "tap-spec": "^0.2.0",
-        "tape": "^2.13.3"
-    }
+  "name": "resume-cli",
+  "version": "0.0.23",
+  "description": "resume-cli ==========",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/index.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rolandnsharp/resume-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolandnsharp/resume-cli/issues"
+  },
+  "homepage": "https://github.com/rolandnsharp/resume-cli",
+  "bin": {
+    "resume": "resume.js"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "chalk": "^0.4.0",
+    "cli-spinner": "^0.1.5",
+    "colors": "^0.6.2",
+    "commander": "^2.2.0",
+    "jsonlint": "^1.6.0",
+    "open": "0.0.5",
+    "read": "^1.0.5",
+    "resume-schema": "latest",
+    "resume-to-html": "latest",
+    "resume-to-markdown": "latest",
+    "resume-to-pdf": "latest",
+    "resume-to-text": "latest",
+    "superagent": "^0.18.0",
+    "terminal-menu": "^0.3.2"
+  },
+  "devDependencies": {
+    "tap-spec": "^0.2.0",
+    "tape": "^2.13.3"
+  }
 }

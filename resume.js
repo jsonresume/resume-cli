@@ -116,6 +116,15 @@ program
         }
     });
 
+program
+    .command('settings')
+    .description('settings........')
+    .action(function() {
+        readFileFunction(function() {
+            lib.settings();
+        });
+    });
+
 
 program.parse(process.argv);
 
