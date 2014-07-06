@@ -28,7 +28,7 @@ function readFileFunction(callback) {
 
 program
     .version('0.0.9')
-    .option('-f, --force', 'Force publish', false)
+    .option('-f, --force', 'Force publish')
     .option('-t, --theme <type>', 'resume export myresume.html --theme <modern>', 'modern')
 
 program
@@ -95,18 +95,21 @@ program
     .description('Publish resume.json at:')
     .action(function() {
 
+
         if (!fs.existsSync('./resume.json')) {
             console.log('There is no resume.json file located in this directory'.yellow);
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
 
+
             readFileFunction(function(resumeJson, readFileErrors) {
 
                 lib.test.validate(resumeJson, readFileErrors, function(error, response) {
-                    if (error) {
+
+                    if (error && !program.force) {
                         console.log(response.message);
                     } else {
-                        lib.publish(resumeJson, program.force);
+                        lib.publish(resumeJson, program);
                     }
                 });
             });
