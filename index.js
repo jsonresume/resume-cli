@@ -121,7 +121,7 @@ program
     .description('settings........')
     .action(function() {
         readFileFunction(function() {
-            lib.settings();
+            lib.settings(program);
         });
     });
 
