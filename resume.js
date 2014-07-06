@@ -47,8 +47,8 @@ program
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
             readFileFunction(function(resumeJson, readFileErrors) {
-                lib.test.validate(resumeJson, readFileErrors, function(error) {
-                    // console.log(error);
+                lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+                    error && console.log(response.message);
                 });
             });
         }
@@ -67,9 +67,8 @@ program
 
                 lib.test.validate(resumeJson, readFileErrors, function(error, response) {
 
-
                     if (error) {
-                        console.log(response.errorMessage);
+                        console.log(response.message);
 
                     } else {
                         lib.exportResume(resumeJson, fileName, program.theme, function(res, fileName) {
@@ -101,13 +100,11 @@ program
             console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
         } else {
 
-
             readFileFunction(function(resumeJson, readFileErrors) {
 
-                lib.test.validate(resumeJson, readFileErrors, function(error) {
+                lib.test.validate(resumeJson, readFileErrors, function(error, response) {
                     if (error) {
-                        console.log(chalk.red('  Cannot export, errors in resume.json.'))
-                        console.log('  Details: \n');
+                        console.log(response.message);
                     } else {
                         lib.publish(resumeJson, program.force);
                     }
@@ -137,5 +134,5 @@ if (!program.args.length) {
 //publish errors that are unhandled with broken but passing resume.json test with old resume
 // write propper tests
 // resume doesn't handle test errors on 'resume publish' properly.  
-
+// what is wrong with resume to pdf
 // or resume test is not running before publish as it should
