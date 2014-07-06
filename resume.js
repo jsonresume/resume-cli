@@ -28,8 +28,8 @@ function readFileFunction(callback) {
 
 program
     .version('0.0.9')
-    .option('-f, --force', 'Force publish')
-    .option('-t, --theme <type>', 'resume export myresume.html --theme <modern>', 'modern')
+    .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'modern')
+    .option('-f, --force', 'Force publish - bypasses schema testing.')
 
 program
     .command('init')
@@ -40,7 +40,7 @@ program
 
 program
     .command('test')
-    .description('Test resume.json')
+    .description('Schema validation test your resume.json')
     .action(function() {
         if (!fs.existsSync('./resume.json')) {
             console.log('There is no resume.json file located in this directory'.yellow);
@@ -83,7 +83,7 @@ program
 
 program
     .command('register')
-    .description('register at registry.jsonresume.org')
+    .description('register an account at https://registry.jsonresume.org')
     .action(function() {
         readFileFunction(function(resumeJson, readFileErrors) {
             lib.register(resumeJson);
@@ -92,7 +92,7 @@ program
 
 program
     .command('publish')
-    .description('Publish resume.json at:')
+    .description('Publish your resume to https://registry.jsonresume.org')
     .action(function() {
 
 
@@ -126,12 +126,10 @@ var validCommands = program.commands.map(function(cmd) {
 if (!program.args.length) {
     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
     program.help();
-    process.exit();
 } else if (validCommands.indexOf(process.argv[2]) === -1) {
     console.log('Invalid argument:'.red, process.argv[2]);
     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
     program.help();
-    process.exit();
 }
 
 //publish errors that are unhandled with broken but passing resume.json test with old resume
@@ -139,3 +137,4 @@ if (!program.args.length) {
 // resume doesn't handle test errors on 'resume publish' properly.  
 // what is wrong with resume to pdf
 // or resume test is not running before publish as it should
+// create man page from md

@@ -10,24 +10,7 @@ resume-cli
 
 	resume --help
 
-
-	  Usage: resume [options] [command]
-
-	  Commands:
-
-	    init                   Initialize a resume.json file
-	    test                   Test resume.json
-	    export [fileName]      Export locally to .html, or .pdf
-	    register               register at registry.jsonresume.org
-	    publish                Publish resume.json at:
-
-	  Options:
-
-	    -h, --help          output usage information
-	    -V, --version       output the version number
-	    -f, --force         Force publish
-	    -t, --theme <type>  resume export myresume.html --theme <modern>
-
+For a complete list of options and commands.
 
     resume init
 
@@ -56,6 +39,9 @@ To publish your resume to your account with a custom domain extension at [regist
 
     resume publish
 
-This will command will guide you through the publish process. You will have options to publish as a ge
+This will command will guide you through the publish process.
+Consider using the theme flag to style your resume. 
 
-
+Example: `resume export --theme crisp`
+Example: `resume export --theme traditional`
+Example: `resume export --theme modern`
