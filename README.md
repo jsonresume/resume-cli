@@ -1,9 +1,11 @@
 resume-cli
 ==========
+ [![Build Status](https://api.travis-ci.org/jsonresume/resume-cli.svg)](http://travis-ci.org/jsonresume/resume-cli)
+
+#install
 
     npm install -g resume-cli
 
- [![Build Status](https://api.travis-ci.org/jsonresume/resume-cli.svg)](http://travis-ci.org/jsonresume/resume-cli)
 
 
 #Usage
@@ -22,17 +24,16 @@ From here you can complete the resume.json in your text editor following the sch
   
     resume test
 
-Runs your resume.json through our schema tests to ensure it complies with the jsonresume standard and tries to identify where any errors are occurring.
+Runs your resume.json through our schema tests to ensure it complies with the jsonresume standard and tries to identify where any errors may be occurring.
 
     
     resume export [myresume.extension]
 
 Exports your resume locally in a stylized html, markdown, or pdf format.
 
-To select one of the available themes use the `--theme <theme>` flag.
+To select one of the available themes use the `--theme <theme name>` flag.
+Themes available are: crisp, traditional, modern, (more to come).
 
-Example: `resume export myresume.pdf --theme crisp`
-Example: `resume export myresume.html --theme traditional`
 Example: `resume export myresume.html --theme modern`
   
     
@@ -45,7 +46,7 @@ To publish your resume to your account with a custom domain extension at [regist
     resume publish
 
 This command will guide you through the publish process.
-Consider using the theme flag to style your resume. 
+Consider using the theme flag to style your resume (Defaults to modern).
 
 Example: `resume export --theme traditional`
 
