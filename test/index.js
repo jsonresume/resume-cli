@@ -3,8 +3,10 @@ var test = require('tape');
 var fs = require('fs');
 
 var resumeJson = {
-    "name": "test",
-    "email": "test@test"
+    "bio": {
+        "name": "test",
+        "email": "test@test"
+    }
 };
 
 test('export a test.html, test for existence, then delete.', function(t) {
