@@ -132,9 +132,9 @@ if (!program.args.length) {
     program.help();
 }
 
-//publish errors that are unhandled with broken but passing resume.json test with old resume
-// write propper tests
+
+//use jsonlint before schema tests run.
+// broken on windows
+// add options command
 // resume doesn't handle test errors on 'resume publish' properly.  
-// what is wrong with resume to pdf
 // or resume test is not running before publish as it should
-// create man page from md
