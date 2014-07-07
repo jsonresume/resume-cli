@@ -116,15 +116,6 @@ program
         }
     });
 
-program
-    .command('settings')
-    .description('settings........')
-    .action(function() {
-        readFileFunction(function() {
-            lib.settings(program);
-        });
-    });
-
 
 program.parse(process.argv);
 
