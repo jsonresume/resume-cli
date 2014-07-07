@@ -43,8 +43,8 @@ program
     .description('Schema validation test your resume.json')
     .action(function() {
         if (!fs.existsSync('./resume.json')) {
-            console.log('There is no resume.json file located in this directory'.yellow);
-            console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
+            console.log('There is no resume.json file located in this directory');
+            console.log('Type: `resume init` to initialize a new resume');
         } else {
             readFileFunction(function(resumeJson, readFileErrors) {
                 lib.test.validate(resumeJson, readFileErrors, function(error, response) {
@@ -59,8 +59,8 @@ program
     .description('Export locally to .html, .md or .pdf')
     .action(function(fileName) {
         if (!fs.existsSync('./resume.json')) {
-            console.log('There is no resume.json file located in this directory'.yellow);
-            console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
+            console.log('There is no resume.json file located in this directory');
+            console.log('Type: `resume init` to initialize a new resume');
         } else {
 
             readFileFunction(function(resumeJson, readFileErrors) {
@@ -120,8 +120,8 @@ program
     .command('settings')
     .description('settings........')
     .action(function() {
-        readFileFunction(function() {
-            lib.settings(program);
+        readFileFunction(function(resumeJson, readFileErrors) {
+            lib.settings(resumeJson, program);
         });
     });
 
