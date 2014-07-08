@@ -1,5 +1,5 @@
-resume-cli
-==========
+JsonResume Command Line Tool
+============================
 
 [![Build Status](https://api.travis-ci.org/jsonresume/resume-cli.svg)](http://travis-ci.org/jsonresume/resume-cli)
 
@@ -15,7 +15,7 @@ You can use the web client [http://webchat.freenode.net/](http://webchat.freenod
 
 
 
-#install
+#Getting Started
 
     npm install -g resume-cli
 
