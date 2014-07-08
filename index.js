@@ -2,7 +2,7 @@
 
 var program = require('commander');
 var fs = require('fs');
-var lib = require('./lib')
+var lib = require('./lib');
 var colors = require('colors');
 var chalk = require('chalk');
 
@@ -30,6 +30,7 @@ program
     .version('0.0.9')
     .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'modern')
     .option('-f, --force', 'Force publish - bypasses schema testing.')
+    .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000);
 
 program
     .command('init')
@@ -82,8 +83,15 @@ program
     });
 
 program
+    .command('serve')
+    .description('Serve resume at http://localhost:4000/')
+    .action(function() {
+        lib.serve(program.port, program.theme);
+    });
+
+program
     .command('register')
-    .description('register an account at https://registry.jsonresume.org')
+    .description('Register an account at https://registry.jsonresume.org')
     .action(function() {
         readFileFunction(function(resumeJson, readFileErrors) {
             lib.register(resumeJson);
@@ -118,13 +126,12 @@ program
 
 program
     .command('settings')
-    .description('settings........')
+    .description('Not yet implemented')
     .action(function() {
         readFileFunction(function(resumeJson, readFileErrors) {
             lib.settings(resumeJson, program);
         });
     });
-
 
 program.parse(process.argv);
 
