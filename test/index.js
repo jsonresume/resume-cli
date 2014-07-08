@@ -11,7 +11,7 @@ var resumeJson = {
 
 test('export a test.html, test for existence, then delete.', function(t) {
     lib.exportResume(resumeJson, 'test.html', {
-        theme: 'crisp'
+        theme: 'modern'
     }, function(res) {
         t.ok(res, 'exportResume() returns successful response.');
         t.ok(fs.existsSync('./test.html'), 'test.html exists.');
