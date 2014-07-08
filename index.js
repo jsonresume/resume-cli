@@ -141,9 +141,12 @@ if (!program.args.length) {
     program.help();
 }
 
-
+// publishing to non existent account error handling
 //use jsonlint before schema tests run.
 // broken on windows
-// add options command
+// resume watch
+
+
+// change theme if account does not exist errors or resume does not exist. 
 // resume doesn't handle test errors on 'resume publish' properly.  
 // or resume test is not running before publish as it should
