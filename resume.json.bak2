@@ -1,0 +1,96 @@
+{
+    "bio": {
+        "firstName": "Roland",
+        "lastName": "Sharp",
+        "email": {
+            "work": "",
+            "personal": "rolandnsharp@gmail.com"
+        },
+        "phone": {
+            "work": "",
+            "personal": ""
+        },
+        "summary": "Thanks for checking out my resume. I'm a Node.js and Ruby on Rails developer looking for remote work.",
+        "location": {
+            "city": "Brisbane",
+            "countryCode": "AU",
+            "state": "Queensland"
+        },
+        "websites": {
+            "github": "https://github.com/rolandnsharp"
+        },
+        "profiles": {
+            "github": "rolandnsharp",
+            "twitter": "rolandnsharp"
+        }
+    },
+    "work": [{
+        "company": "Payment Network International",
+        "position": "Developer",
+        "website": "http://pni.com.au/",
+        "startDate": "2014-06-29",
+        "endDate": "",
+        "summary": "Node.js developer",
+        "highlights": [
+            "Wrote a npm module for parsing meteorological data from bom.gov.au: https://www.npmjs.org/package/bom-api"
+        ]
+    }, {
+        "company": "My Work Australia",
+        "position": "Junior Developer",
+        "website": "http://www.mywork.com.au",
+        "startDate": "2013-06-29",
+        "endDate": "2014-06-29",
+        "summary": "Primarily working with PHP, JavaScript and MySQL. I installed payment gateways including eWay and PayPal for client websites, developed and customized OpenCart shops, connected Electronic Marketing Systems including Campaign Monitor, worked closely with designers to get their creations moving, and wrote reusable code such as custom paginators.",
+        "highlights": [
+            ""
+        ]
+    }, {
+        "company": "G.James Australia",
+        "position": "Systems Administrator",
+        "website": "http://gjames.com",
+        "startDate": "2012-06-29",
+        "endDate": "2013-06-29",
+        "summary": "",
+        "highlights": [
+            ""
+        ]
+    }],
+    "education": [{
+        "institution": "University of Queensland",
+        "startDate": "",
+        "endDate": "",
+        "area": "Philosophy",
+        "studyType": "bachelor's degree",
+        "courses": [
+            "Kant and European Philosophy", "Introduction to Critical Reasoning", "Philosophy and Art", "Introduction to Neuroscience", "Introduction to Statistics", "Writing for Engineers"
+        ]
+    }],
+    "awards": [{
+        "title": "",
+        "date": "",
+        "awarder": ""
+    }],
+    "publications": [{
+        "name": "",
+        "publisher": "",
+        "releaseDate": "",
+        "website": ""
+    }],
+    "skills": [{
+        "name": "Web Development",
+        "level": "",
+        "keywords": [
+            "Node.js", "Ruby on Rails", "PHP", "mongoDB", "MYSQL", "angular.js", "linux"
+        ]
+    }],
+    "hobbies": [{
+        "name": "",
+        "keywords": [
+            ""
+        ]
+    }],
+    "references": [{
+        "name": "",
+        "reference": ""
+    }]
+}

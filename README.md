@@ -1,6 +1,8 @@
 resume-cli
 ==========
 
+[![Build Status](https://api.travis-ci.org/jsonresume/resume-cli.svg)](http://travis-ci.org/jsonresume/resume-cli)
+
 ### IRC
 
 Everyone working on the early stages of the project should join our Freenode channel
@@ -10,6 +12,7 @@ Everyone working on the early stages of the project should join our Freenode cha
 ```
 
 You can use the web client [http://webchat.freenode.net/](http://webchat.freenode.net/)
+
 
 
 #install

@@ -43,8 +43,8 @@ program
     .description('Schema validation test your resume.json')
     .action(function() {
         if (!fs.existsSync('./resume.json')) {
-            console.log('There is no resume.json file located in this directory'.yellow);
-            console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
+            console.log('There is no resume.json file located in this directory');
+            console.log('Type: `resume init` to initialize a new resume');
         } else {
             readFileFunction(function(resumeJson, readFileErrors) {
                 lib.test.validate(resumeJson, readFileErrors, function(error, response) {
@@ -59,8 +59,8 @@ program
     .description('Export locally to .html, .md or .pdf')
     .action(function(fileName) {
         if (!fs.existsSync('./resume.json')) {
-            console.log('There is no resume.json file located in this directory'.yellow);
-            console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
+            console.log('There is no resume.json file located in this directory');
+            console.log('Type: `resume init` to initialize a new resume');
         } else {
 
             readFileFunction(function(resumeJson, readFileErrors) {
@@ -120,8 +120,8 @@ program
     .command('settings')
     .description('settings........')
     .action(function() {
-        readFileFunction(function() {
-            lib.settings(program);
+        readFileFunction(function(resumeJson, readFileErrors) {
+            lib.settings(resumeJson, program);
         });
     });
 
@@ -141,9 +141,12 @@ if (!program.args.length) {
     program.help();
 }
 
-
+// publishing to non existent account error handling
 //use jsonlint before schema tests run.
 // broken on windows
-// add options command
+// resume watch
+
+
+// change theme if account does not exist errors or resume does not exist. 
 // resume doesn't handle test errors on 'resume publish' properly.  
 // or resume test is not running before publish as it should
