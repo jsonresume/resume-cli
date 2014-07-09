@@ -157,3 +157,4 @@ if (!program.args.length) {
 // change theme if account does not exist errors or resume does not exist. 
 // resume doesn't handle test errors on 'resume publish' properly.  
 // or resume test is not running before publish as it should
+// npm ping
