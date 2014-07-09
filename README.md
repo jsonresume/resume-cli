@@ -63,5 +63,10 @@ Consider using the theme flag to style your resume (Defaults to modern).
 
 Example: `resume export --theme traditional`
 
-### Community projects in the works
-* Add yours here with a pull request
+## Community Projects
+
+Anyone working on projects for jsonresume should submit a pull request and themselves to the list
+
+### LinkedIn Exporters
+* [Web based export](https://github.com/JMPerez/linkedin-to-json-resume) by [José Manuel Pérez](https://twitter.com/jmperezperez)
+* [CLI based export](https://github.com/mblarsen/resume-linkedin) by [Michael Bøcker-Larsen](https://twitter.com/mblarsen)
