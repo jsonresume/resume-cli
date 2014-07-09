@@ -63,3 +63,5 @@ Consider using the theme flag to style your resume (Defaults to modern).
 
 Example: `resume export --theme traditional`
 
+### Community projects in the works
+* Add yours here with a pull request
