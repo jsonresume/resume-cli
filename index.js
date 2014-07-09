@@ -6,6 +6,9 @@ var lib = require('./lib');
 var colors = require('colors');
 var chalk = require('chalk');
 
+
+
+
 function readFileFunction(callback) {
     var resumeJson = require('resume-schema').resumeJson;
     var readFileErrors = null; // change this
@@ -29,7 +32,7 @@ function readFileFunction(callback) {
 program
     .version('0.0.9')
     .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'modern')
-    .option('-f, --force', 'Force publish - bypasses schema testing.')
+    .option('-f, --force', 'Used by `publish` - bypasses schema testing.')
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000);
 
 program
