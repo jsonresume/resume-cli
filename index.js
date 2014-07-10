@@ -155,7 +155,7 @@ if (!program.args.length) {
 //use jsonlint before schema tests run.
 // broken on windows
 // resume watch
-
+// resume --version = wrong version
 
 // change theme if account does not exist errors or resume does not exist. 
 // resume doesn't handle test errors on 'resume publish' properly.  
