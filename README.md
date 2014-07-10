@@ -70,3 +70,6 @@ Anyone working on projects for jsonresume should submit a pull request and thems
 ### LinkedIn Exporters
 * [Web based export](https://github.com/JMPerez/linkedin-to-json-resume) by [José Manuel Pérez](https://twitter.com/jmperezperez)
 * [CLI based export](https://github.com/mblarsen/resume-linkedin) by [Michael Bøcker-Larsen](https://twitter.com/mblarsen)
+
+### Web UI Builders
+* [JSON Resume Web App](https://github.com/jonnykry/JSONResumeWebApp/tree/gh-pages) by [Jonny Krysh](https://github.com/jonnykry)
