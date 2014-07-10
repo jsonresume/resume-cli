@@ -157,6 +157,9 @@ lib.version.checkConfigFile(function(message) {
 
 });
 
+// get rid of npm install warning: html to text, wrong node version
+// get text converter working again
+
 // version test on menu does not show
 // publishing to non existent account error handling
 //use jsonlint before schema tests run.
