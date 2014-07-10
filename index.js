@@ -156,13 +156,13 @@ lib.version.checkConfigFile(function(message) {
 
 
 });
+
+// version test on menu does not show
 // publishing to non existent account error handling
 //use jsonlint before schema tests run.
 // broken on windows
-// resume watch
 // resume --version = wrong version
 
-// change theme if account does not exist errors or resume does not exist. 
+// settings change theme errors if 'account does not exist errors' or resume does not exist. 
 // resume doesn't handle test errors on 'resume publish' properly.  
 // or resume test is not running before publish as it should
-// npm ping
