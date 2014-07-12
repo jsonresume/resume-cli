@@ -34,7 +34,7 @@ program
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
-lib.version.checkConfigFile(function(message, LatestnpmVersion) {
+lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
     if (message === 'out of date') {
         console.log('Notice: You are currently using out-of-date version'.yellow, pkg.version, 'resume-cli.'.yellow);
