@@ -6,6 +6,7 @@ var lib = require('./lib');
 var colors = require('colors');
 var chalk = require('chalk');
 var read = require('read');
+var pkg = require('./package.json');
 
 function readFileFunction(callback) {
     var resumeJson = require('resume-schema').resumeJson;
@@ -27,7 +28,7 @@ function readFileFunction(callback) {
     }
 }
 program
-    .version('0.0.9')
+    .version(pkg.version)
     .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'modern')
     .option('-f, --force', 'Used by `publish` - bypasses schema testing.')
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000);
