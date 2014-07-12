@@ -31,7 +31,8 @@ program
     .version(pkg.version)
     .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'modern')
     .option('-f, --force', 'Used by `publish` - bypasses schema testing.')
-    .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000);
+    .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
+    .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
 lib.version.checkConfigFile(function(message) {
     if (message === 'out of date') {
@@ -93,7 +94,7 @@ lib.version.checkConfigFile(function(message) {
         .command('serve')
         .description('Serve resume at http://localhost:4000/')
         .action(function() {
-            lib.serve(program.port, program.theme);
+            lib.serve(program.port, program.theme, program.silent);
         });
 
     program
