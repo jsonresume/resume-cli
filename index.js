@@ -37,7 +37,7 @@ program
 lib.version.checkConfigFile(function(message, LatestnpmVersion) {
 
     if (message === 'out of date') {
-        console.log('Notice: You are currently using an out-of-date version of resume-cli.'.yellow);
+        console.log('Notice: You are currently using out-of-date version'.yellow, pkg.version, 'resume-cli.'.yellow);
         console.log('Type'.cyan, '`sudo npm install -g resume-cli`', 'to upgrade to version'.cyan, LatestnpmVersion);
     }
 
