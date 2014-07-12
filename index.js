@@ -7,6 +7,19 @@ var colors = require('colors');
 var chalk = require('chalk');
 var read = require('read');
 var pkg = require('./package.json');
+var homeDir = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+
+
+var session = false;
+fs.readFile(homeDir + '/.jsonresume.json', 'utf8', function(fileDoesNotExist, config) {
+    if (!fileDoesNotExist) {
+        config = JSON.parse(config);
+        if (typeof(config.session) !== 'undefined') {
+            var session = config.session;
+        }
+    }
+});
+
 
 function readFileFunction(callback) {
     var resumeJson = require('resume-schema').resumeJson;
@@ -36,118 +49,122 @@ program
 
 lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
-    if (message === 'out of date') {
-        console.log('Notice: You are currently using out-of-date version'.yellow, pkg.version, 'resume-cli.'.yellow);
-        console.log('Type'.cyan, '`sudo npm install -g resume-cli`', 'to upgrade to version'.cyan, LatestnpmVersion);
-    }
+        if (message === 'out of date') {
+            console.log('Notice: You are currently using out-of-date version'.yellow, pkg.version, 'resume-cli.'.yellow);
+            console.log('Type'.cyan, '`sudo npm install -g resume-cli`', 'to upgrade to version'.cyan, LatestnpmVersion);
+        }
 
-    program
-        .command('init')
-        .description('Initialize a resume.json file')
-        .action(function() {
-            lib.init();
-        });
-
-    program
-        .command('test')
-        .description('Schema validation test your resume.json')
-        .action(function() {
-            if (!fs.existsSync('./resume.json')) {
-                console.log('There is no resume.json file located in this directory');
-                console.log('Type: `resume init` to initialize a new resume');
-            } else {
-                readFileFunction(function(resumeJson, readFileErrors) {
-                    lib.test.validate(resumeJson, readFileErrors, function(error, response) {
-                        error && console.log(response.message);
-                    });
-                });
-            }
-        });
-
-    program
-        .command('export [fileName]')
-        .description('Export locally to .html, .md or .pdf')
-        .action(function(fileName) {
-            if (!fs.existsSync('./resume.json')) {
-                console.log('There is no resume.json file located in this directory');
-                console.log('Type: `resume init` to initialize a new resume');
-            } else {
-
-                readFileFunction(function(resumeJson, readFileErrors) {
-
-                    lib.test.validate(resumeJson, readFileErrors, function(error, response) {
-
-                        if (error) {
-                            console.log(response.message);
-
-                        } else {
-                            lib.exportResume(resumeJson, fileName, program.theme, function(res, fileName) {
-                                //do nothing
-                            });
-                        }
-                    });
-                });
-
-            }
-        });
-
-    program
-        .command('serve')
-        .description('Serve resume at http://localhost:4000/')
-        .action(function() {
-            lib.serve(program.port, program.theme, program.silent);
-        });
-
-    program
-        .command('register')
-        .description('Register an account at https://registry.jsonresume.org')
-        .action(function() {
-            readFileFunction(function(resumeJson, readFileErrors) {
-                lib.register(resumeJson);
+        program
+            .command('init')
+            .description('Initialize a resume.json file')
+            .action(function() {
+                lib.init();
             });
-        });
 
-    program
-        .command('publish')
-        .description('Publish your resume to https://registry.jsonresume.org')
-        .action(function() {
-
-
-            if (!fs.existsSync('./resume.json')) {
-                console.log('There is no resume.json file located in this directory'.yellow);
-                console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
-            } else {
-
-
-                readFileFunction(function(resumeJson, readFileErrors) {
-
-                    lib.test.validate(resumeJson, readFileErrors, function(error, response) {
-
-                        if (error && !program.force) {
-                            console.log(response.message);
-                        } else {
-                            lib.publish(resumeJson, program);
-                        }
+        program
+            .command('test')
+            .description('Schema validation test your resume.json')
+            .action(function() {
+                if (!fs.existsSync('./resume.json')) {
+                    console.log('There is no resume.json file located in this directory');
+                    console.log('Type: `resume init` to initialize a new resume');
+                } else {
+                    readFileFunction(function(resumeJson, readFileErrors) {
+                        lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+                            error && console.log(response.message);
+                        });
                     });
-                });
-            }
-        });
-
-    program
-        .command('settings')
-        .description('Not yet implemented')
-        .action(function() {
-            readFileFunction(function(resumeJson, readFileErrors) {
-                lib.settings(resumeJson, program);
+                }
             });
+
+        program
+            .command('export [fileName]')
+            .description('Export locally to .html, .md or .pdf')
+            .action(function(fileName) {
+                if (!fs.existsSync('./resume.json')) {
+                    console.log('There is no resume.json file located in this directory');
+                    console.log('Type: `resume init` to initialize a new resume');
+                } else {
+
+                    readFileFunction(function(resumeJson, readFileErrors) {
+
+                        lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+
+                            if (error) {
+                                console.log(response.message);
+
+                            } else {
+                                lib.exportResume(resumeJson, fileName, program.theme, function(res, fileName) {
+                                    //do nothing
+                                });
+                            }
+                        });
+                    });
+
+                }
+            });
+
+        program
+            .command('serve')
+            .description('Serve resume at http://localhost:4000/')
+            .action(function() {
+                lib.serve(program.port, program.theme, program.silent);
+            });
+
+        program
+            .command('register')
+            .description('Register an account at https://registry.jsonresume.org')
+            .action(function() {
+                readFileFunction(function(resumeJson, readFileErrors) {
+                    lib.register(resumeJson);
+                });
+            });
+
+        program
+            .command('publish')
+            .description('Publish your resume to https://registry.jsonresume.org')
+            .action(function() {
+
+
+                    if (!fs.existsSync('./resume.json')) {
+                        console.log('There is no resume.json file located in this directory'.yellow);
+                        console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
+                    } else {
+
+
+                        readFileFunction(function(resumeJson, readFileErrors) {
+
+                                lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+
+                                        if (error && !program.force) {
+                                            console.log(response.message);
+                                        } else if ()
+
+                                    } else if (session !== false) {
+                                        lib.publish.sessionPublish(resumeJson, program);
+                                    } else {
+                                        lib.publish.publish(resumeJson, program);
+                                    }
+                                });
+                        });
+                }
         });
 
     program
-        .command('login')
-        .description('Not yet implemented')
-        .action(function() {
-            lib.login();
+    .command('settings')
+    .description('Not yet implemented')
+    .action(function() {
+        readFileFunction(function(resumeJson, readFileErrors) {
+            lib.settings(resumeJson, program);
         });
+    });
+
+    program
+    .command('login')
+    .description('Not yet implemented')
+    .action(function() {
+        lib.login();
+    });
 
 
 
@@ -176,7 +193,6 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 // publishing to non existent account error handling
 //use jsonlint before schema tests run.
 // broken on windows
-// resume --version = wrong version
 
 // settings change theme errors if 'account does not exist errors' or resume does not exist. 
 // resume doesn't handle test errors on 'resume publish' properly.  
