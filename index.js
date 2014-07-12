@@ -142,6 +142,15 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
             });
         });
 
+    program
+        .command('login')
+        .description('Not yet implemented')
+        .action(function() {
+            lib.login();
+        });
+
+
+
     program.parse(process.argv);
 
     var validCommands = program.commands.map(function(cmd) {
