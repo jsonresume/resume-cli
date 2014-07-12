@@ -32,7 +32,8 @@ program
     .option('-f, --force', 'Used by `publish` - bypasses schema testing.')
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000);
 
-lib.version.checkConfigFile(function(message) {
+lib.version.checkConfigFile(function(message, LatestnpmVersion) {
+
     if (message === 'out of date') {
         console.log('Notice: You are currently using an out-of-date version of resume-cli.'.yellow);
         console.log('Type'.cyan, '`sudo npm install -g resume-cli`', 'to upgrade to version'.cyan, LatestnpmVersion);
