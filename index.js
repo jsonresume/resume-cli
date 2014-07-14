@@ -7,6 +7,17 @@ var colors = require('colors');
 var chalk = require('chalk');
 var read = require('read');
 var pkg = require('./package.json');
+var homeDir = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+
+function readConfig(callback) {
+    var config = false;
+    fs.readFile(homeDir + '/.jsonresume.json', 'utf8', function(fileDoesNotExist, config) {
+        if (!fileDoesNotExist) {
+            config = JSON.parse(config);
+            callback(config);
+        }
+    });
+}
 
 function readFileFunction(callback) {
     var resumeJson = require('resume-schema').resumeJson;
@@ -39,6 +50,8 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
     if (message === 'out of date') {
         console.log('Notice: You are currently using out-of-date version'.yellow, pkg.version, 'resume-cli.'.yellow);
         console.log('Type'.cyan, '`sudo npm install -g resume-cli`', 'to upgrade to version'.cyan, LatestnpmVersion);
+    } else {
+        console.log('Your resume-cli software is up-to-date.');
     }
 
     program
@@ -121,14 +134,24 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
                 readFileFunction(function(resumeJson, readFileErrors) {
 
-                    lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+                    // lib.test.validate(resumeJson, readFileErrors, function(error, response) {
 
-                        if (error && !program.force) {
-                            console.log(response.message);
-                        } else {
-                            lib.publish(resumeJson, program);
-                        }
+                    // if (force) {
+                    //         console.log('You resume.json did not pass formatting tests. Attempting to publish anyway...'.yellow);
+                    //     }
+
+                    // if (error && !program.force) {
+                    //     console.log(response.message);
+
+                    // } else {
+
+                    readConfig(function(config) {
+
+
+                        lib.publish(resumeJson, program, config);
                     });
+                    // }
+                    // });
                 });
             }
         });
@@ -138,7 +161,9 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
         .description('Not yet implemented')
         .action(function() {
             readFileFunction(function(resumeJson, readFileErrors) {
-                lib.settings(resumeJson, program);
+                readConfig(function(config) {
+                    lib.settings(resumeJson, program, config);
+                });
             });
         });
 
@@ -160,6 +185,7 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
     if (!program.args.length) {
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
         program.help();
+
     } else if (validCommands.indexOf(process.argv[2]) === -1) {
         console.log('Invalid argument:'.red, process.argv[2]);
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
@@ -169,6 +195,8 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
 });
 
+//use .bind and .map 
+// create initial function to be run before program. 
 // get rid of npm install warning: html to text, wrong node version
 // get text converter working again
 
@@ -176,8 +204,11 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 // publishing to non existent account error handling
 //use jsonlint before schema tests run.
 // broken on windows
-// resume --version = wrong version
 
 // settings change theme errors if 'account does not exist errors' or resume does not exist. 
 // resume doesn't handle test errors on 'resume publish' properly.  
 // or resume test is not running before publish as it should
+
+
+// export 
+// change theme to always hit the server
