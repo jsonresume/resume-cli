@@ -161,7 +161,9 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
         .description('Not yet implemented')
         .action(function() {
             readFileFunction(function(resumeJson, readFileErrors) {
-                lib.settings(resumeJson, program);
+                readConfig(function(config) {
+                    lib.settings(resumeJson, program, config);
+                });
             });
         });
 
