@@ -133,7 +133,7 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
 
                 readFileFunction(function(resumeJson, readFileErrors) {
-
+                    // fix this validate function
                     // lib.test.validate(resumeJson, readFileErrors, function(error, response) {
 
                     // if (force) {
@@ -158,7 +158,7 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
     program
         .command('settings')
-        .description('Not yet implemented')
+        .description('Change theme, change password, delete account.')
         .action(function() {
             readFileFunction(function(resumeJson, readFileErrors) {
                 readConfig(function(config) {
@@ -169,12 +169,10 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
     program
         .command('login')
-        .description('Not yet implemented')
+        .description('Stores a user session.')
         .action(function() {
             lib.login();
         });
-
-
 
     program.parse(process.argv);
 
@@ -195,7 +193,11 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
 });
 
-//use .bind and .map 
+//deleting non-existent account never times out. 
+// prompt user session time. 
+// export, post to theme server. 
+// change theme to always use the server
+
 // create initial function to be run before program. 
 // get rid of npm install warning: html to text, wrong node version
 // get text converter working again
@@ -208,7 +210,3 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 // settings change theme errors if 'account does not exist errors' or resume does not exist. 
 // resume doesn't handle test errors on 'resume publish' properly.  
 // or resume test is not running before publish as it should
-
-
-// export 
-// change theme to always hit the server
