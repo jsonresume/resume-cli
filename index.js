@@ -50,6 +50,8 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
     if (message === 'out of date') {
         console.log('Notice: You are currently using out-of-date version'.yellow, pkg.version, 'resume-cli.'.yellow);
         console.log('Type'.cyan, '`sudo npm install -g resume-cli`', 'to upgrade to version'.cyan, LatestnpmVersion);
+    } else {
+        console.log('Your resume-cli software is up-to-date.');
     }
 
     program
@@ -181,6 +183,7 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
     if (!program.args.length) {
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
         program.help();
+
     } else if (validCommands.indexOf(process.argv[2]) === -1) {
         console.log('Invalid argument:'.red, process.argv[2]);
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
