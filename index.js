@@ -95,8 +95,8 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
                     //         console.log(response.message);
 
                     //     } else {
-                    lib.exportResume(resumeJson, fileName, program, function(res, fileName) {
-                        //do nothing
+                    lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
+                        console.log(chalk.green('\nDone! Find your new', format, 'resume at', process.cwd() + '/' + fileName + format));
                     });
                     //     }
                     // });
@@ -194,6 +194,7 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
 });
 
+// error handling on export wrong theme name server side
 // prompt user session time. 
 // export, post to theme server. 
 // change theme to always use the server
