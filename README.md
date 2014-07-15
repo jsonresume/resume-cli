@@ -40,9 +40,11 @@ From here you can complete the resume.json in your text editor following the sch
 Runs your resume.json through our schema tests to ensure it complies with the jsonresume standard and tries to identify where any errors may be occurring.
 
     
-    resume export [myresume.extension]
+    resume export [myResumeName]
 
 Exports your resume locally in a stylized html, markdown, or pdf format.
+
+Use the `--format` flag to specify file type eg: `--format pdf`
 
 To select one of the available themes use the `--theme <theme name>` flag.
 Themes available are: crisp, traditional, modern, (more to come).

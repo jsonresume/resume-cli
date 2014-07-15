@@ -194,6 +194,7 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
 });
 
+// checkNPM version
 // error handling on export wrong theme name server side
 // prompt user session time. 
 // export, post to theme server. 
