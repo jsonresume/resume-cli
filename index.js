@@ -41,7 +41,8 @@ function readFileFunction(callback) {
 program
     .version(pkg.version)
     .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'modern')
-    .option('-f, --force', 'Used by `publish` - bypasses schema testing.')
+    .option('-F, --force', 'Used by `publish` - bypasses schema testing.')
+    .option('-f, --format <file type extension>', 'Used by `export`.')
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
@@ -79,7 +80,7 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
     program
         .command('export [fileName]')
-        .description('Export locally to .html, .md or .pdf')
+        .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
         .action(function(fileName) {
             if (!fs.existsSync('./resume.json')) {
                 console.log('There is no resume.json file located in this directory');
@@ -88,17 +89,17 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
                 readFileFunction(function(resumeJson, readFileErrors) {
 
-                    lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+                    // lib.test.validate(resumeJson, readFileErrors, function(error, response) {
 
-                        if (error) {
-                            console.log(response.message);
+                    //     if (error) {
+                    //         console.log(response.message);
 
-                        } else {
-                            lib.exportResume(resumeJson, fileName, program.theme, function(res, fileName) {
-                                //do nothing
-                            });
-                        }
+                    //     } else {
+                    lib.exportResume(resumeJson, fileName, program, function(res, fileName) {
+                        //do nothing
                     });
+                    //     }
+                    // });
                 });
 
             }
@@ -193,7 +194,6 @@ lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
 });
 
-//deleting non-existent account never times out. 
 // prompt user session time. 
 // export, post to theme server. 
 // change theme to always use the server
