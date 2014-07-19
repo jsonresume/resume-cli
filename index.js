@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var async = require('async');
 var program = require('commander');
 var fs = require('fs');
 var lib = require('./lib');
@@ -9,35 +10,6 @@ var read = require('read');
 var pkg = require('./package.json');
 var homeDir = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 
-function readConfig(callback) {
-    var config = false;
-    fs.readFile(homeDir + '/.jsonresume.json', 'utf8', function(fileDoesNotExist, config) {
-        if (!fileDoesNotExist) {
-            config = JSON.parse(config);
-            callback(config);
-        }
-    });
-}
-
-function readFileFunction(callback) {
-    var resumeJson = require('resume-schema').resumeJson;
-    var readFileErrors = null; // change this
-    if (fs.existsSync('./resume.json')) {
-        fs.readFile('./resume.json', {
-            encoding: 'utf8'
-        }, function(err, data) {
-            if (err) console.log(err);
-            try {
-                resumeJson = JSON.parse(data);
-                callback(resumeJson, null);
-            } catch (readFileErrors) {
-                callback(null, readFileErrors);
-            }
-        });
-    } else {
-        callback(null, null);
-    }
-}
 program
     .version(pkg.version)
     .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'modern')
@@ -46,153 +18,138 @@ program
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
-lib.version.checkConfigFile(null, function(message, LatestnpmVersion) {
 
-    if (message === 'out of date') {
-        console.log('Notice: You are currently using out-of-date version'.yellow, pkg.version, 'resume-cli.'.yellow);
-        console.log('Type'.cyan, '`sudo npm install -g resume-cli`', 'to upgrade to version'.cyan, LatestnpmVersion);
-    } else {
-        console.log('Your resume-cli software is up-to-date.');
-    }
-
-    program
-        .command('init')
-        .description('Initialize a resume.json file')
-        .action(function() {
-            lib.init();
-        });
-
-    program
-        .command('test')
-        .description('Schema validation test your resume.json')
-        .action(function() {
-            if (!fs.existsSync('./resume.json')) {
-                console.log('There is no resume.json file located in this directory');
-                console.log('Type: `resume init` to initialize a new resume');
-            } else {
-                readFileFunction(function(resumeJson, readFileErrors) {
-                    lib.test.validate(resumeJson, readFileErrors, function(error, response) {
-                        error && console.log(response.message);
-                    });
-                });
-            }
-        });
-
-    program
-        .command('export [fileName]')
-        .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
-        .action(function(fileName) {
-            if (!fs.existsSync('./resume.json')) {
-                console.log('There is no resume.json file located in this directory');
-                console.log('Type: `resume init` to initialize a new resume');
-            } else {
-
-                readFileFunction(function(resumeJson, readFileErrors) {
-
-                    // lib.test.validate(resumeJson, readFileErrors, function(error, response) {
-
-                    //     if (error) {
-                    //         console.log(response.message);
-
-                    //     } else {
-                    lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
-                        console.log(chalk.green('\nDone! Find your new', format, 'resume at', process.cwd() + '/' + fileName + format));
-                    });
-                    //     }
-                    // });
-                });
-
-            }
-        });
-
-    program
-        .command('serve')
-        .description('Serve resume at http://localhost:4000/')
-        .action(function() {
-            lib.serve(program.port, program.theme, program.silent);
-        });
-
-    program
-        .command('register')
-        .description('Register an account at https://registry.jsonresume.org')
-        .action(function() {
-            readFileFunction(function(resumeJson, readFileErrors) {
-                lib.register(resumeJson);
+async.series({
+        readConfig: function(callback) {
+            var config = false;
+            fs.readFile(homeDir + '/.jsonresume.json', 'utf8', function(fileDoesNotExist, config) {
+                if (!fileDoesNotExist) {
+                    config = JSON.parse(config);
+                    callback(null, config);
+                }
+                //move this to version.js?
+                // if (message === 'out of date') {
+                //     console.log('Notice: You are currently using out-of-date version'.yellow, pkg.version, 'resume-cli.'.yellow);
+                //     console.log('Type'.cyan, '`sudo npm install -g resume-cli`', 'to upgrade to version'.cyan, LatestnpmVersion);
+                // } else {
+                //     console.log('Your resume-cli software is up-to-date.');
+                // }
             });
-        });
+        },
+        readJsonResume: function(callback) {
+            // add if file exists condition
 
-    program
-        .command('publish')
-        .description('Publish your resume to https://registry.jsonresume.org')
-        .action(function() {
+            // if (!fs.existsSync('./resume.json')) {
+            //        console.log('There is no resume.json file located in this directory');
+            //        console.log('Type: `resume init` to initialize a new resume');
+            //    } else {
+            var resumeJson = require('resume-schema').resumeJson;
 
+            fs.readFile('./resume.json', {
+                encoding: 'utf8'
+            }, function(err, data) {
+                if (err) return console.log(null, 'resume.json does not exist yet', err);
 
-            if (!fs.existsSync('./resume.json')) {
-                console.log('There is no resume.json file located in this directory'.yellow);
-                console.log('Type:'.cyan, 'resume init', 'to initialize a new resume'.cyan);
-            } else {
-
-
-                readFileFunction(function(resumeJson, readFileErrors) {
-                    // fix this validate function
-                    // lib.test.validate(resumeJson, readFileErrors, function(error, response) {
-
-                    // if (force) {
-                    //         console.log('You resume.json did not pass formatting tests. Attempting to publish anyway...'.yellow);
-                    //     }
-
-                    // if (error && !program.force) {
-                    //     console.log(response.message);
-
-                    // } else {
-
-                    readConfig(function(config) {
-
-
-                        lib.publish(resumeJson, program, config);
-                    });
-                    // }
-                    // });
-                });
-            }
-        });
-
-    program
-        .command('settings')
-        .description('Change theme, change password, delete account.')
-        .action(function() {
-            readFileFunction(function(resumeJson, readFileErrors) {
-                readConfig(function(config) {
-                    lib.settings(resumeJson, program, config);
-                });
+                try {
+                    var resumeJson = JSON.parse(data);
+                    callback(null, resumeJson, null);
+                } catch (readFileErrors) {
+                    callback(null, 'catch', readFileErrors, resumeJson, data);
+                }
             });
-        });
 
-    program
-        .command('login')
-        .description('Stores a user session.')
-        .action(function() {
-            lib.login();
-        });
+        },
+        SchemaValidate: function(callback) {
+            lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+                if (error) {
+                    callback(null, response.message);
+                } else {
+                    callback(null, response.message);
+                }
+            });
+        }
+    },
+    function(err, results) {
 
-    program.parse(process.argv);
+        console.log(results);
 
-    var validCommands = program.commands.map(function(cmd) {
-        return cmd._name;
+        // program
+        //     .command('init')
+        //     .description('Initialize a resume.json file')
+        //     .action(function() {
+        //         lib.init();
+        //     });
+
+        // program
+        //     .command('register')
+        //     .description('Register an account at https://registry.jsonresume.org')
+        //     .action(function() {
+        //         lib.register(resumeJson);
+        //     });
+
+        // program
+        //     .command('login')
+        //     .description('Stores a user session.')
+        //     .action(function() {
+        //         lib.login();
+        //     });
+
+        // program
+        //     .command('settings')
+        //     .description('Change theme, change password, delete account.')
+        //     .action(function() {
+        //         lib.settings(resumeJson, program, config);
+        //     });
+
+        // program
+        //     .command('test')
+        //     .description('Schema validation test your resume.json')
+        //     .action(function() {
+        //         lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+        //             error && console.log(response.message);
+        //         });
+        //     });
+
+        // program
+        //     .command('export [fileName]')
+        //     .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
+        //     .action(function(fileName) {
+        //         lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
+        //             console.log(chalk.green('\nDone! Find your new', format, 'resume at', process.cwd() + '/' + fileName + format));
+        //         });
+        //     });
+
+        // program
+        //     .command('publish')
+        //     .description('Publish your resume to https://registry.jsonresume.org')
+        //     .action(function() {
+        //         lib.publish(resumeJson, program, config);
+        //     });
+
+        // program
+        //     .command('serve')
+        //     .description('Serve resume at http://localhost:4000/')
+        //     .action(function() {
+        //         lib.serve(program.port, program.theme, program.silent);
+        //     });
+
+
+        // program.parse(process.argv);
+
+        // var validCommands = program.commands.map(function(cmd) {
+        //     return cmd._name;
+        // });
+
+        // if (!program.args.length) {
+        //     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
+        //     program.help();
+
+        // } else if (validCommands.indexOf(process.argv[2]) === -1) {
+        //     console.log('Invalid argument:'.red, process.argv[2]);
+        //     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
+        //     program.help();
+        // }
     });
-
-    if (!program.args.length) {
-        console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
-        program.help();
-
-    } else if (validCommands.indexOf(process.argv[2]) === -1) {
-        console.log('Invalid argument:'.red, process.argv[2]);
-        console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
-        program.help();
-    }
-
-
-});
 
 // checkNPM version
 // error handling on export wrong theme name server side
