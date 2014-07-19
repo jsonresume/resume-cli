@@ -19,7 +19,6 @@ program
 var noResumeJsonFileMessage = 'There is no resume.json file located in this directory\nType: `resume init` to initialize a new resume';
 
 async.waterfall(lib.waterfallArray, function(err, results) {
-    // console.log(err, results);
 
     program
         .command('init')
