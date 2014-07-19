@@ -19,84 +19,84 @@ program
 async.waterfall(lib.waterfallArray, function(err, results) {
     // console.log(err, results);
 
-    program
-        .command('init')
-        .description('Initialize a resume.json file')
-        .action(function() {
-        // console.log('There is no resume.json file located in this directory');
-        // console.log('Type: `resume init` to initialize a new resume');
-            lib.init();
-        });
+    // program
+    //     .command('init')
+    //     .description('Initialize a resume.json file')
+    //     .action(function() {
+    //         // console.log('There is no resume.json file located in this directory');
+    //         // console.log('Type: `resume init` to initialize a new resume');
+    //         lib.init();
+    //     });
 
-    program
-        .command('register')
-        .description('Register an account at https://registry.jsonresume.org')
-        .action(function() {
-            lib.register(resumeJson);
-        });
+    // program
+    //     .command('register')
+    //     .description('Register an account at https://registry.jsonresume.org')
+    //     .action(function() {
+    //         lib.register(resumeJson);
+    //     });
 
-    program
-        .command('login')
-        .description('Stores a user session.')
-        .action(function() {
-            lib.login();
-        });
+    // program
+    //     .command('login')
+    //     .description('Stores a user session.')
+    //     .action(function() {
+    //         lib.login();
+    //     });
 
-    program
-        .command('settings')
-        .description('Change theme, change password, delete account.')
-        .action(function() {
-            lib.settings(resumeJson, program, config);
-        });
+    // program
+    //     .command('settings')
+    //     .description('Change theme, change password, delete account.')
+    //     .action(function() {
+    //         lib.settings(resumeJson, program, config);
+    //     });
 
-    program
-        .command('test')
-        .description('Schema validation test your resume.json')
-        .action(function() {
-            lib.test.validate(resumeJson, readFileErrors, function(error, response) {
-                error && console.log(response.message);
-            });
-        });
+    // program
+    //     .command('test')
+    //     .description('Schema validation test your resume.json')
+    //     .action(function() {
+    //         lib.test.validate(resumeJson, readFileErrors, function(error, response) {
+    //             error && console.log(response.message);
+    //         });
+    //     });
 
-    program
-        .command('export [fileName]')
-        .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
-        .action(function(fileName) {
-            lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
-                console.log(chalk.green('\nDone! Find your new', format, 'resume at', process.cwd() + '/' + fileName + format));
-            });
-        });
+    // program
+    //     .command('export [fileName]')
+    //     .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
+    //     .action(function(fileName) {
+    //         lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
+    //             console.log(chalk.green('\nDone! Find your new', format, 'resume at', process.cwd() + '/' + fileName + format));
+    //         });
+    //     });
 
-    program
-        .command('publish')
-        .description('Publish your resume to https://registry.jsonresume.org')
-        .action(function() {
-            lib.publish(resumeJson, program, config);
-        });
+    // program
+    //     .command('publish')
+    //     .description('Publish your resume to https://registry.jsonresume.org')
+    //     .action(function() {
+    //         lib.publish(resumeJson, program, config);
+    //     });
 
-    program
-        .command('serve')
-        .description('Serve resume at http://localhost:4000/')
-        .action(function() {
-            lib.serve(program.port, program.theme, program.silent);
-        });
+    // program
+    //     .command('serve')
+    //     .description('Serve resume at http://localhost:4000/')
+    //     .action(function() {
+    //         lib.serve(program.port, program.theme, program.silent);
+    //     });
 
 
-    program.parse(process.argv);
+    // program.parse(process.argv);
 
-    var validCommands = program.commands.map(function(cmd) {
-        return cmd._name;
-    });
+    // var validCommands = program.commands.map(function(cmd) {
+    //     return cmd._name;
+    // });
 
-    if (!program.args.length) {
-        console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
-        program.help();
+    // if (!program.args.length) {
+    //     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
+    //     program.help();
 
-    } else if (validCommands.indexOf(process.argv[2]) === -1) {
-        console.log('Invalid argument:'.red, process.argv[2]);
-        console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
-        program.help();
-    }
+    // } else if (validCommands.indexOf(process.argv[2]) === -1) {
+    //     console.log('Invalid argument:'.red, process.argv[2]);
+    //     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
+    //     program.help();
+    // }
 });
 
 // checkNPM version
