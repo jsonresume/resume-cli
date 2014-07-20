@@ -16,8 +16,6 @@ program
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
-var noResumeJsonFileMessage = 'There is no resume.json file located in this directory\nType: `resume init` to initialize a new resume';
-
 async.waterfall(lib.waterfallArray, function(err, results) {
 
     program
@@ -48,9 +46,9 @@ async.waterfall(lib.waterfallArray, function(err, results) {
             lib.settings(results.resumeJson, program, results.config);
         });
 
-    program
     // if validation does not pass type resume test
-    .command('test')
+    program
+        .command('test')
         .description('Schema validation test your resume.json')
         .action(function() {
             lib.test.validate(results.resumeJson, function(error, response) {
@@ -98,7 +96,6 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     }
 });
 
-// checkNPM version
 // error handling on export wrong theme name server side
 // prompt user session time. 
 // export, post to theme server. 
