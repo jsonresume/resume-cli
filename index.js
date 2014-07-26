@@ -96,6 +96,9 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     }
 });
 
+// resume serve --theme ../modern
+// check for render function
+
 // error handling on export wrong theme name server side
 // prompt user session time. 
 // export, post to theme server. 
