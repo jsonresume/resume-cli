@@ -96,22 +96,18 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     }
 });
 
-// resume serve --theme ../modern
-// check for render function
-
 // error handling on export wrong theme name server side
 // prompt user session time. 
 // export, post to theme server. 
 // change theme to always use the server
 
-// create initial function to be run before program. 
 // get rid of npm install warning: html to text, wrong node version
 // get text converter working again
 
 // version test on menu does not show
 // publishing to non existent account error handling
-//use jsonlint before schema tests run.
-// broken on windows
+// use jsonlint before schema tests run.
+// run more tests on windows
 
 // settings change theme errors if 'account does not exist errors' or resume does not exist. 
 // resume doesn't handle test errors on 'resume publish' properly.  
