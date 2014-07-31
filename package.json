@@ -1,7 +1,7 @@
 {
     "name": "resume-cli",
-    "version": "0.3.3",
-    "description": "resume-cli ==========",
+    "version": "0.3.4",
+    "description": "The JSON Resume command line interface",
     "main": "index.js",
     "scripts": {
         "test": "node ./test/index.js | tap-spec"
