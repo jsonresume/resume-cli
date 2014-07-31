@@ -1,5 +1,4 @@
 # JSON Resume Command Line
-============================
 
 [![Build Status](https://api.travis-ci.org/jsonresume/resume-cli.svg)](http://travis-ci.org/jsonresume/resume-cli)
 
