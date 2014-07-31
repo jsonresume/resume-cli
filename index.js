@@ -10,7 +10,7 @@ var read = require('read');
 
 program
     .version(pkg.version)
-    .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'modern')
+    .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'flat')
     .option('-F, --force', 'Used by `publish` - bypasses schema testing.')
     .option('-f, --format <file type extension>', 'Used by `export`.')
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
