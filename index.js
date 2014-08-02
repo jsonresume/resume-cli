@@ -96,6 +96,10 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     }
 });
 
+
+// every time you publish, theme is changed to default. need to keep current theme
+
+
 // error handling on export wrong theme name server side
 // prompt user session time. 
 // export, post to theme server. 
