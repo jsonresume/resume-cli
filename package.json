@@ -29,7 +29,8 @@
         "resume-to-html": "latest",
         "resume-to-text": "latest",
         "superagent": "^0.18.0",
-        "terminal-menu": "^0.3.2"
+        "terminal-menu": "^0.3.2",
+        "wkhtmltopdf": "latest"
     },
     "devDependencies": {
         "tap-spec": "^0.2.0",
