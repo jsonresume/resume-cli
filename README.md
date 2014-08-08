@@ -1,6 +1,6 @@
 # JSON Resume Command Line
 
-[![Build Status](https://api.travis-ci.org/jsonresume/resume-cli.svg)](http://travis-ci.org/jsonresume/resume-cli)
+[![](https://api.travis-ci.org/jsonresume/resume-cli.svg)](http://travis-ci.org/jsonresume/resume-cli)
 
 ### IRC
 
@@ -17,6 +17,8 @@ You can use the web client [http://webchat.freenode.net/](http://webchat.freenod
 ```
 npm install -g resume-cli
 ```
+
+[![](https://badge.fury.io/js/resume-cli.png)](https://www.npmjs.org/package/resume-cli)
 
 # Usage
 
