@@ -14,6 +14,7 @@ program
     .option('-F, --force', 'Used by `publish` - bypasses schema testing.')
     .option('-f, --format <file type extension>', 'Used by `export`.')
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
+    .option('-r, --resume <resume file>', 'The json resume file (eg. /path/to/myresume.json).')
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
 async.waterfall(lib.waterfallArray, function(err, results) {
