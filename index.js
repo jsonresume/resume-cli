@@ -17,6 +17,8 @@ program
     .option('-r, --resume <resume file>', 'The json resume file (eg. /path/to/myresume.json).', './resume.json')
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
+console.log(program.resume);
+
 async.waterfall(lib.waterfallArray, function(err, results) {
 
     program
