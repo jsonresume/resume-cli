@@ -14,7 +14,7 @@ program
     .option('-F, --force', 'Used by `publish` - bypasses schema testing.')
     .option('-f, --format <file type extension>', 'Used by `export`.')
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
-    .option('-r, --resume <resume file>', 'The json resume file (eg. /path/to/myresume.json).')
+    .option('-r, --resume <resume file>', 'The json resume file (eg. /path/to/myresume.json).', 'resume.json')
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
 async.waterfall(lib.waterfallArray, function(err, results) {
@@ -23,7 +23,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('init')
         .description('Initialize a resume.json file')
         .action(function() {
-            lib.init();
+            lib.init(program.resume);
         });
 
     program
@@ -52,7 +52,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('test')
         .description('Schema validation test your resume.json')
         .action(function() {
-            lib.test.validate(results.resumeJson, function(error, response) {
+            lib.test.validate(program.resume, results.resumeJson, function(error, response) {
                 error && console.log(response.message);
             });
         });
@@ -77,7 +77,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('serve')
         .description('Serve resume at http://localhost:4000/')
         .action(function() {
-            lib.serve(program.port, program.theme, program.silent);
+            lib.serve(program.resume, program.port, program.theme, program.silent);
         });
 
     program.parse(process.argv);
