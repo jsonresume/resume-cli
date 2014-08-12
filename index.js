@@ -53,7 +53,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('test')
         .description('Schema validation test your resume.json')
         .action(function() {
-            lib.test.validate(program.resume, results.resumeJson, function(error, response) {
+            lib.test.validate(results.resumeJson, function(error, response) {
                 error && console.log(response.message);
             });
         });
