@@ -64,7 +64,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
         .action(function(fileName) {
             lib.exportResume(results.resumeJson, fileName, program, function(err, fileName, format) {
-                console.log(chalk.green('\nDone! Find your new', format, 'resume at', program.export-dir + fileName + format));
+                console.log(chalk.green('\nDone! Find your new', format, 'resume at', program.exportDir + fileName + format));
             });
         });
 
