@@ -14,6 +14,10 @@ program
     .option('-F, --force', 'Used by `publish` - bypasses schema testing.')
     .option('-f, --format <file type extension>', 'Used by `export`.')
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
+    .option('-l, --local', 'Used along with port, Used by `serve` to listen at localhost only (default: false)', false)
+    .option('-r, --resume <resume file>', 'The json resume file (eg. /path/to/myresume.json).', './resume.json')
+    .option('-d, --exportDir <export directory>', 'The directory where to export the resume (default: ' + process.cwd() + '/). Make sure to include the trailing slash `/` (eg. /tmp/docs/). Used by `export`', process.cwd() + '/')
+    .option('-c, --config <config file>', 'Specify the json config file path (eg. /path/to/.jsonresume.json).')
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
 async.waterfall(lib.waterfallArray, function(err, results) {
@@ -22,7 +26,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('init')
         .description('Initialize a resume.json file')
         .action(function() {
-            lib.init();
+            lib.init(program.resume);
         });
 
     program
@@ -36,7 +40,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('login')
         .description('Stores a user session.')
         .action(function() {
-            lib.login();
+            lib.login(config);
         });
 
     program
@@ -61,7 +65,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
         .action(function(fileName) {
             lib.exportResume(results.resumeJson, fileName, program, function(err, fileName, format) {
-                console.log(chalk.green('\nDone! Find your new', format, 'resume at', process.cwd() + '/' + fileName + format));
+                console.log(chalk.green('\nDone! Find your new', format, 'resume at', program.exportDir + fileName + format));
             });
         });
 
@@ -76,7 +80,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('serve')
         .description('Serve resume at http://localhost:4000/')
         .action(function() {
-            lib.serve(program.port, program.theme, program.silent);
+            lib.serve(program.port, program.local, program.theme, program.silent);
         });
 
     program.parse(process.argv);
@@ -89,8 +93,8 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
         program.help();
 
-    } else if (validCommands.indexOf(process.argv[2]) === -1) {
-        console.log('Invalid argument:'.red, process.argv[2]);
+    } else if (validCommands.indexOf(process.argv[process.argv.length-1]) === -1 && validCommands.indexOf(process.argv[process.argv.length-2]) === -1) {
+        console.log('Invalid argument:'.red, process.argv[process.argv.length-2] + " " + process.argv[process.argv.length-1]);
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
         program.help();
     }
