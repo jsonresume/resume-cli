@@ -16,6 +16,7 @@ program
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
     .option('-l, --local', 'Used along with port, Used by `serve` to listen at localhost only (default: false)', false)
     .option('-r, --resume <resume file>', 'The json resume file (eg. /path/to/myresume.json).', './resume.json')
+    .option('-d, --export-dir <export directory>', 'The directory where to export the resume (default: ./). Make sure to include the trailing slash `/` (eg. /tmp/docs/) ', './')
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
 async.waterfall(lib.waterfallArray, function(err, results) {
@@ -63,7 +64,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
         .action(function(fileName) {
             lib.exportResume(results.resumeJson, fileName, program, function(err, fileName, format) {
-                console.log(chalk.green('\nDone! Find your new', format, 'resume at', process.cwd() + '/' + fileName + format));
+                console.log(chalk.green('\nDone! Find your new', format, 'resume at', program.export-dir + fileName + format));
             });
         });
 
