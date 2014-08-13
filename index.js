@@ -17,6 +17,7 @@ program
     .option('-l, --local', 'Used along with port, Used by `serve` to listen at localhost only (default: false)', false)
     .option('-r, --resume <resume file>', 'The json resume file (eg. /path/to/myresume.json).', './resume.json')
     .option('-d, --exportDir <export directory>', 'The directory where to export the resume (default: ' + process.cwd() + '/). Make sure to include the trailing slash `/` (eg. /tmp/docs/). Used by `export`', process.cwd() + '/')
+    .option('-c, --config <config file>', 'Specify the json config file path (eg. /path/to/.jsonresume.json).')
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
 async.waterfall(lib.waterfallArray, function(err, results) {
@@ -39,7 +40,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('login')
         .description('Stores a user session.')
         .action(function() {
-            lib.login();
+            lib.login(config);
         });
 
     program
