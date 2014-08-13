@@ -92,8 +92,8 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
         program.help();
 
-    } else if (validCommands.indexOf(process.argv[2]) === -1) {
-        console.log('Invalid argument:'.red, process.argv[2]);
+    } else if (validCommands.indexOf(process.argv[process.argv.length-1]) === -1 && validCommands.indexOf(process.argv[process.argv.length-2]) === -1)) {
+        console.log('Invalid argument:'.red, process.argv[process.argv.length-2] + " " + process.argv[process.argv.length-1]);
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
         program.help();
     }
