@@ -79,7 +79,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('serve')
         .description('Serve resume at http://localhost:4000/')
         .action(function() {
-            lib.serve(program.resume, program.port, program.local, program.theme, program.silent);
+            lib.serve(program.port, program.local, program.theme, program.silent);
         });
 
     program.parse(process.argv);
