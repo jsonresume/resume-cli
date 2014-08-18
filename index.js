@@ -84,20 +84,78 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         });
 
     program.parse(process.argv);
-
-    var validCommands = program.commands.map(function(cmd) {
-        return cmd._name;
-    });
+    
+    Array.prototype.getItemCount = function(item){
+        var counts = {};
+        for(var i=0;i<this.length;++i){
+            var num = this[i];
+            counts[num] = counts[num] ? counts[num] : 1;
+        }
+        return counts[item] || 0;
+    }
+    
+    var validCommands = program.commands.map(function(cmd) { return cmd; });
+    var validOptions = program.commands.map(function(opt){ return opt;  });
 
     if (!program.args.length) {
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
         program.help();
 
-    } else if (validCommands.indexOf(process.argv[process.argv.length-1]) === -1 && validCommands.indexOf(process.argv[process.argv.length-2]) === -1) {
-        console.log('Invalid argument:'.red, process.argv[process.argv.length-2] + " " + process.argv[process.argv.length-1]);
-        console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
-        program.help();
     }
+    
+    var args = process.argv.slice(2);
+    validCommands.forEach(function(command){
+        //Check to make sure the command was used as an argument.
+        var commandIndex = args.indexOf(command._name);
+        if(commandIndex != -1){
+            //check how many times the command is specified
+            var commandCount = args.getItemCount(command._name);
+            if(commandCount > 1){
+                console.log('Invalid command use.  The command can only be specified once.  Error on command: '.red, command._name);
+            }
+            //remove command
+            args.splice(commandIndex, 1);
+            //Check to see if the command is specified to take any parameters.
+            if(command._args.length > 0){
+                var commandArgumentIndex = commandIndex;
+                command._args.forEach(function(arg){
+                    if(args.length > commandArgumentIndex && args[commandArgumentIndex].indexOf("-") == -1){
+                        args.splice(commandArgumentIndex, 1);
+                    }
+                    else if(arg.required){
+                        console.log('Invalid command use (argument required) for command: '.red, command._name);
+                    }
+                });
+            }
+        }
+    });
+    validOptions.forEach(function(option){
+        var optionShortFound = false, optionLongFound = false;
+        var optionShortIndex = args.indexOf(option.short);
+        var optionLongIndex = args.indexOf(option.long);
+        if(optionShortIndex != -1){
+            args.splice(optionShortIndex, 1);
+            optionShortFound = true;
+        }
+        else if(optionLongIndex != -1){
+            args.splice(optionLongIndex, 1);
+            optionLongFound = true;
+        }
+        if(optionShortFound || optionLongFound){
+            if(option.required != 0){
+                if(optionShortFound){ args.splice(optionShortIndex, 1); }
+                if(optionLongFound){ args.splice(optionLongIndex, 1); }
+            }
+        }
+    });
+    args.forEach(function(arg){
+        if(arg.indexOf("-") != -1){
+            console.log("Invalid Option: ".red, arg);
+        }
+        else{
+            console.log("Invalid Command: ".red, arg);
+        }
+    });
 });
 
 
