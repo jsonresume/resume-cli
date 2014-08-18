@@ -95,7 +95,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     }
     
     var validCommands = program.commands.map(function(cmd) { return cmd; });
-    var validOptions = program.commands.map(function(opt){ return opt;  });
+    var validOptions = program.options.map(function(opt){ return opt;  });
 
     if (!program.args.length) {
         console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
