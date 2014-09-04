@@ -27,7 +27,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
 
     program
         .command('register')
-        .description('Register an account at https://registry.jsonresume.org')
+        .description('Register an account at http://registry.jsonresume.org')
         .action(function() {
             lib.register(results.resumeJson);
         });
@@ -67,7 +67,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
 
     program
         .command('publish')
-        .description('Publish your resume to https://registry.jsonresume.org')
+        .description('Publish your resume to http://registry.jsonresume.org')
         .action(function() {
             lib.publish(results.resumeJson, program, results.config);
         });
