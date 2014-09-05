@@ -89,5 +89,5 @@ Anyone working on projects for JSON Resume should submit a pull request and add 
 * [CLI based export](https://github.com/mblarsen/resume-linkedin) by [Michael Bøcker-Larsen](https://twitter.com/mblarsen)
 
 ### Web UI Builders
-* [Resume Edit](https://erming.github.io/resume-edit) by [Mattias Erming](https://github.com/erming)
+* [Resume Editor](https://erming.github.io/resume-editor) by [Mattias Erming](https://github.com/erming)
 * [JSON Resume Web App](https://github.com/jonnykry/JSONResumeWebApp/tree/gh-pages) by [Jonny Krysh](https://github.com/jonnykry)
