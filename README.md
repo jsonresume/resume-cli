@@ -10,7 +10,7 @@ Everyone working on the early stages of the project should join our Freenode cha
 #jsonresume on freenode
 ```
 
-You can use the web client [http://webchat.freenode.net/](http://webchat.freenode.net/).
+You can use the web client [http://webchat.freenode.net/](http://webchat.freenode.net?channels=%23jsonresume).
 
 # Getting Started
 
