@@ -1,6 +1,11 @@
 # JSON Resume Command Line
 
 [![](https://api.travis-ci.org/jsonresume/resume-cli.svg)](http://travis-ci.org/jsonresume/resume-cli)
+[![](https://badge.fury.io/js/resume-cli.png)](https://www.npmjs.org/package/resume-cli)
+[![](http://img.shields.io/npm/dm/resume-cli.svg)](https://www.npmjs.org/package/resume-cli)
+[![Bountysource](https://www.bountysource.com/badge/team?team_id=21303&style=bounties_received)](https://www.bountysource.com/teams/jsonresume/issues?utm_source=JSON%20Resume&utm_medium=shield&utm_campaign=bounties_received)
+[![Support via Gratipay](http://img.shields.io/gratipay/jsonresume.svg)](https://gratipay.com/jsonresume/)
+
 
 ### IRC
 
@@ -17,8 +22,6 @@ You can use the web client [http://webchat.freenode.net/](http://webchat.freenod
 ```
 npm install -g resume-cli
 ```
-
-[![](https://badge.fury.io/js/resume-cli.png)](https://www.npmjs.org/package/resume-cli)
 
 # Usage
 
