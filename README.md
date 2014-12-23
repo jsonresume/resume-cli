@@ -1,15 +1,13 @@
-# JSON Resume Command Line
+# resume-cli [![](https://badge.fury.io/js/resume-cli.png)](https://www.npmjs.org/package/resume-cli)
 
-[![](https://api.travis-ci.org/jsonresume/resume-cli.svg)](http://travis-ci.org/jsonresume/resume-cli)
-[![](https://badge.fury.io/js/resume-cli.png)](https://www.npmjs.org/package/resume-cli)
-[![](http://img.shields.io/npm/dm/resume-cli.svg)](https://www.npmjs.org/package/resume-cli)
+This is the command line tool for [JSON Resume](https://jsonresume.org/), the open source initiative to create a JSON-based standard for resumes. [Read more...](https://jsonresume.org/schema/)
+
+## Donations
+
 [![Bountysource](https://www.bountysource.com/badge/team?team_id=21303&style=bounties_received)](https://www.bountysource.com/teams/jsonresume/issues?utm_source=JSON%20Resume&utm_medium=shield&utm_campaign=bounties_received)
 [![Support via Gratipay](http://img.shields.io/gratipay/jsonresume.svg)](https://gratipay.com/jsonresume/)
 
-
-### IRC
-
-Everyone working on the early stages of the project should join our Freenode channel:
+## IRC
 
 ```
 #jsonresume on freenode
@@ -87,10 +85,6 @@ If no theme is specified, it will try to locate a local `index.js` and call the 
 
 Anyone working on projects for JSON Resume should submit a pull request and add themselves to the list.
 
-### LinkedIn Exporters
-* [Web based export](https://github.com/JMPerez/linkedin-to-json-resume) by [José Manuel Pérez](https://twitter.com/jmperezperez)
-* [CLI based export](https://github.com/mblarsen/resume-linkedin) by [Michael Bøcker-Larsen](https://twitter.com/mblarsen)
+## License
 
-### Web UI Builders
-* [Resume Editor](https://erming.github.io/resume-editor) by [Mattias Erming](https://github.com/erming)
-* [JSON Resume Web App](https://github.com/jonnykry/JSONResumeWebApp/tree/gh-pages) by [Jonny Krysh](https://github.com/jonnykry)
+Available under [the MIT license](http://mths.be/mit).
