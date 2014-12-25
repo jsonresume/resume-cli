@@ -1,6 +1,8 @@
 # resume-cli [![](https://badge.fury.io/js/resume-cli.png)](https://www.npmjs.org/package/resume-cli)
 
-This is the command line tool for [JSON Resume](https://jsonresume.org/), the open source initiative to create a JSON-based standard for resumes. [Read more...](https://jsonresume.org/schema/)
+This is the command line tool for [JSON Resume](https://jsonresume.org/), the open source initiative to create a JSON-based standard for resumes.
+
+[Read more...](https://jsonresume.org/schema/)
 
 ## Donations
 
@@ -80,10 +82,6 @@ Starts a web server that serves your local resume.json.
 Options: `--port <port>`, `--theme <name>`
 
 If no theme is specified, it will try to locate a local `index.js` and call the `render()` function. This is useful when developing themes.
-
-## Community Projects
-
-Anyone working on projects for JSON Resume should submit a pull request and add themselves to the list.
 
 ## License
 
