@@ -62,7 +62,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
 			    if(err) {
 				  console.log(chalk.red(err));
 				} else {
-				  console.log(chalk.green('Done! Find your new', format, 'resume at', process.cwd() + '\\' + fileName + format));
+				  console.log(chalk.green('Done! Find your new', format, 'resume at', process.cwd().split('\\').join('/') + '\\' + fileName + format));
 				}
             });
         });
