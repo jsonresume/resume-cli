@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-var path = require('path');
 var pkg = require('./package.json');
 var lib = require('./lib');
 var program = require('commander');
@@ -21,9 +20,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     program
         .command('init')
         .description('Initialize a resume.json file')
-        .action(function() {
-            lib.init();
-        });
+        .action(lib.init);
 
     program
         .command('register')
@@ -35,9 +32,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     program
         .command('login')
         .description('Stores a user session.')
-        .action(function() {
-            lib.login();
-        });
+        .action(lib.login);
 
     program
         .command('settings')
