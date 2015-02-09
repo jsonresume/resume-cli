@@ -30,11 +30,11 @@
     "resume-to-html": "latest",
     "resume-to-text": "latest",
     "superagent": "^0.18.0",
-    "terminal-menu": "^0.3.2"
+    "terminal-menu": "^0.3.2",
+    "node-static": "~0.7.6"
   },
   "devDependencies": {
     "tap-spec": "^0.2.0",
-    "tape": "^2.13.3",
-    "node-static": "~0.7.6"
+    "tape": "^2.13.3"
   }
 }
