@@ -5,7 +5,7 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/index.js | tap-spec"
+		"test": "NODE_ENV=test node node_modules/mocha/bin/mocha  test test/*-test.js"
   },
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
     "node-static": "~0.7.6"
   },
   "devDependencies": {
-    "tap-spec": "^0.2.0",
-    "tape": "^2.13.3"
+    "mocha": "^2.2.4",
+    "should": "^6.0.1"
   }
 }
