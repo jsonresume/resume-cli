@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-var pkg = require('./package.json');
-var lib = require('./lib');
-var program = require('commander');
-var async = require('async');
-var colors = require('colors');
-var chalk = require('chalk');
-var read = require('read');
+var pkg = require('./package.json'),
+    lib = require('./lib'),
+    program = require('commander'),
+    async = require('async'),
+    colors = require('colors'),
+    chalk = require('chalk'),
+    read = require('read'),
+    path = require('path');
 
 program
     .usage("[command] [options]")
@@ -62,7 +63,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
         .action(function(fileName) {
             lib.exportResume(results.resumeJson, fileName, program, function(err, fileName, format) {
-                console.log(chalk.green('\nDone! Find your new', format, 'resume at', process.cwd() + '/' + fileName + format));
+                console.log(chalk.green('\nDone! Find your new', format, 'resume at:\n', path.resolve(process.cwd(), fileName)));
             });
         });
 
