@@ -22,7 +22,7 @@ describe('Register tests', function() {
         });
     });
 
-    it('should delete users', function(done) {
+    it('should delete user', function(done) {
 
         deleteUser({
             email: user.email,
