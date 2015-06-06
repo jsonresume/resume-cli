@@ -1,6 +1,8 @@
 var should = require('should');
 var registerUser = require('../lib/register/register-user');
 var deleteUser = require('../lib/settings/delete-user');
+var publishResume = require('../lib/publish/publish-resume');
+
 
 describe('Register tests', function() {
     this.timeout(3000);
@@ -19,6 +21,25 @@ describe('Register tests', function() {
             user.email.should.be.exactly(res.email);
 
             done();
+        });
+    });
+
+    it('should publish guest resume', function(done) {
+
+        var resumeJson = require('./resume.json');
+        var theme = 'flat'
+        var email = null;
+        var password = null;
+        var guest = true;
+        var resumePassword = false;
+        var session = null;
+
+        publishResume(resumeJson, theme, email, password, guest, resumePassword, session, function(err, res) {
+            should.not.exist(err);
+            res.body.should.have.property('url');
+
+            done();
+            // remove geust resume
         });
     });
 

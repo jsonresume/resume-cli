@@ -1,5 +1,6 @@
 # resume-cli
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsonresume/public?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/jsonresume/resume-cli.svg?branch=master)](https://travis-ci.org/jsonresume/resume-cli) [![Dependency Status](https://david-dm.org/jsonresume/resume-cli.svg)](https://david-dm.org/jsonresume/resume-cli) [![devDependency Status](https://david-dm.org/jsonresume/resume-cli/dev-status.svg)](https://david-dm.org/jsonresume/resume-cli#info=devDependencies)  [![](https://badge.fury.io/js/resume-cli.svg)](https://www.npmjs.org/package/resume-cli)
 
 This is the command line tool for [JSON Resume](https://jsonresume.org/), the open source initiative to create a JSON-based standard for resumes.
@@ -38,7 +39,7 @@ For a complete list of options and commands.
 resume init
 ```
 
-Creates a new resume.json file in your current working directory.   
+Creates a new resume.json file in your current working directory.
 
 Complete the resume.json with your text editor, following the schema available at:  
 http://jsonresume.org/
@@ -66,7 +67,7 @@ resume register
 
 _Registration is optional._
 
-To publish your resume to your account with a custom domain extension at http://registry.jsonresume.org/, you will first need to acquire login credentials. 
+To publish your resume to your account with a custom domain extension at http://registry.jsonresume.org/, you will first need to acquire login credentials.
 
 ```
 resume publish
