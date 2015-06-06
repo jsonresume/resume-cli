@@ -38,7 +38,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
         .command('login')
         .description('Stores a user session.')
         .action(function() {
-            lib.login();
+            lib.login(results.resumeJson);
         });
 
     program
@@ -103,8 +103,8 @@ async.waterfall(lib.waterfallArray, function(err, results) {
 
 
 // error handling on export wrong theme name server side
-// prompt user session time. 
-// export, post to theme server. 
+// prompt user session time.
+// export, post to theme server.
 // change theme to always use the server
 
 // get rid of npm install warning: html to text, wrong node version
@@ -115,6 +115,6 @@ async.waterfall(lib.waterfallArray, function(err, results) {
 // use jsonlint before schema tests run.
 // run more tests on windows
 
-// settings change theme errors if 'account does not exist errors' or resume does not exist. 
-// resume doesn't handle test errors on 'resume publish' properly.  
+// settings change theme errors if 'account does not exist errors' or resume does not exist.
+// resume doesn't handle test errors on 'resume publish' properly.
 // or resume test is not running before publish as it should
