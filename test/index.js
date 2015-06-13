@@ -1,57 +1,77 @@
 var should = require('should');
 var registerUser = require('../lib/register/register-user');
+var changeTheme = require('../lib/settings/change-theme');
 var deleteUser = require('../lib/settings/delete-user');
 var publishResume = require('../lib/publish/publish-resume');
 
 
 describe('Register tests', function() {
-    this.timeout(3000);
+  this.timeout(3000);
 
-    var user = {
-        username: 'test1',
-        email: 'test1@test1.com',
-        password: 'test1'
-    };
+  var user = {
+    username: 'test1',
+    email: 'test1@test1.com',
+    password: 'test1'
+  };
 
-    it('should register user', function(done) {
+  it('should register user', function(done) {
 
-        registerUser(user, function(err, res) {
-            should.not.exist(err);
-            user.username.should.be.exactly(res.username);
-            user.email.should.be.exactly(res.email);
+    registerUser(user, function(err, res) {
+      should.not.exist(err);
+      user.username.should.be.exactly(res.username);
+      user.email.should.be.exactly(res.email);
 
-            done();
-        });
+      done();
+    });
+  });
+
+  it('should change theme', function(done) {
+
+    changeTheme({
+      email: user.email,
+      password: user.password,
+      theme: 'flat',
+      changeTheme: true
+    }, function(err, res) {
+
+      should.not.exist(err);
+
+      console.log(err, res.body);
+
+      done();
+
     });
 
-    it('should publish guest resume', function(done) {
+  });
 
-        var resumeJson = require('./resume.json');
-        var theme = 'flat'
-        var email = null;
-        var password = null;
-        var guest = true;
-        var resumePassword = false;
-        var session = null;
+  it('should publish guest resume', function(done) {
 
-        publishResume(resumeJson, theme, email, password, guest, resumePassword, session, function(err, res) {
-            should.not.exist(err);
-            res.body.should.have.property('url');
+    var resumeJson = require('./resume.json');
+    var theme = 'flat'
+    var email = null;
+    var password = null;
+    var guest = true;
+    var resumePassword = false;
+    var session = null;
 
-            done();
-            // remove geust resume
-        });
+    publishResume(resumeJson, theme, email, password, guest, resumePassword, session, function(err, res) {
+      should.not.exist(err);
+      res.body.should.have.property('url');
+
+      done();
+      // remove geust resume
     });
+  });
 
-    it('should delete user', function(done) {
+  it('should delete user', function(done) {
 
-        deleteUser({
-            email: user.email,
-            password: user.password
-        }, function(err, res) {
-            should.not.exist(err);
+    deleteUser({
+      email: user.email,
+      password: user.password
+    }, function(err, res) {
+      should.not.exist(err);
 
-            done();
-        });
+      done();
     });
+  });
 });
