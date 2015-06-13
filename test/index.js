@@ -1,9 +1,9 @@
 var should = require('should');
 var registerUser = require('../lib/register/register-user');
 var changeTheme = require('../lib/settings/change-theme');
+var changePassword = require('../lib/settings/change-password');
 var deleteUser = require('../lib/settings/delete-user');
 var publishResume = require('../lib/publish/publish-resume');
-
 
 describe('Register tests', function() {
   this.timeout(3000);
@@ -39,9 +39,33 @@ describe('Register tests', function() {
       console.log(err, res.body);
 
       done();
+    });
+  });
+
+  it('should change password', function(done) {
+
+    var newPassword = 'arbitraryString';
+
+    var data = {
+      email: user.email,
+      currentPassword: user.password,
+      newPassword: newPassword,
+      confirmPassword: newPassword
+    };
+
+    // update password on user object
+    user.password = newPassword;
+
+    changePassword(data, function(err, res) {
+      should.not.exist(err);
+      res.statusCode.should.be.exactly(200);
+      res.body.should.have.property('message', 'password updated');
+
+      console.log(err, res.statusCode, res.body);
+
+      done();
 
     });
-
   });
 
   it('should publish guest resume', function(done) {
