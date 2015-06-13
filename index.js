@@ -9,6 +9,8 @@ var chalk = require('chalk');
 var read = require('read');
 var path = require('path');
 
+async.auto(lib.waterfallArray, function(err, results) {
+
 program
   .usage("[command] [options]")
   .version(pkg.version)
@@ -18,7 +20,6 @@ program
   .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
   .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
-async.waterfall(lib.waterfallArray, function(err, results) {
 
   program
     .command('init')
@@ -31,7 +32,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     .command('register')
     .description('Register an account at https://registry.jsonresume.org')
     .action(function() {
-      lib.register(results.resumeJson);
+      lib.register(results.getResume);
     });
 
   program
@@ -45,7 +46,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     .command('settings')
     .description('Change theme, change password, delete account.')
     .action(function() {
-      lib.settings(results.resumeJson, program, results.config);
+      lib.settings(results.getResume, program, results.getConfig);
     });
 
   // if validation does not pass type resume test
@@ -53,7 +54,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     .command('test')
     .description('Schema validation test your resume.json')
     .action(function() {
-      lib.test.validate(results.resumeJson, function(error, response) {
+      lib.test.validate(results.getResume, function(error, response) {
         error && console.log(response.message);
       });
     });
@@ -62,7 +63,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     .command('export [fileName]')
     .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
     .action(function(fileName) {
-      lib.exportResume(results.resumeJson, fileName, program, function(err, fileName, format) {
+      lib.exportResume(results.getResume, fileName, program, function(err, fileName, format) {
         console.log(chalk.green('\nDone! Find your new', format, 'resume at:\n', path.resolve(process.cwd(), fileName)));
       });
     });
@@ -71,7 +72,7 @@ async.waterfall(lib.waterfallArray, function(err, results) {
     .command('publish')
     .description('Publish your resume to https://registry.jsonresume.org')
     .action(function() {
-      lib.publish(results.resumeJson, program, results.config);
+      lib.publish(results.getResume, program, results.getConfig);
     });
 
   program
