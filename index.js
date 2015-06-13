@@ -9,7 +9,7 @@ var chalk = require('chalk');
 var read = require('read');
 var path = require('path');
 
-async.auto(lib.waterfallArray, function(err, results) {
+async.auto(lib.flow, function(err, results) {
 
 program
   .usage("[command] [options]")
