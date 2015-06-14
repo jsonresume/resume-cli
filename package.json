@@ -5,7 +5,7 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test node node_modules/mocha/bin/mocha test test/*.js"
+    "test": "mocha test test/*.js"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "resume-to-html": "latest",
     "resume-to-text": "latest",
     "superagent": "^0.18.0",
-    "terminal-menu": "^0.3.2"
+    "terminal-menu": "2.1.1"
   },
   "devDependencies": {
     "mocha": "^2.2.4",
