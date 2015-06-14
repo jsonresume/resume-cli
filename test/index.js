@@ -4,6 +4,7 @@ var changeTheme = require('../lib/settings/change-theme');
 var changePassword = require('../lib/settings/change-password');
 var deleteUser = require('../lib/settings/delete-user');
 var publishResume = require('../lib/publish/publish-resume');
+var loginRequest = require('../lib/login/login-request');
 
 describe('Register tests', function() {
   this.timeout(3000);
@@ -23,6 +24,20 @@ describe('Register tests', function() {
 
       done();
     });
+  });
+
+  it('should receive a Successful login response', function(done) {
+
+    loginRequest({
+      email: user.email,
+      password: user.password
+    }, function(err, res){
+      should.not.exist(err);
+      res.body.should.have.property('message', 'loggedIn');
+
+      done();
+    });
+
   });
 
   it('should change theme', function(done) {
