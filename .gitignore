@@ -1,6 +1,7 @@
 node_modules
 resume.json
 resume.json.bak
+!README.md
 *.html
 *.md
 *.pdf
