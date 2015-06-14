@@ -9,17 +9,16 @@ var chalk = require('chalk');
 var read = require('read');
 var path = require('path');
 
-async.auto(lib.flow, function(err, results) {
+async.auto(lib['pre-flow'], function(err, results) {
 
-program
-  .usage("[command] [options]")
-  .version(pkg.version)
-  .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'flat')
-  .option('-F, --force', 'Used by `publish` - bypasses schema testing.')
-  .option('-f, --format <file type extension>', 'Used by `export`.')
-  .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
-  .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
-
+  program
+    .usage("[command] [options]")
+    .version(pkg.version)
+    .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'flat')
+    .option('-F, --force', 'Used by `publish` - bypasses schema testing.')
+    .option('-f, --format <file type extension>', 'Used by `export`.')
+    .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
+    .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
   program
     .command('init')
@@ -49,7 +48,6 @@ program
       lib.settings(results.getResume, program, results.getConfig);
     });
 
-  // if validation does not pass type resume test
   program
     .command('test')
     .description('Schema validation test your resume.json')
@@ -97,25 +95,5 @@ program
     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
     program.help();
   }
+
 });
-
-
-// every time you publish, theme is changed to default. need to keep current theme
-
-
-// error handling on export wrong theme name server side
-// prompt user session time.
-// export, post to theme server.
-// change theme to always use the server
-
-// get rid of npm install warning: html to text, wrong node version
-// get text converter working again
-
-// version test on menu does not show
-// publishing to non existent account error handling
-// use jsonlint before schema tests run.
-// run more tests on windows
-
-// settings change theme errors if 'account does not exist errors' or resume does not exist.
-// resume doesn't handle test errors on 'resume publish' properly.
-// or resume test is not running before publish as it should
