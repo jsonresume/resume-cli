@@ -20,11 +20,13 @@ async.auto(lib['pre-flow'], function(err, results) {
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
     .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false);
 
+
   program
     .command('init')
     .description('Initialize a resume.json file')
     .action(function() {
       lib.init();
+
     });
 
   program
@@ -38,7 +40,7 @@ async.auto(lib['pre-flow'], function(err, results) {
     .command('login')
     .description('Stores a user session.')
     .action(function() {
-      lib.login();
+      lib.login(results.getResume);
     });
 
   program
@@ -86,6 +88,7 @@ async.auto(lib['pre-flow'], function(err, results) {
     return cmd._name;
   });
 
+
   if (!program.args.length) {
     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
     program.help();
@@ -95,5 +98,5 @@ async.auto(lib['pre-flow'], function(err, results) {
     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
     program.help();
   }
-
+  
 });
