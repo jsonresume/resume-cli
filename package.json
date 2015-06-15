@@ -18,7 +18,7 @@
   "preferGlobal": true,
   "dependencies": {
     "async": "^1.2.1",
-    "chalk": "^0.4.0",
+    "chalk": "^1.0.0",
     "char-spinner": "^1.0.1",
     "cli-spinner": "^0.1.5",
     "colors": "^0.6.2",
