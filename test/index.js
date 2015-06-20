@@ -113,4 +113,9 @@ describe('Register tests', function() {
       done();
     });
   });
+
+});
+
+describe('TODO:', function () {
+  it('the server should return an error if session login does not work');
 });
