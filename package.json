@@ -30,11 +30,11 @@
     "resume-schema": "latest",
     "resume-to-html": "latest",
     "resume-to-text": "latest",
+    "should": "^7.0.1",
     "superagent": "^1.2.0",
     "terminal-menu": "2.1.1"
   },
   "devDependencies": {
-    "mocha": "^2.2.4",
-    "should": "^6.0.1"
+    "mocha": "^2.2.4"
   }
 }
