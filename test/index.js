@@ -42,9 +42,13 @@ describe('Register tests', function() {
   });
 
   it('should fail to register user if username already exists', function(done) {
+    // TODO test for missing password field
+    var userX = {
+      username: user.username,
+      email: 'userX@email.com',
+      password: user.password
+    };
 
-    var userX = user;
-    userX.email = 'userX@email.com';
     registerUser(userX, function(err, res) {
       should.exist(err);
       err.status.should.be.exactly(409); // HTTP status Conflict
@@ -56,31 +60,23 @@ describe('Register tests', function() {
   });
 
   it('should receive a Successful login response', function(done) {
-
-    loginRequest({
-      email: user.email,
-      password: user.password
-    }, function(err, res) {
+    loginRequest(user, function(err, res) {
+      console.log(res.body);
       should.not.exist(err);
       res.body.should.have.property('message', 'loggedIn');
 
       done();
     });
-
   });
 
   it('should change theme', function(done) {
-
     changeTheme({
       email: user.email,
       password: user.password,
       theme: 'flat',
       changeTheme: true
     }, function(err, res) {
-
       should.not.exist(err);
-
-      console.log(err, res.body);
 
       done();
     });
@@ -142,7 +138,6 @@ describe('Register tests', function() {
       done();
     });
   });
-
 });
 
 describe('TODO:', function() {
