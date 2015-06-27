@@ -1,3 +1,4 @@
+require('dotenv').load();
 var should = require('should');
 var registerUser = require('../lib/register/register-user');
 var changeTheme = require('../lib/settings/change-theme');
@@ -15,12 +16,40 @@ describe('Register tests', function() {
     password: 'test1'
   };
 
-  it('should register user', function(done) {
+  before(function(done) {
+    // clear out test user
+    deleteUser(user, done);
+  });
 
+  it('should register user', function(done) {
     registerUser(user, function(err, res) {
       should.not.exist(err);
       user.username.should.be.exactly(res.username);
       user.email.should.be.exactly(res.email);
+
+      done();
+    });
+  });
+
+  it('should fail to register user is the email already exists in the registry', function(done) {
+    registerUser(user, function(err, res) {
+      should.exist(err);
+      err.status.should.be.exactly(409); // HTTP status Conflict
+      // TODO test for response body after we update the server to send a json response
+
+      done();
+    });
+  });
+
+  it('should fail to register user if username already exists', function(done) {
+
+    var userX = user;
+    userX.email = 'userX@email.com';
+    registerUser(userX, function(err, res) {
+      should.exist(err);
+      err.status.should.be.exactly(409); // HTTP status Conflict
+      // TODO test for response body after we update the server to send a json response
+      // Specifically that the correct 'username is taken' response is returned
 
       done();
     });
@@ -31,7 +60,7 @@ describe('Register tests', function() {
     loginRequest({
       email: user.email,
       password: user.password
-    }, function(err, res){
+    }, function(err, res) {
       should.not.exist(err);
       res.body.should.have.property('message', 'loggedIn');
 
@@ -116,6 +145,6 @@ describe('Register tests', function() {
 
 });
 
-describe('TODO:', function () {
+describe('TODO:', function() {
   it('the server should return an error if session login does not work');
 });

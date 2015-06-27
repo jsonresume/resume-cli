@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 
+// process.env.REGISTRY_SERVER = 'http://registry.jsonresume.org';
+//
+// if(process.env.node_modules === 'test') {
+//   process.env.REGISTRY_SERVER = 'http://localhost:5000';
+// }
+require('dotenv').load();
+// console.log(process.env.REGISTRY_SERVER);
+
 var pkg = require('./package.json');
 var lib = require('./lib');
 var program = require('commander');
@@ -98,5 +106,4 @@ async.auto(lib['pre-flow'], function(err, results) {
     console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
     program.help();
   }
-  
 });

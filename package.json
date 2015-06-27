@@ -5,7 +5,7 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test test/*.js"
+    "test": "node node_modules/mocha/bin/mocha test test/*.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "cli-spinner": "^0.1.5",
     "colors": "^0.6.2",
     "commander": "^2.2.0",
+    "dotenv": "^1.2.0",
     "jsonlint": "^1.6.0",
     "node-static": "~0.7.6",
     "open": "0.0.5",
