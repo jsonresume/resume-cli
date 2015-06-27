@@ -27,7 +27,7 @@
     "jsonlint": "^1.6.0",
     "node-static": "~0.7.6",
     "open": "0.0.5",
-    "read": "^1.0.5",
+    "read": "~1.0.6",
     "resume-schema": "latest",
     "resume-to-html": "latest",
     "resume-to-text": "latest",
