@@ -11,6 +11,9 @@ var path = require('path');
 
 lib.preFlow(function(err, results) {
 
+  var resumeJson = results.getResume;
+  var config = results.getConfig;
+
   program
     .usage("[command] [options]")
     .version(pkg.version)
@@ -23,34 +26,36 @@ lib.preFlow(function(err, results) {
   program
     .command('init')
     .description('Initialize a resume.json file')
-    .action(lib.init);
+    .action(function() {
+      lib.init()
+    });
 
   program
     .command('register')
     .description('Register an account at https://registry.jsonresume.org')
     .action(function() {
-      lib.register(results.getResume);
+      lib.register(resumeJson);
     });
 
   program
     .command('login')
     .description('Stores a user session.')
     .action(function() {
-      lib.login(results.getResume);
+      lib.login(resumeJson);
     });
 
   program
     .command('settings')
     .description('Change theme, change password, delete account.')
     .action(function() {
-      lib.settings(results.getResume, program, results.getConfig);
+      lib.settings(resumeJson, program, config);
     });
 
   program
     .command('test')
     .description('Schema validation test your resume.json')
     .action(function() {
-      lib.test.validate(results.getResume, function(error, response) {
+      lib.test.validate(resumeJson, function(error, response) {
         error && console.log(response.message);
       });
     });
@@ -59,7 +64,7 @@ lib.preFlow(function(err, results) {
     .command('export [fileName]')
     .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
     .action(function(fileName) {
-      lib.exportResume(results.getResume, fileName, program, function(err, fileName, format) {
+      lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
         console.log(chalk.green('\nDone! Find your new', format, 'resume at:\n', path.resolve(process.cwd(), fileName)));
       });
     });
@@ -68,7 +73,7 @@ lib.preFlow(function(err, results) {
     .command('publish')
     .description('Publish your resume to https://registry.jsonresume.org')
     .action(function() {
-      lib.publish(results.getResume, program, results.getConfig);
+      lib.publish(resumeJson, program, config);
     });
 
   program
