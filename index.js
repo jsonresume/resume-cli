@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require('dotenv').load();
+require('dotenv').load({silent: true});
 var pkg = require('./package.json');
 var lib = require('./lib');
 var program = require('commander');
