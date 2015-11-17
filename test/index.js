@@ -10,10 +10,11 @@ var loginRequest = require('../lib/login/login-request');
 describe('Register tests', function() {
   this.timeout(3000);
 
+  var random = Math.random() * 999;
   var user = {
-    username: 'test123',
-    email: 'test123@test1.com',
-    password: 'test123'
+    username: 'test' + random,
+    email: 'test123' + random + '@test1.com',
+    password: 'test123' + random
   };
 
   before(function(done) {
