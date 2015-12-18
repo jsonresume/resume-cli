@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 require('dotenv').load({silent: true});
-var pkg = require('./package.json');
-var lib = require('./lib');
+var pkg = require(__dirname + '/package.json');
+var lib = require(__dirname + '/lib');
 var program = require('commander');
 var colors = require('colors');
 var chalk = require('chalk');
