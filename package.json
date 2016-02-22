@@ -1,6 +1,6 @@
 {
   "name": "resume-cli",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "The JSON Resume command line interface",
   "main": "index.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "resume-to-text": "latest",
     "should": "^8.0.2",
     "superagent": "^1.6.1",
-    "terminal-menu": "2.1.1"
+    "terminal-menu": "^0.3.2"
   },
   "devDependencies": {
     "mocha": "^2.3.4"
