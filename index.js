@@ -62,7 +62,7 @@ lib.preFlow(function(err, results) {
 
   program
     .command('export [fileName]')
-    .description('Export locally to .html, .md or .pdf. Supply a --format <file format> flag and argument to specify export format.')
+    .description('Export locally to .html or .pdf. Supply a --format <file format> flag and argument to specify export format.')
     .action(function(fileName) {
       lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
         console.log(chalk.green('\nDone! Find your new', format, 'resume at:\n', path.resolve(process.cwd(), fileName)));
