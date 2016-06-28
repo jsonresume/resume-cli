@@ -22,7 +22,7 @@
     "cli-spinner": "^0.2.1",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "dotenv": "^1.2.0",
+    "dotenv": "^2.0.0",
     "jsonlint": "^1.6.2",
     "node-static": "~0.7.7",
     "open": "0.0.5",
@@ -30,9 +30,9 @@
     "resume-schema": "latest",
     "resume-to-html": "latest",
     "resume-to-text": "latest",
-    "should": "^8.0.2",
-    "superagent": "^1.6.1",
-    "terminal-menu": "^0.3.2"
+    "should": "^9.0.2",
+    "superagent": "^2.0.0",
+    "terminal-menu": "^2.1.1"
   },
   "devDependencies": {
     "mocha": "^2.3.4"
