@@ -3,7 +3,7 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsonresume/public?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/jsonresume/resume-cli.svg?branch=master)](https://travis-ci.org/jsonresume/resume-cli) [![Dependency Status](https://david-dm.org/jsonresume/resume-cli.svg)](https://david-dm.org/jsonresume/resume-cli) [![devDependency Status](https://david-dm.org/jsonresume/resume-cli/dev-status.svg)](https://david-dm.org/jsonresume/resume-cli#info=devDependencies)  [![](https://badge.fury.io/js/resume-cli.svg)](https://www.npmjs.org/package/resume-cli)
 
-This is the command line tool for [JSON Resume](https://jsonresume.org/), the open source initiative to create a JSON-based standard for resumes.
+This is the command line tool for [JSON Resume](https://jsonresume.org), the open source initiative to create a JSON-based standard for resumes.
 
 [Read more...](https://jsonresume.org/schema/)
 
@@ -15,78 +15,82 @@ This is the command line tool for [JSON Resume](https://jsonresume.org/), the op
 
 ## IRC
 
-```
-#jsonresume on freenode
-```
+Use your favorite IRC client to join the `#jsonresume` channel on Freenode.  
 
-You can use the web client [http://webchat.freenode.net/](http://webchat.freenode.net?channels=%23jsonresume).
+Or instead, you can use the web client:  [http://webchat.freenode.net](http://webchat.freenode.net?channels=%23jsonresume).
+
 
 # Getting Started
+
+Install the command-line tool:
 
 ```
 npm install -g resume-cli
 ```
 
+
 # Usage
 
-```
-resume --help
-```
+## `resume --help`
 
-For a complete list of options and commands.
+Show a list of options and commands for the <abbr title="Command Line Interface">CLI</abbr>.
 
-```
-resume init
-```
 
-Creates a new resume.json file in your current working directory.
+## `resume init`
 
-Complete the resume.json with your text editor, following the schema available at:  
-http://jsonresume.org/
+Creates a new `resume.json` file in your current working directory.
 
-```
-resume test
-```
+Complete the `resume.json` with your text editor. Be sure to follow the schema 
+(available at http://jsonresume.org).
 
-Runs your resume.json through our schema tests to ensure it complies with the standard and tries to identify where any errors may be occurring.
 
-```
-resume export [fileName]
-```
+## `resume test`
 
-Exports your resume locally in a stylized html, markdown, or pdf format.
+Validates your `resume.json` against our schema tests to ensure it complies with 
+the standard. Tries to identify where any errors may be occurring.
 
-Use the `--format` flag to specify file type. Example: `--format pdf`
 
-Use the `--theme <name>` flag to specify theme. Example: `--theme flat`  
-_A list of available themes can be found here: http://jsonresume.org/themes/_
+## `resume export [fileName]`
 
-```
-resume register
-```
+Exports your resume locally in a stylized HTML, Markdown, or PDF format.
+
+A list of available themes can be found here: http://jsonresume.org/themes/
+
+Options:
+  - `--format <file type>` Example: `--format pdf`
+  - `--theme <name>` Example: `--theme flat`  
+
+
+## `resume register`
 
 _Registration is optional._
 
-To publish your resume to your account with a custom domain extension at http://registry.jsonresume.org/, you will first need to acquire login credentials.
+To publish your resume to your account with a custom domain extension at 
+http://registry.jsonresume.org. You will first need to acquire login credentials.
 
-```
-resume publish
-```
+
+## `resume publish`
+
 
 This command will guide you through the publish process.
-Consider using the theme flag to style your resume (Default: `flat`).
 
-Example: `resume publish --theme flat`
+Options:
+  - `--theme <name>` Style your resume. (Default: `flat`)
 
-```
-resume serve
-```
 
-Starts a web server that serves your local resume.json.  
-Options: `--port <port>`, `--theme <name>`
+## `resume serve`
 
-If no theme is specified, it will try to locate a local `index.js` and call the `render()` function. This is useful when developing themes.
+Starts a web server that serves your local `resume.json`.  
 
-## License
+Options: 
+  - `--port <port>`
+  - `--theme <name>`
+
+If no theme is specified, it will look for the file `index.js` and call 
+`render()`. This is useful when developing themes.
+
+
+
+# License
 
 Available under [the MIT license](http://mths.be/mit).
