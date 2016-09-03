@@ -57,8 +57,8 @@ lib.preFlow(function(err, results) {
     .command('test')
     .description('Schema validation test your resume.json')
     .action(function() {
-      lib.test.validate(resumeJson, function(error, response) {
-        error && console.log(response.message);
+      lib.test.validate(resumeJson, function(error) {
+        this.process.exit(error ? 1 : 0)
       });
     });
 
