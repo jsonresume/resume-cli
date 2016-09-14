@@ -66,10 +66,14 @@ lib.preFlow(function(err, results) {
     .command('export [fileName]')
     .description('Export locally to .html or .pdf. Supply a --format <file format> flag and argument to specify export format.')
     .action(function(fileName) {
-      lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
-        console.log(chalk.green('\nDone! Find your new', format, 'resume at:\n', path.resolve(process.cwd(), fileName)));
-        process.exit()
-      });
+      if (!resumeJson) {
+        console.log(chalk.red('\nError with your file!'))
+      } else {
+          lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
+            console.log(chalk.green('\nDone! Find your new', format, 'resume at:\n', path.resolve(process.cwd(), fileName)));
+            process.exit()
+          });
+        }
     });
 
   program
