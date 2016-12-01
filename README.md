@@ -70,6 +70,10 @@ _Registration is optional._
 To publish your resume to your account with a custom domain extension at 
 http://registry.jsonresume.org. You will first need to acquire login credentials.
 
+## `resume login`
+
+To log into a registered account. This will allow you to publish with requiring you to reenter your credentials.
+
 
 ## `resume publish`
 
