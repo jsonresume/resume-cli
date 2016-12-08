@@ -17,7 +17,7 @@ lib.preFlow(function(err, results) {
   program
     .usage("[command] [options]")
     .version(pkg.version)
-    .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, traditional, crisp)', 'flat')
+    .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, crisp, flat: default)', 'flat')
     .option('-F, --force', 'Used by `publish` - bypasses schema testing.')
     .option('-f, --format <file type extension>', 'Used by `export`.')
     .option('-r, --resume <resume filename>', 'Used by `serve` (default: resume.json)', path.join(process.cwd(), 'resume.json'))
