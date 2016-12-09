@@ -4,3 +4,5 @@ resume.json
 *.html
 *.md
 *.pdf
+dist/   
+npm-debug.log

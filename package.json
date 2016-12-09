@@ -4,6 +4,8 @@
   "description": "The JSON Resume command line interface",
   "main": "index.js",
   "scripts": {
+    "lint": "tslint 'src/**/*.ts'",
+    "buid": "tsc",
     "test": "node node_modules/mocha/bin/mocha test test/*.js"
   },
   "repository": {
@@ -35,9 +37,8 @@
     "terminal-menu": "^2.1.1"
   },
   "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "@types/commander": "^2.3.30",
     "mocha": "^3.0.2"
-  },
-  "engines": {
-    "node": "^4"
   }
 }
