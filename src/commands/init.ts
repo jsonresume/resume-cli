@@ -1,6 +1,6 @@
 import {ResumeCommand} from './command';
 import {ICommand} from 'commander';
-import {initResume} from '../actions/init';
+import {InitAction} from '../actions/init';
 
 
 export class InitCommand extends ResumeCommand {
@@ -13,6 +13,7 @@ export class InitCommand extends ResumeCommand {
     }
 
     execute(){
-        initResume(this.resumeJson, this.fileName);
+        let init : InitAction = new InitAction();
+        init.initResume(this.resumeJson, this.fileName);
     }
 }

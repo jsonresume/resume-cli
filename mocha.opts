@@ -1,0 +1,5 @@
+--require ts-node/register
+--reporter dot
+--watch-extensions tsx,ts
+test/**/*.ts
+test/**/*.tsx
