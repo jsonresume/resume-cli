@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
-import {ICommand} from 'commander';
+import {IExpandedCommand} from './commands/commander-extension';
 import {commands} from './commands';
 import {InitCommand} from './commands/init';
 
-let program : ICommand = require('commander');
+let program : IExpandedCommand = require('commander');
 
 program
   .usage("[command] [options]")
+  .option('-t, --theme <theme name>', 'Specify theme for export or publish (modern, crisp, flat: default)', 'flat')
 
 // Take all commands from folder
 for(let command of commands){

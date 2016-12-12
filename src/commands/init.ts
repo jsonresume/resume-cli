@@ -1,10 +1,10 @@
 import {ResumeCommand} from './command';
-import {ICommand} from 'commander';
+import {IExpandedCommand} from './commander-extension';
 import {InitAction} from '../actions/init';
-
+import {Resume} from '../models/resume';
 
 export class InitCommand extends ResumeCommand {
-    addFlags(program: ICommand) : ICommand{
+    addFlags(program: IExpandedCommand) : IExpandedCommand{
         program
         .command('init')
         .description('Initialize a resume.json file')
@@ -13,7 +13,8 @@ export class InitCommand extends ResumeCommand {
     }
 
     execute(){
+        let resume : Resume = new Resume('resume.json');
         let init : InitAction = new InitAction();
-        init.initResume(this.resumeJson, this.fileName);
+        init.initResume(resume);
     }
 }

@@ -1,14 +1,13 @@
-import {ICommand} from 'commander';
-export class ResumeCommand {
+import {IExpandedCommand} from './commander-extension';
+import {Resume} from '../models/Resume';
+
+export abstract class ResumeCommand {
     resumeJson : any;
     fileName : string;
+    resume : Resume;
 
-    addFlags(program: ICommand) : ICommand {
+    addFlags(program: IExpandedCommand) : IExpandedCommand {
         return program;
-    }
-
-    execute(){
-        return;
     }
 
     needsValidation() : boolean {
