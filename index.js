@@ -92,12 +92,12 @@ lib.preFlow(function(err, results) {
   });
 
   if (!program.args.length) {
-    console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
+    console.log('resume-cli:'.cyan, 'https://jsonresume.org', '\n');
     program.help();
 
   } else if (validCommands.indexOf(process.argv[2]) === -1) {
     console.log('Invalid argument:'.red, process.argv[2]);
-    console.log('resume-cli:'.cyan, 'http://jsonresume.org', '\n');
+    console.log('resume-cli:'.cyan, 'https://jsonresume.org', '\n');
     program.help();
   }
 });
