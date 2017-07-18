@@ -124,7 +124,7 @@ describe('Register tests', function() {
       res.body.should.have.property('url');
 
       done();
-      // remove geust resume
+      // TODO: remove guest resume
     });
   });
 
