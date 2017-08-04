@@ -52,14 +52,14 @@ the standard. Tries to identify where any errors may be occurring.
 
 ## `resume export [fileName]`
 
-Exports your resume locally in a stylized HTML, Markdown, or PDF format.
+Exports your resume locally in a stylized HTML, or PDF (currently broken) format.
 
 A list of available themes can be found here: http://jsonresume.org/themes/
 
 Please npm install the theme you wish to use locally before attempting to export it.
 
 Options:
-  - `--format <file type>` Example: `--format pdf`
+  - `--format <file type>` Example: `--format html`
   - `--theme <name>` Example: `--theme flat`  
 
 
