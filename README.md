@@ -19,14 +19,26 @@ Use your favorite IRC client to join the `#jsonresume` channel on Freenode.
 
 Or instead, you can use the web client:  [http://webchat.freenode.net](http://webchat.freenode.net?channels=%23jsonresume).
 
-
-# Getting Started
+# Getting Started (Local Install)
 
 Install the command-line tool:
 
 ```
 npm install -g resume-cli
 ```
+
+# Getting Started (Containerized Install)
+
+Assuming you have Docker installed on your host locally, you can run the utility in an ephemeral container to evoke the `resume-cli` utility. Now you do not have to worry having node installed or any other dependencies to get `resume-cli` up and running. The container by default has the additional [jsonresume-theme-morki](https://www.npmjs.com/package/jsonresume-theme-morki) theme built in, but you can modify the [Dockerfile](./Dockerfule) to install other themes as well. 
+
+To `resume-cli` simple add the following alias to your `~/.bashrc` file or equivalent: 
+
+```bash
+alias resume="docker run -it --rm -v $(pwd):/data mayankt/resume resume"
+```
+Remember to `source ~/.bashrc` before running the `resume` command or logout and login again to your shell. 
+
+Try the command `resume init` to see it work. It will save the output `resume.json` in the local directory from where you called the command. 
 
 
 # Usage
