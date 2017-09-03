@@ -34,7 +34,7 @@ Assuming you have Docker installed on your host locally, you can run the utility
 To `resume-cli` simple add the following alias to your `~/.bashrc` file or equivalent: 
 
 ```bash
-alias resume="docker run -it --rm -v pwd:/data mayankt/resume resume"
+alias resume="docker run -it --rm -v $(pwd):/data mayankt/resume resume"
 ```
 Remember to `source ~/.bashrc` before running the `resume` command or logout and login again to your shell. 
 
