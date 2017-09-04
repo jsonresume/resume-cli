@@ -29,7 +29,7 @@ npm install -g resume-cli
 
 # Getting Started (Containerized Install)
 
-Assuming you have Docker installed on your host locally, you can run the utility in an ephemeral container to evoke the `resume-cli` utility. Now you do not have to worry having node installed or any other dependencies to get `resume-cli` up and running. The container by default has the additional [jsonresume-theme-morki](https://www.npmjs.com/package/jsonresume-theme-morki) theme built in, but you can modify the [Dockerfile](./Dockerfule) to install other themes as well. 
+Assuming you have Docker installed on your host locally, you can run the utility in an ephemeral container to evoke the `resume-cli` utility. Now you do not have to worry having node installed or any other dependencies to get `resume-cli` up and running. The container by default has the additional [jsonresume-theme-elegant](https://www.npmjs.com/package/jsonresume-theme-elegant), [jsonresume-theme-slick](https://www.npmjs.com/package/jsonresume-theme-slick), and [jsonresume-theme-kendall](https://www.npmjs.com/package/jsonresume-theme-kendall) themes built in, but you can modify the [Dockerfile](./Dockerfile) to install other themes as well. 
 
 To `resume-cli` simple add the following alias to your `~/.bashrc` file or equivalent: 
 
