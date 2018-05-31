@@ -50,7 +50,8 @@ Validates your `resume.json` against our schema tests to ensure it complies with
 the standard. Tries to identify where any errors may be occurring.
 
 
-## `resume export [fileName]`
+## `resume export [output_fileName.extension]` 
+    extension can be html,pdf,md
 
 Exports your resume locally in a stylized HTML, Markdown, or PDF format.
 
