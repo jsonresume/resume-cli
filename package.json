@@ -35,12 +35,12 @@
     "resume-schema": "0.0.18",
     "resume-to-html": "latest",
     "resume-to-text": "latest",
-    "should": "^11.1.0",
     "superagent": "^3.8.3",
     "terminal-menu": "^2.1.1"
   },
   "devDependencies": {
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "should": "^11.1.0"
   },
   "engines": {
     "node": "^8"
