@@ -7,6 +7,10 @@ var program = require('commander');
 var chalk = require('chalk');
 var path = require('path');
 
+function getThemeName(theme) {
+  return theme.match('jsonresume-theme-.*') ? theme : `jsonresume-theme-${theme}`;
+}
+
 lib.preFlow(async function(err, results) {
 
   var resumeJson = results.getResume;
@@ -40,7 +44,7 @@ lib.preFlow(async function(err, results) {
     .command('export [fileName]')
     .description('Export locally to .html or .pdf. Supply a --format <file format> flag and argument to specify export format.')
     .action(function(fileName) {
-      lib.exportResume(resumeJson, fileName, program, function(err, fileName, format) {
+      lib.exportResume(resumeJson, fileName, getThemeName(program.theme), program.format, function(err, fileName, format) {
         console.log(chalk.green('\nDone! Find your new', format, 'resume at:\n', path.resolve(process.cwd(), fileName + format)));
       });
     });
@@ -49,7 +53,7 @@ lib.preFlow(async function(err, results) {
     .command('serve')
     .description('Serve resume at http://localhost:4000/')
     .action(function() {
-      lib.serve(program.port, program.theme, program.silent, program.dir, program.resume);
+      lib.serve(program.port, getThemeName(program.theme), program.silent, program.dir, program.resume);
     });
 
   await program.parseAsync(process.argv);
