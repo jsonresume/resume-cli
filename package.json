@@ -37,7 +37,7 @@
     "resume-to-html": "latest",
     "resume-to-text": "latest",
     "should": "^11.1.0",
-    "superagent": "^2.0.0",
+    "superagent": "^3.8.3",
     "terminal-menu": "^2.1.1"
   },
   "devDependencies": {
