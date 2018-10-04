@@ -48,7 +48,7 @@ Please npm install the theme you wish to use locally before attempting to export
 
 Options:
   - `--format <file type>` Example: `--format pdf`
-  - `--theme <name>` Example: `--theme flat`  
+  - `--theme <name>` Example: `--theme even`
 
 ## `resume serve`
 
