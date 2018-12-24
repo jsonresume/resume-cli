@@ -15,7 +15,18 @@ Install the command-line tool:
 ```
 npm install -g resume-cli
 ```
+# General commands at a glance
 
+| command | description |
+| ------- | ----------- |
+| init | Initialize a `resume.json` file |
+| register | Register an account at [jsonresume](https://registry.jsonresume.org) |
+| login | Stores a user session |
+| settings | Change theme, change password, delete account |
+| test | Schema validation test your `resume.json` |
+| export [fileName] | Export locally to `.html` or `.pdf` |
+| publish | Publish your resume to [jsonresume](https://registry.jsonresume.org) | 
+| serve | Serve resume at `http://localhost:4000/` |
 
 # Usage
 
