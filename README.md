@@ -15,7 +15,7 @@ Install the command-line tool:
 ```
 npm install -g resume-cli
 ```
-# General commands at a glance
+## Commands at a glance
 
 | command | description |
 | ------- | ----------- |
