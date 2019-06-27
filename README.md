@@ -62,28 +62,6 @@ Options:
   - `--format <file type>` Example: `--format pdf`
   - `--theme <name>` Example: `--theme flat`  
 
-
-## `resume register`
-
-_Registration is optional._
-
-To publish your resume to your account with a custom domain extension at 
-http://registry.jsonresume.org. You will first need to acquire login credentials.
-
-## `resume login`
-
-To log into a registered account. This will allow you to publish with requiring you to reenter your credentials.
-
-
-## `resume publish`
-
-
-This command will guide you through the publish process.
-
-Options:
-  - `--theme <name>` Style your resume. (Default: `flat`)
-
-
 ## `resume serve`
 
 Starts a web server that serves your local `resume.json`.  
