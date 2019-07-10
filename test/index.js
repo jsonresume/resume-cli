@@ -1,7 +1,8 @@
-require('dotenv').load();
-var should = require('should');
+require("dotenv").load();
+var should = require("should");
 
-describe('', function() {
-  it('', function(done) {
+describe("", function(done) {
+  it("", function(done) {
+    done();
   });
 });
