@@ -1,6 +1,6 @@
 {
   "name": "resume-cli",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "The JSON Resume command line interface",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "opn": "5.4.0",
     "puppeteer": "^1.0.0",
     "read": "~1.0.7",
-    "resume-schema": "latest",
+    "resume-schema": "0.0.17",
     "resume-to-html": "latest",
     "resume-to-text": "latest",
     "should": "^11.1.0",
