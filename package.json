@@ -17,6 +17,7 @@
   "preferGlobal": true,
   "dependencies": {
     "async": "^1.5.0",
+    "browser-sync": "^2.26.7",
     "btoa": "^1.2.1",
     "chalk": "^1.1.1",
     "char-spinner": "^1.0.1",
@@ -28,8 +29,6 @@
     "jsonresume-theme-crisp": "^0.2.12",
     "jsonresume-theme-flat": "^0.3.7",
     "jsonresume-theme-modern": "0.0.18",
-    "node-static": "~0.7.7",
-    "opn": "5.4.0",
     "puppeteer": "^1.0.0",
     "read": "~1.0.7",
     "resume-schema": "0.0.18",
