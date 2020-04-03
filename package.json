@@ -40,7 +40,10 @@
     "resume-to-text": "latest",
     "should": "^11.1.0",
     "superagent": "^3.8.3",
-    "terminal-menu": "^2.1.1"
+    "terminal-menu": "^2.1.1",
+    "util.promisify": "^1.0.1",
+    "z-schema": "^4.2.2",
+    "z-schema-errors": "^0.2.1"
   },
   "devDependencies": {
     "mocha": "^3.0.2"
