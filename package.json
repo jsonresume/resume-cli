@@ -22,7 +22,7 @@
     "char-spinner": "^1.0.1",
     "cli-spinner": "^0.2.1",
     "colors": "^1.1.2",
-    "commander": "^2.9.0",
+    "commander": "^5.0.0",
     "dotenv": "^2.0.0",
     "jsonlint": "^1.6.2",
     "jsonresume-theme-crisp": "^0.2.12",
