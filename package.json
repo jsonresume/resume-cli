@@ -3,6 +3,9 @@
   "version": "1.2.7",
   "description": "The JSON Resume command line interface",
   "main": "index.js",
+  "engines": {
+    "node": ">=7.10.1"
+  },
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha test test/*.js"
   },
