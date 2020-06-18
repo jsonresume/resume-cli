@@ -7,6 +7,8 @@
     "node": ">=10.18.1"
   },
   "scripts": {
+    "build": "tsc -p .",
+    "prepublish": "build ",
     "test": "node node_modules/mocha/bin/mocha test test/*.js"
   },
   "repository": {
@@ -46,6 +48,8 @@
     "z-schema-errors": "^0.2.1"
   },
   "devDependencies": {
-    "mocha": "^3.0.2"
+    "@types/node": "^14.0.13",
+    "mocha": "^3.0.2",
+    "typescript": "^3.9.5"
   }
 }
