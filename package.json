@@ -32,9 +32,7 @@
     "opn": "5.4.0",
     "puppeteer": "^1.0.0",
     "read": "~1.0.7",
-    "resume-schema": "0.0.18",
-    "resume-to-html": "latest",
-    "resume-to-text": "latest",
+    "resume-schema": "0.1.3",
     "should": "^11.1.0",
     "superagent": "^3.8.3",
     "terminal-menu": "^2.1.1"
