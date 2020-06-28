@@ -4,7 +4,6 @@ require('dotenv').config();
 var pkg = require('./package.json');
 var lib = require('./lib');
 var program = require('commander');
-var colors = require('colors');
 var chalk = require('chalk');
 var path = require('path');
 
@@ -60,12 +59,12 @@ lib.preFlow(async function(err, results) {
   });
 
   if (program.rawArgs.length < 3) {
-    console.log('resume-cli:'.cyan, 'https://jsonresume.org', '\n');
+    console.log(chalk.cyan('resume-cli:'), 'https://jsonresume.org', '\n');
     program.help();
 
   } else if (validCommands.indexOf(process.argv[2]) === -1) {
-    console.log('Invalid argument:'.red, process.argv[2]);
-    console.log('resume-cli:'.cyan, 'https://jsonresume.org', '\n');
+    console.log(chalk.red('Invalid argument:'), process.argv[2]);
+    console.log(chalk.cyan('resume-cli:'), 'https://jsonresume.org', '\n');
     program.help();
   }
 });
