@@ -58,6 +58,7 @@ lib.preFlow(async function(err, results) {
     return cmd._name;
   });
 
+  // https://github.com/tj/commander.js/blob/master/CHANGELOG.md#testing-for-no-arguments
   if (program.rawArgs.length < 3) {
     console.log(chalk.cyan('resume-cli:'), 'https://jsonresume.org', '\n');
     program.help();
