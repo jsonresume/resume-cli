@@ -59,7 +59,7 @@ lib.preFlow(async function(err, results) {
     return cmd._name;
   });
 
-  if (!program.args.length) {
+  if (program.rawArgs.length < 3) {
     console.log('resume-cli:'.cyan, 'https://jsonresume.org', '\n');
     program.help();
 
