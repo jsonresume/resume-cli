@@ -17,7 +17,6 @@
   "bin": {
     "resume": "index.js"
   },
-  "preferGlobal": true,
   "dependencies": {
     "async": "^3.2.0",
     "btoa": "^1.2.1",
