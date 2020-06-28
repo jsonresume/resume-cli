@@ -7,7 +7,7 @@
     "node": ">=10.18.1"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha test test/*.js"
+    "test": "mocha --exit"
   },
   "repository": {
     "type": "git",
