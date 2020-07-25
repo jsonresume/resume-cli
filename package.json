@@ -36,6 +36,7 @@
     "z-schema-errors": "^0.2.1"
   },
   "devDependencies": {
+    "eslint": "7.5.0",
     "mocha": "8.0.1"
   }
 }
