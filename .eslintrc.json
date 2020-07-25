@@ -1,0 +1,12 @@
+{
+  "env": {
+    "commonjs": true,
+    "es2017": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 9
+  }
+}
