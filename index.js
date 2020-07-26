@@ -15,7 +15,6 @@ function normalizeTheme(value, defaultValue) {
 lib.preFlow(async function(err, results) {
 
   var resumeJson = results.getResume;
-  var config = results.getConfig;
 
   program
     .usage("[command] [options]")
