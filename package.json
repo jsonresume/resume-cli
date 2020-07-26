@@ -7,6 +7,7 @@
     "node": ">=10.18.1"
   },
   "scripts": {
+    "format": "prettier --write .",
     "lint": "eslint --ignore-path .gitignore .",
     "test": "mocha"
   },
