@@ -8,5 +8,8 @@
   "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 9
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
   }
 }
