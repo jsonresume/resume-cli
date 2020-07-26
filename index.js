@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 require('dotenv').config();
-var pkg = require('./package.json');
-var lib = require('./lib');
-var program = require('commander');
-var chalk = require('chalk');
-var path = require('path');
+const pkg = require('./package.json');
+const lib = require('./lib');
+const program = require('commander');
+const chalk = require('chalk');
+const path = require('path');
 
 function normalizeTheme(value, defaultValue) {
   const theme = value || defaultValue;
@@ -14,7 +14,7 @@ function normalizeTheme(value, defaultValue) {
 
 lib.preFlow(async function(err, results) {
 
-  var resumeJson = results.getResume;
+  const resumeJson = results.getResume;
 
   program
     .usage("[command] [options]")
@@ -58,7 +58,7 @@ lib.preFlow(async function(err, results) {
 
   await program.parseAsync(process.argv);
 
-  var validCommands = program.commands.map(function(cmd) {
+  const validCommands = program.commands.map(function(cmd) {
     return cmd._name;
   });
 
