@@ -38,6 +38,8 @@
   },
   "devDependencies": {
     "eslint": "7.5.0",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.11",
     "mocha": "8.0.1"
   }
 }
