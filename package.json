@@ -7,6 +7,7 @@
     "node": ">=10.18.1"
   },
   "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
     "test": "mocha"
   },
   "repository": {
@@ -36,6 +37,9 @@
     "z-schema-errors": "^0.2.1"
   },
   "devDependencies": {
+    "eslint": "7.5.0",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.11",
     "mocha": "8.0.1"
   }
 }

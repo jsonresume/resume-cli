@@ -1,21 +1,20 @@
 #!/usr/bin/env node
 
 require('dotenv').config();
-var pkg = require('./package.json');
-var lib = require('./lib');
-var program = require('commander');
-var chalk = require('chalk');
-var path = require('path');
+const pkg = require('./package.json');
+const lib = require('./lib');
+const program = require('commander');
+const chalk = require('chalk');
+const path = require('path');
 
-function normalizeTheme(value, defaultValue) {
+const normalizeTheme = (value, defaultValue) => {
   const theme = value || defaultValue;
   return theme.match('jsonresume-theme-.*') ? theme : `jsonresume-theme-${theme}`;
 }
 
-lib.preFlow(async function(err, results) {
+lib.preFlow(async (err, results) => {
 
-  var resumeJson = results.getResume;
-  var config = results.getConfig;
+  const resumeJson = results.getResume;
 
   program
     .usage("[command] [options]")
@@ -30,22 +29,22 @@ lib.preFlow(async function(err, results) {
   program
     .command('init')
     .description('Initialize a resume.json file')
-    .action(function() {
+    .action(() => {
       lib.init()
     });
 
   program
     .command('test')
     .description('Schema validation test your resume.json')
-    .action(async function() {
+    .action(async () => {
       await lib.test(resumeJson);
     });
 
   program
     .command('export [fileName]')
     .description('Export locally to .html or .pdf. Supply a --format <file format> flag and argument to specify export format.')
-    .action(function(fileName) {
-      lib.exportResume(resumeJson, fileName, program.theme, program.format, function(err, fileName, format) {
+    .action((fileName) => {
+      lib.exportResume(resumeJson, fileName, program.theme, program.format, (err, fileName, format) => {
         console.log(chalk.green('\nDone! Find your new', format, 'resume at:\n', path.resolve(process.cwd(), fileName + format)));
       });
     });
@@ -53,13 +52,13 @@ lib.preFlow(async function(err, results) {
   program
     .command('serve')
     .description('Serve resume at http://localhost:4000/')
-    .action(function() {
+    .action(() => {
       lib.serve(program.port, program.theme, program.silent, program.dir, program.resume);
     });
 
   await program.parseAsync(process.argv);
 
-  var validCommands = program.commands.map(function(cmd) {
+  const validCommands = program.commands.map((cmd) => {
     return cmd._name;
   });
 
