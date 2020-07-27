@@ -9,28 +9,46 @@ const path = require('path');
 
 const normalizeTheme = (value, defaultValue) => {
   const theme = value || defaultValue;
-  return theme.match('jsonresume-theme-.*') ? theme : `jsonresume-theme-${theme}`;
-}
+  return theme.match('jsonresume-theme-.*')
+    ? theme
+    : `jsonresume-theme-${theme}`;
+};
 
 lib.preFlow(async (err, results) => {
-
   const resumeJson = results.getResume;
 
   program
-    .usage("[command] [options]")
+    .usage('[command] [options]')
     .version(pkg.version)
-    .option('-t, --theme <theme name>', 'Specify theme used by `export` (default: even)', normalizeTheme, 'jsonresume-theme-even')
+    .option(
+      '-t, --theme <theme name>',
+      'Specify theme used by `export` (default: even)',
+      normalizeTheme,
+      'jsonresume-theme-even',
+    )
     .option('-f, --format <file type extension>', 'Used by `export`.')
-    .option('-r, --resume <resume filename>', 'Used by `serve` (default: resume.json)', path.join(process.cwd(), 'resume.json'))
+    .option(
+      '-r, --resume <resume filename>',
+      'Used by `serve` (default: resume.json)',
+      path.join(process.cwd(), 'resume.json'),
+    )
     .option('-p, --port <port>', 'Used by `serve` (default: 4000)', 4000)
-    .option('-s, --silent', 'Used by `serve` to tell it if open browser auto or not.', false)
-    .option('-d, --dir <path>', 'Used by `serve` to indicate a public directory path.', 'public');
+    .option(
+      '-s, --silent',
+      'Used by `serve` to tell it if open browser auto or not.',
+      false,
+    )
+    .option(
+      '-d, --dir <path>',
+      'Used by `serve` to indicate a public directory path.',
+      'public',
+    );
 
   program
     .command('init')
     .description('Initialize a resume.json file')
     .action(() => {
-      lib.init()
+      lib.init();
     });
 
   program
@@ -42,18 +60,39 @@ lib.preFlow(async (err, results) => {
 
   program
     .command('export [fileName]')
-    .description('Export locally to .html or .pdf. Supply a --format <file format> flag and argument to specify export format.')
+    .description(
+      'Export locally to .html or .pdf. Supply a --format <file format> flag and argument to specify export format.',
+    )
     .action((fileName) => {
-      lib.exportResume(resumeJson, fileName, program.theme, program.format, (err, fileName, format) => {
-        console.log(chalk.green('\nDone! Find your new', format, 'resume at:\n', path.resolve(process.cwd(), fileName + format)));
-      });
+      lib.exportResume(
+        resumeJson,
+        fileName,
+        program.theme,
+        program.format,
+        (err, fileName, format) => {
+          console.log(
+            chalk.green(
+              '\nDone! Find your new',
+              format,
+              'resume at:\n',
+              path.resolve(process.cwd(), fileName + format),
+            ),
+          );
+        },
+      );
     });
 
   program
     .command('serve')
     .description('Serve resume at http://localhost:4000/')
     .action(() => {
-      lib.serve(program.port, program.theme, program.silent, program.dir, program.resume);
+      lib.serve(
+        program.port,
+        program.theme,
+        program.silent,
+        program.dir,
+        program.resume,
+      );
     });
 
   await program.parseAsync(process.argv);
@@ -66,7 +105,6 @@ lib.preFlow(async (err, results) => {
   if (program.rawArgs.length < 3) {
     console.log(chalk.cyan('resume-cli:'), 'https://jsonresume.org', '\n');
     program.help();
-
   } else if (validCommands.indexOf(process.argv[2]) === -1) {
     console.log(chalk.red('Invalid argument:'), process.argv[2]);
     console.log(chalk.cyan('resume-cli:'), 'https://jsonresume.org', '\n');
