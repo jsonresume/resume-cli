@@ -7,6 +7,8 @@
     "node": ">=10.18.1"
   },
   "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint --ignore-path .gitignore .",
     "test": "mocha"
   },
@@ -40,6 +42,7 @@
     "eslint": "7.5.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
-    "mocha": "8.0.1"
+    "mocha": "8.0.1",
+    "prettier": "2.0.5"
   }
 }
