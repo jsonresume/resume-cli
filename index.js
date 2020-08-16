@@ -45,8 +45,7 @@ lib.preFlow(async (err, results) => {
     )
     .option(
       '--schema <relativePath>',
-      'Used by `test` to validate against a custom scheme.',
-      'default'
+      'Used by `test` to validate against a custom schema.',
     );
 
   program
