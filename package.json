@@ -6,6 +6,10 @@
   "engines": {
     "node": ">=10.18.1"
   },
+  "files": [
+    "index.js",
+    "lib/*"
+  ],
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check .",
