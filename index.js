@@ -42,6 +42,10 @@ lib.preFlow(async (err, results) => {
       '-d, --dir <path>',
       'Used by `serve` to indicate a public directory path.',
       'public',
+    )
+    .option(
+      '--schema <relativePath>',
+      'Used by `test` to validate against a custom schema.',
     );
 
   program
