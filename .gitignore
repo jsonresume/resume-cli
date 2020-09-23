@@ -1,6 +1,4 @@
 node_modules
 resume.json
-!README.md
 *.html
-*.md
 *.pdf

@@ -1,11 +1,15 @@
 {
   "name": "resume-cli",
-  "version": "1.2.8",
+  "version": "0.0.0-development",
   "description": "The JSON Resume command line interface",
   "main": "index.js",
   "engines": {
     "node": ">=10.18.1"
   },
+  "files": [
+    "index.js",
+    "lib/*"
+  ],
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -14,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rolandnsharp/resume-cli.git"
+    "url": "https://github.com/jsonresume/resume-cli.git"
   },
   "license": "MIT",
   "bin": {
