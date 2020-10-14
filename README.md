@@ -38,7 +38,7 @@ the standard. Tries to identify where any errors may be occurring.
 
 ## `resume export [fileName]`
 
-Exports your resume locally in a stylized HTML, Markdown, or PDF format.
+Exports your resume locally in a stylized HTML or PDF format.
 
 A list of available themes can be found here: http://jsonresume.org/themes/
 
