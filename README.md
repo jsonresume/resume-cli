@@ -18,6 +18,16 @@ Install the command-line tool:
 npm install -g resume-cli
 ```
 
+## Commands at a glance
+
+| command | description |
+| ------- | ----------- |
+| init | Initialize a `resume.json` file |
+| test | Schema validation test your `resume.json` |
+| export [fileName.html] | Export locally to `.html` |
+| serve | Serve resume at `http://localhost:4000/` |
+
+
 # Usage
 
 ## `resume --help`
