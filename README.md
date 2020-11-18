@@ -67,8 +67,7 @@ Options:
 - `--port <port>`
 - `--theme <name>`
 
-If no theme is specified, it will look for the file `index.js` and call
-`render()`. This is useful when developing themes.
+When developing themes, simply change into your theme directory and run `resume serve --theme .` (which tells it to run the local folder as the specified theme)
 
 # License
 
