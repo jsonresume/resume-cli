@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+const should = require('should');
 const renderHtml = require('../lib/render-html');
 
 describe('renderHtml', () => {
