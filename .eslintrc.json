@@ -1,0 +1,18 @@
+{
+  "env": {
+    "commonjs": true,
+    "es2017": true,
+    "mocha": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 9
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-var": "error",
+    "prefer-arrow-callback": "error",
+    "prefer-const": "error"
+  }
+}
