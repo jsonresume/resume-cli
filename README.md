@@ -60,7 +60,7 @@ Options:
 
 ## `resume serve`
 
-Starts a web server that serves your local `resume.json`.
+Starts a web server that serves your local `resume.json`. It will live reload when you make edits to your `resume.json`.
 
 Options:
 
