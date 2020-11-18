@@ -9,6 +9,10 @@ const path = require('path');
 
 const normalizeTheme = (value, defaultValue) => {
   const theme = value || defaultValue;
+  // TODO - This is not great, but bypasses this function if it is a relative path
+  if (theme[0] === '.') {
+    return theme;
+  }
   return theme.match('jsonresume-theme-.*')
     ? theme
     : `jsonresume-theme-${theme}`;
@@ -22,9 +26,8 @@ lib.preFlow(async (err, results) => {
     .version(pkg.version)
     .option(
       '-t, --theme <theme name>',
-      'Specify theme used by `export` (default: even)',
+      'Specify theme used by `export` and `serve` (default: even) or specify a path starting with . (use . for current directory or ../some/other/dir)',
       normalizeTheme,
-      'jsonresume-theme-even',
     )
     .option('-f, --format <file type extension>', 'Used by `export`.')
     .option(
