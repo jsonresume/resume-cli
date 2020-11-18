@@ -24,6 +24,7 @@ lib.preFlow(async (err, results) => {
   program
     .usage('[command] [options]')
     .version(pkg.version)
+    .option('-F, --force', 'Used by `publish` and `export` - bypasses schema testing.')
     .option(
       '-t, --theme <theme name>',
       'Specify theme used by `export` and `serve` or specify a path starting with . (use . for current directory or ../some/other/dir)',
