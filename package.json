@@ -44,7 +44,7 @@
   "devDependencies": {
     "eslint": "7.6.0",
     "husky": "4.2.5",
-    "lint-staged": "10.2.11",
+    "lint-staged": "10.5.1",
     "mocha": "8.1.1",
     "should": "^11.1.0",
     "prettier": "2.0.5"
