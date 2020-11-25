@@ -42,7 +42,7 @@
     "z-schema-errors": "^0.2.1"
   },
   "devDependencies": {
-    "eslint": "7.6.0",
+    "eslint": "7.14.0",
     "husky": "4.2.5",
     "lint-staged": "10.5.2",
     "mocha": "8.1.1",
