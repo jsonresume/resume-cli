@@ -35,7 +35,7 @@
     "jsonresume-theme-even": "^0.5.2",
     "puppeteer": "^5.2.1",
     "read": "^1.0.7",
-    "resume-schema": "^0.1.3",
+    "resume-schema": "^1.0.0",
     "superagent": "^6.0.0",
     "util.promisify": "^1.0.1",
     "z-schema": "^4.2.3",
