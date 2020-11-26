@@ -32,7 +32,7 @@
     "commander": "^6.0.0",
     "dotenv": "^8.2.0",
     "jsonlint": "^1.6.3",
-    "jsonresume-theme-even": "^0.4.1",
+    "jsonresume-theme-even": "^0.5.2",
     "puppeteer": "^5.2.1",
     "read": "^1.0.7",
     "resume-schema": "^0.1.3",
