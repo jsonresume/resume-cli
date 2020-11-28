@@ -3,8 +3,9 @@
   "version": "0.0.0-development",
   "description": "The JSON Resume command line interface",
   "main": "index.js",
+  "type": "module",
   "engines": {
-    "node": ">=10.18.1"
+    "node": ">=14.15.1"
   },
   "files": [
     "index.js",
@@ -19,7 +20,7 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "prepare": "babel lib -d build --copy-files",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",

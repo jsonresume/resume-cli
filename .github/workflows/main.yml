@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [10, 12, 14]
+        node: [14.15.1]
     name: Test on Node.js ${{ matrix.node }}
     steps:
       - name: Checkout
@@ -37,7 +37,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14.15.1
 
       - name: Install
         run: npm ci
