@@ -2,7 +2,11 @@
 
 require('dotenv').config();
 const pkg = require('./package.json');
-const lib = require('./lib');
+const preFlow = require('./lib/pre-flow');
+const exportResume = require('./lib/export-resume');
+const serve = require('./lib/serve');
+const init = require('./lib/init');
+const test = require('./lib/test');
 const program = require('commander');
 const chalk = require('chalk');
 const path = require('path');
@@ -18,13 +22,16 @@ const normalizeTheme = (value, defaultValue) => {
     : `jsonresume-theme-${theme}`;
 };
 
-lib.preFlow(async (err, results) => {
+preFlow(async (err, results) => {
   const resumeJson = results.getResume;
 
   program
     .usage('[command] [options]')
     .version(pkg.version)
-    .option('-F, --force', 'Used by `publish` and `export` - bypasses schema testing.')
+    .option(
+      '-F, --force',
+      'Used by `publish` and `export` - bypasses schema testing.',
+    )
     .option(
       '-t, --theme <theme name>',
       'Specify theme used by `export` and `serve` or specify a path starting with . (use . for current directory or ../some/other/dir)',
@@ -57,14 +64,14 @@ lib.preFlow(async (err, results) => {
     .command('init')
     .description('Initialize a resume.json file')
     .action(() => {
-      lib.init();
+      init();
     });
 
   program
     .command('test')
     .description('Schema validation test your resume.json')
     .action(async () => {
-      await lib.test(resumeJson);
+      await test(resumeJson);
     });
 
   program
@@ -73,7 +80,7 @@ lib.preFlow(async (err, results) => {
       'Export locally to .html or .pdf. Supply a --format <file format> flag and argument to specify export format.',
     )
     .action((fileName) => {
-      lib.exportResume(
+      exportResume(
         resumeJson,
         fileName,
         program.theme,
@@ -95,7 +102,7 @@ lib.preFlow(async (err, results) => {
     .command('serve')
     .description('Serve resume at http://localhost:4000/')
     .action(() => {
-      lib.serve(
+      serve(
         program.port,
         program.theme,
         program.silent,
