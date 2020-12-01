@@ -14,7 +14,7 @@ describe('renderHtml', () => {
   };
 
   it('should reject when theme is not availlable', async () => {
-    const theme = 'unkown';
+    const theme = 'unknown';
 
     const result = renderHtml(resumeJson, theme);
 
