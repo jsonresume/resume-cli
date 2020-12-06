@@ -11,9 +11,11 @@
     "lib/*"
   ],
   "scripts": {
+    "dev": "babel-node lib/main.js",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "lint": "eslint --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore lib",
+    "prepare": "babel lib -d build --copy-files",
     "test": "mocha"
   },
   "repository": {
@@ -22,7 +24,7 @@
   },
   "license": "MIT",
   "bin": {
-    "resume": "index.js"
+    "resume": "build/main.js"
   },
   "dependencies": {
     "async": "^3.2.0",
@@ -42,6 +44,13 @@
     "z-schema-errors": "^0.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "7.12.8",
+    "@babel/core": "7.12.9",
+    "@babel/eslint-parser": "7.12.1",
+    "@babel/node": "7.12.6",
+    "@babel/plugin-proposal-optional-chaining": "7.12.7",
+    "@babel/preset-env": "7.12.7",
+    "babel-eslint": "10.1.0",
     "eslint": "7.14.0",
     "husky": "4.2.5",
     "lint-staged": "10.5.2",

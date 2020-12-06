@@ -69,6 +69,14 @@ Options:
 
 When developing themes, simply change into your theme directory and run `resume serve --theme .` (which tells it to run the local folder as the specified theme)
 
+# Development
+
+to test the cli, run the dev script:
+
+```sh
+npm run dev -- [cli arguments can be passed after the double-dash]
+```
+
 # License
 
 Available under [the MIT license](http://mths.be/mit).
