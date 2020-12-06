@@ -69,6 +69,19 @@ Options:
 
 When developing themes, simply change into your theme directory and run `resume serve --theme .` (which tells it to run the local folder as the specified theme)
 
+# supported resume input types
+
+- [`json`](https://www.json.org/json-en.html): via `JSON.parse`.
+- [`yaml`](https://yaml.org/): via [`yaml-js`](https://www.npmjs.com/package/yaml-js)
+- `quaff`: if `--resume` is a directory, then the path is passed to [`quaff`](https://www.npmjs.com/package/quaff) and the resulting json is used as the resume. quaff supports a variety of formats in the directory, including javascript modules.
+
+# resume data
+
+Resume data is read from `stdin` if [`stdin.isTTY`](https://nodejs.org/api/tty.html#tty_readstream_istty) is falsy. Otherwise, the resume is read from `--path` as resolved from `process.cwd()`. `--type` defaults to `application/json`. Supported resume data mime types are:
+
+- `application/json`
+- `text/yaml`
+
 # Development
 
 to test the cli, run the dev script:
@@ -80,5 +93,3 @@ npm run dev -- [cli arguments can be passed after the double-dash]
 # License
 
 Available under [the MIT license](http://mths.be/mit).
-
-
