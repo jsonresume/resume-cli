@@ -1,4 +1,5 @@
 node_modules
+build
 resume.json
 *.html
 *.pdf
