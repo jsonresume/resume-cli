@@ -54,7 +54,7 @@
     "eslint": "7.14.0",
     "husky": "4.3.5",
     "lint-staged": "10.5.3",
-    "mocha": "8.1.1",
+    "mocha": "8.2.1",
     "should": "^13.2.3",
     "prettier": "2.2.0"
   }
