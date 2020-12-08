@@ -6,6 +6,15 @@
     "node": true
   },
   "extends": "eslint:recommended",
+  "overrides": [
+    {
+      "env": {
+        "jest/globals": true
+      },
+      "files": ["**/*.test.js"],
+      "plugins": ["jest"]
+    }
+  ],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 9
