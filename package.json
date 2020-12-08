@@ -56,6 +56,6 @@
     "lint-staged": "10.5.3",
     "mocha": "8.1.1",
     "should": "^13.2.3",
-    "prettier": "2.2.0"
+    "prettier": "2.2.1"
   }
 }
