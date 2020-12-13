@@ -1,12 +1,13 @@
 module.exports = {
-  plugins: ["@babel/plugin-proposal-optional-chaining"],
+  plugins: ['@babel/plugin-proposal-optional-chaining'],
   presets: [
     [
-    "@babel/preset-env",
-    {
-      targets: {
-        node: true
-      }
-    }
-    ]]
-}
+      '@babel/preset-env',
+      {
+        targets: {
+          node: true,
+        },
+      },
+    ],
+  ],
+};
