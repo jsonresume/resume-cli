@@ -5,7 +5,7 @@
     "mocha": true,
     "node": true
   },
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
   "overrides": [
     {
       "env": {
@@ -19,10 +19,12 @@
   "parserOptions": {
     "ecmaVersion": 9
   },
+  "plugins": ["prettier"],
   "rules": {
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "no-var": "error",
     "prefer-arrow-callback": "error",
-    "prefer-const": "error"
+    "prefer-const": "error",
+    "prettier/prettier": "error"
   }
 }
