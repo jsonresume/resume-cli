@@ -77,7 +77,13 @@ When developing themes, simply change into your theme directory and run `resume 
 
 # resume data
 
-Resume data is read from `stdin` if [`stdin.isTTY`](https://nodejs.org/api/tty.html#tty_readstream_istty) is falsy. Otherwise, the resume is read from `--path` as resolved from `process.cwd()`. `--type` defaults to `application/json`. Supported resume data mime types are:
+- Setting `--resume -` tells the cli to read resume data from standard input (`stdin`), and defaults `--type` to `application/json`.
+- Setting `--resume <path>` reads resume data from `path`.
+- Leaving `--resume` unset defaults to reading from `resume.json` on the current working directory.
+
+# resume mime types
+
+Supported resume data mime types are:
 
 - `application/json`
 - `text/yaml`
