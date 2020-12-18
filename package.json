@@ -51,7 +51,7 @@
     "util.promisify": "^1.0.1",
     "yaml-js": "^0.2.3",
     "yesno": "^0.3.1",
-    "z-schema": "^4.2.3",
+    "z-schema": "^5.0.0",
     "z-schema-errors": "^0.2.1"
   },
   "devDependencies": {
