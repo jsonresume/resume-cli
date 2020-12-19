@@ -17,6 +17,7 @@
   ],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
+    "sourceType": "module",
     "ecmaVersion": 9
   },
   "rules": {
