@@ -7,8 +7,9 @@
     "node": ">=10.18.1"
   },
   "files": [
-    "index.js",
-    "lib/*"
+    "build/*",
+    "!test-utils",
+    "!*.test.js"
   ],
   "scripts": {
     "dev": "babel-node lib/main.js",
