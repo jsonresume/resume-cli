@@ -23,7 +23,7 @@ npm install -g resume-cli
 | command                | description                               |
 | ---------------------- | ----------------------------------------- |
 | init                   | Initialize a `resume.json` file           |
-| test                   | Schema validation test your `resume.json` |
+| validate               | Schema validation test your `resume.json` |
 | export [fileName.html] | Export locally to `.html`                 |
 | serve                  | Serve resume at `http://localhost:4000/`  |
 
@@ -40,7 +40,7 @@ Creates a new `resume.json` file in your current working directory.
 Complete the `resume.json` with your text editor. Be sure to follow the schema
 (available at http://jsonresume.org).
 
-## `resume test`
+## `resume validate`
 
 Validates your `resume.json` against our schema tests to ensure it complies with
 the standard. Tries to identify where any errors may be occurring.
