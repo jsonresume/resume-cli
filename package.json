@@ -2,7 +2,7 @@
   "name": "resume-cli",
   "version": "0.0.0-development",
   "description": "The JSON Resume command line interface",
-  "main": "index.js",
+  "main": "build/main.js",
   "engines": {
     "node": ">=10.18.1"
   },
