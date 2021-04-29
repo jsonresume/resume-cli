@@ -1,17 +1,51 @@
----
 version: 2
 updates:
-  - package-ecosystem: npm
-    directory: '/'
-    schedule:
-      interval: daily
-    commit-message:
-      prefix: 'fix(deps)'
-      prefix-development: 'chore(deps)'
-
-  - package-ecosystem: github-actions
-    directory: '/'
-    schedule:
-      interval: daily
-    commit-message:
-      prefix: 'chore(deps)'
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.13.0
+    - 7.13.10
+    - 7.13.14
+  - dependency-name: "@babel/node"
+    versions:
+    - 7.13.0
+    - 7.13.10
+    - 7.13.12
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.13.10
+    - 7.13.12
+    - 7.13.8
+    - 7.13.9
+  - dependency-name: husky
+    versions:
+    - 5.1.2
+    - 5.1.3
+    - 5.2.0
+  - dependency-name: "@babel/eslint-parser"
+    versions:
+    - 7.13.10
+    - 7.13.4
+    - 7.13.8
+  - dependency-name: "@babel/plugin-proposal-optional-chaining"
+    versions:
+    - 7.13.0
+    - 7.13.8
+  - dependency-name: puppeteer
+    versions:
+    - 8.0.0
+  - dependency-name: node-notifier
+    versions:
+    - 8.0.1
+  - dependency-name: commander
+    versions:
+    - 7.1.0
