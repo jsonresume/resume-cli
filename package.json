@@ -41,7 +41,7 @@
     "jsonresume-theme-even": "^0.6.0",
     "mime-types": "^2.1.27",
     "object-path-immutable": "^4.1.1",
-    "puppeteer": "^5.2.1",
+    "puppeteer": "^9.1.1",
     "quaff": "^4.2.0",
     "read": "^1.0.7",
     "resume-schema": "^1.0.0",
