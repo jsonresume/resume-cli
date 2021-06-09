@@ -96,37 +96,19 @@ to test the cli, run the dev script:
 npm run dev -- [cli arguments can be passed after the double-dash]
 ```
 
-# Running inside Docker
+# Running inside ARM64 Docker
 
-The basic Dockerfile for the cli is presented in `Dockerfile.example`.  It uses docker [`multistage builds`](https://docs.docker.com/develop/develop-images/multistage-build/). It can be renamed to `Dockerfile` or copied to another directory.
-
-### Creating a sample `resume.json`
-
-This command will copy `resume.json` to a folder called `build`
+For running on ARM64 some additional information can be added to `Dockerfile` to make chromium related commands work
 
 ```
-docker build --target init -o build  .
+RUN apt install chromium -y
+...
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV RESUME_PUPPETEER_NO_SANDBOX=1
+RUN npm install -g resume-cli --unsafe-perm=true --allow-root
+RUN ln /usr/bin/chromium /usr/bin/chromium-browser
 ```
-
-### Building to pdf
-
-This command will copy the local `resume.json` to the container, build it and then copy `resume.pdf` to a folder called `build`
-
-```
-docker build --target build-pdf --build-arg THEME=<your theme name> -o build .
-```
-
-### Running as a server
-
-This command will start a `nodejs` server at `localhost:4000`
-
-```
-	docker build --target serve --build-arg THEME=<your theme name> resume-server .
-	docker run --rm -p 4000:4000 -it resume-server
-```
-
-Theme names are specified like `paper` or `elegant`, as long as their npm package prefix is `jsonresume-theme`
-
 
 # License
 
