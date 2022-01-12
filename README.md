@@ -10,6 +10,11 @@ This is the command line tool for [JSON Resume](https://jsonresume.org), the ope
 
 [Read more...](https://jsonresume.org/schema/)
 
+===
+Note: The Resume CLI tool works as it is so there isn't a huge amount of active development on it, try these alternatives if it doesn't work for you;
+- [Resumed](https://github.com/rbardini/resumed)
+===
+
 # Getting Started
 
 Install the command-line tool:
