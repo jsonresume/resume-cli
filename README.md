@@ -62,6 +62,7 @@ Options:
 
 - `--format <file type>` Example: `--format pdf`
 - `--theme <name>` Example: `--theme even`
+- `--resume <fileName>` Example `--resume resume.yaml`
 
 ## `resume serve`
 
@@ -71,6 +72,7 @@ Options:
 
 - `--port <port>`
 - `--theme <name>`
+- `--resume <fileName>`
 
 When developing themes, simply change into your theme directory and run `resume serve --theme .` (which tells it to run the local folder as the specified theme)
 
