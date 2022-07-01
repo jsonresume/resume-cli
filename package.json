@@ -42,7 +42,7 @@
     "mime-types": "^2.1.27",
     "object-path-immutable": "^4.1.1",
     "puppeteer": "^5.2.1",
-    "quaff": "^4.2.0",
+    "quaff": "^5.0.0",
     "read": "^1.0.7",
     "resume-schema": "^1.0.0",
     "stream-to-string": "^1.2.0",
@@ -54,7 +54,7 @@
     "z-schema-errors": "^0.2.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.12.10",
+    "@babel/cli": "^7.12.1",
     "@babel/core": "7.12.10",
     "@babel/eslint-parser": "7.12.1",
     "@babel/node": "7.12.10",
