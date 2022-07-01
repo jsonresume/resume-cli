@@ -14,7 +14,6 @@
   "scripts": {
     "dev": "babel-node lib/main.js",
     "lint": "eslint --ignore-path .gitignore .",
-    "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "prepare": "babel lib -d build --copy-files",
@@ -36,7 +35,6 @@
     "commander": "^6.0.0",
     "dotenv": "^8.2.0",
     "file-exists": "^5.0.1",
-    "husky": "^8.0.1",
     "jest-extended": "^0.11.5",
     "jsonlint": "^1.6.3",
     "jsonresume-theme-even": "^0.6.0",
