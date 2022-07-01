@@ -46,7 +46,7 @@
     "read": "^1.0.7",
     "resume-schema": "^1.0.0",
     "stream-to-string": "^1.2.0",
-    "superagent": "^6.0.0",
+    "superagent": "^8.0.0",
     "util.promisify": "^1.0.1",
     "yaml-js": "^0.2.3",
     "yesno": "^0.3.1",
