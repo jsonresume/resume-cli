@@ -61,6 +61,7 @@ Please npm install the theme you wish to use locally before attempting to export
 Options:
 
 - `--format <file type>` Example: `--format pdf`
+- `--papersize <paper size>` Example: `--papersize a4`
 - `--theme <name>` Example: `--theme even`
 
 ## `resume serve`
