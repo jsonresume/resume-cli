@@ -23,6 +23,12 @@ Install the command-line tool:
 npm install -g resume-cli
 ```
 
+Optional. You may wish to install the default theme [`jsonresume-theme-even`](https://github.com/rbardini/jsonresume-theme-even).
+
+```
+npm install jsonresume-theme-even
+```
+
 ## Commands at a glance
 
 | command                | description                               |
