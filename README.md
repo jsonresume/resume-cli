@@ -101,6 +101,20 @@ to test the cli, run the dev script:
 npm run dev -- [cli arguments can be passed after the double-dash]
 ```
 
+# Running inside ARM64 Docker
+
+For running on ARM64 some additional information can be added to `Dockerfile` to make chromium related commands work
+
+```
+RUN apt install chromium -y
+...
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV RESUME_PUPPETEER_NO_SANDBOX=1
+RUN npm install -g resume-cli --unsafe-perm=true --allow-root
+RUN ln /usr/bin/chromium /usr/bin/chromium-browser
+```
+
 # License
 
 Available under [the MIT license](http://mths.be/mit).
