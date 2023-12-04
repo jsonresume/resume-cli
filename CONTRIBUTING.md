@@ -1,5 +1,11 @@
 # Contributing
 
+To test the CLI application, run the dev script:
+
+```sh
+npm run dev -- [cli arguments can be passed after the double-dash]
+```
+
 ## Writing commit messages
 
 resume-cli uses [semantic-release](https://semantic-release.gitbook.io/) to automate version management and package publishing.
