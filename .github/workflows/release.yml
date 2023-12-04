@@ -1,9 +1,11 @@
 name: Main
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   release:
-    needs: test
     runs-on: ubuntu-latest
     name: Release
     steps:
@@ -12,6 +14,8 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
+      - run: npm run lint
+      - run: npm run test
       - name: Run semantic-release
         uses: cycjimmy/semantic-release-action@v2
         with:

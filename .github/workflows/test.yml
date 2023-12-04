@@ -1,4 +1,4 @@
-name: CI
+name: Lint and Test
 on:
   push:
     branches:
@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  lint-and-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:

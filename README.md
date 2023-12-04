@@ -1,21 +1,18 @@
 # resume-cli
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsonresume/public?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build status](https://img.shields.io/github/workflow/status/jsonresume/resume-cli/Main)](https://github.com/jsonresume/resume-cli/actions)
-[![Dependency status](https://david-dm.org/jsonresume/resume-cli.svg)](https://david-dm.org/jsonresume/resume-cli)
-[![devDependency status](https://david-dm.org/jsonresume/resume-cli/dev-status.svg)](https://david-dm.org/jsonresume/resume-cli#info=devDependencies)
+[![matrix](https://img.shields.io/badge/matrix-join%20chat-%230dbd8b)](https://matrix.to/#/#json-resume:one.ems.host)
+[![Build status](https://img.shields.io/github/actions/workflow/status/jsonresume/resume-cli/test.yml?branch=master)](https://github.com/jsonresume/resume-cli/actions)
 [![npm package](https://badge.fury.io/js/resume-cli.svg)](https://www.npmjs.org/package/resume-cli)
 
-This is the command line tool for [JSON Resume](https://jsonresume.org), the open source initiative to create a JSON-based standard for resumes.
+This is the command line tool for [JSON Resume](https://jsonresume.org), the open-source initiative to create a JSON-based standard for resumes.
 
-[Read more...](https://jsonresume.org/schema/)
+## Project Status
 
+This repository is not actively maintained. It's recommended to use one of the third-party clients that support the JSON Resume standard instead:
 
-Alternatives: The Resume CLI tool works as it is so there isn't a huge amount of active development on it, try these alternatives if it doesn't work for you;
-- [Resumed](https://github.com/rbardini/resumed)
+* [Resumed](https://github.com/rbardini/resumed)
 
-
-# Getting Started
+## Getting Started
 
 Install the command-line tool:
 
@@ -23,84 +20,77 @@ Install the command-line tool:
 npm install -g resume-cli
 ```
 
-## Commands at a glance
+## Usage
 
-| command                | description                               |
-| ---------------------- | ----------------------------------------- |
-| init                   | Initialize a `resume.json` file           |
-| validate               | Schema validation test your `resume.json` |
-| export [fileName.html] | Export locally to `.html`                 |
-| serve                  | Serve resume at `http://localhost:4000/`  |
+### Commands at a Glance
 
-# Usage
+| Command | Description |
+|---|---|
+| init | Initialize a `resume.json` file. |
+| validate | Schema validation test your `resume.json`. |
+| export path/to/file.html | Export to `.html`. |
+| serve | Serve resume at `http://localhost:4000/`. |
 
-## `resume --help`
+### `resume --help`
 
-Show a list of options and commands for the <abbr title="Command Line Interface">CLI</abbr>.
+Show a list of options and commands for the <abbr title="Command-line Interface">CLI</abbr>.
 
-## `resume init`
+### `resume init`
 
 Creates a new `resume.json` file in your current working directory.
 
-Complete the `resume.json` with your text editor. Be sure to follow the schema
-(available at http://jsonresume.org).
+Complete the `resume.json` with your text editor. Be sure to follow the schema (available at https://jsonresume.org/schema/).
 
-## `resume validate`
+### `resume validate`
 
-Validates your `resume.json` against our schema tests to ensure it complies with
-the standard. Tries to identify where any errors may be occurring.
+Validates your `resume.json` against our schema to ensure it complies with the standard. Tries to identify where any errors may be occurring.
 
-## `resume export [fileName]`
+### `resume export [fileName]`
 
-Exports your resume locally in a stylized HTML or PDF format.
+Exports your resume in a stylized HTML or PDF format.
 
-A list of available themes can be found here: http://jsonresume.org/themes/
+A list of available themes can be found here:  
+https://jsonresume.org/themes/
 
-Please npm install the theme you wish to use locally before attempting to export it.
+Please npm install the theme you wish to use before attempting to export it.
 
 Options:
 
 - `--format <file type>` Example: `--format pdf`
 - `--theme <name>` Example: `--theme even`
 
-## `resume serve`
+### `resume serve`
 
-Starts a web server that serves your local `resume.json`. It will live reload when you make edits to your `resume.json`.
+Starts a web server that serves your local `resume.json`. It will live reload when you make changes to your `resume.json`.
 
 Options:
 
 - `--port <port>`
 - `--theme <name>`
 
-When developing themes, simply change into your theme directory and run `resume serve --theme .` (which tells it to run the local folder as the specified theme)
+When developing themes, change into your theme directory and run `resume serve --theme .`, which tells it to run the local folder as the specified theme.
 
-# supported resume input types
+This is not intended for production use, it's a convenience for theme development or to visualize changes to your resume while editing it.
+
+## Supported Resume Input Types
 
 - [`json`](https://www.json.org/json-en.html): via `JSON.parse`.
 - [`yaml`](https://yaml.org/): via [`yaml-js`](https://www.npmjs.com/package/yaml-js)
 - `quaff`: if `--resume` is a directory, then the path is passed to [`quaff`](https://www.npmjs.com/package/quaff) and the resulting json is used as the resume. quaff supports a variety of formats in the directory, including javascript modules.
 
-# resume data
+## Resume Data
 
-- Setting `--resume -` tells the cli to read resume data from standard input (`stdin`), and defaults `--type` to `application/json`.
+- Setting `--resume -` tells the CLI to read resume data from standard input (`STDIN`), and defaults `--type` to `application/json`.
 - Setting `--resume <path>` reads resume data from `path`.
 - Leaving `--resume` unset defaults to reading from `resume.json` on the current working directory.
 
-# resume mime types
+## Resume MIME Types
 
-Supported resume data mime types are:
+Supported resume data MIME types are:
 
 - `application/json`
 - `text/yaml`
 
-# Development
-
-to test the cli, run the dev script:
-
-```sh
-npm run dev -- [cli arguments can be passed after the double-dash]
-```
-
-# License
+## License
 
 Available under [the MIT license](http://mths.be/mit).
