@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@babel/cli": "7.12.10",
-    "@babel/core": "7.12.10",
+    "@babel/core": "7.23.5",
     "@babel/eslint-parser": "7.12.1",
     "@babel/node": "7.12.10",
     "@babel/plugin-proposal-optional-chaining": "7.12.7",
