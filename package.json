@@ -48,7 +48,7 @@
     "superagent": "^6.0.0",
     "yaml-js": "^0.2.3",
     "yesno": "^0.3.1",
-    "z-schema": "^5.0.0",
+    "z-schema": "^6.0.1",
     "z-schema-errors": "^0.2.1"
   },
   "devDependencies": {
