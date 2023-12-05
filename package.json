@@ -69,7 +69,7 @@
     "fs-monkey": "1.0.1",
     "husky": "5.0.6",
     "jest": "28.1.2",
-    "lint-staged": "10.5.3",
+    "lint-staged": "15.2.0",
     "memfs": "3.2.0",
     "mock-stdin": "1.0.0",
     "prettier": "2.2.1",
